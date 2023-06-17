@@ -1,7 +1,6 @@
 import './globals.css';
 import React from 'react';
 
-// d
 export default function RootLayout({
   children,
 }: {
