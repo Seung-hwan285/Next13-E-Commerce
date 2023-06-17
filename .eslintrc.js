@@ -16,5 +16,8 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
-  rules: {},
+  rules: {
+    'prettier/prettier': 'warn',
+    'no-console': 2,
+  },
 };
