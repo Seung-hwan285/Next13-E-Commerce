@@ -32,10 +32,6 @@ function LoginForm() {
               name="username"
               placeholder="username"
             />
-
-            {errors?.username?.message ? (
-              <div>{errors?.username?.message}</div>
-            ) : null}
           </LoginUserNameWrapper>
           <PasswordWrapper>
             <Label>Password</Label>
@@ -46,9 +42,6 @@ function LoginForm() {
               name="password"
               placeholder="password"
             />
-            {errors?.password?.message ? (
-              <div>{errors?.password?.message}</div>
-            ) : null}
           </PasswordWrapper>
 
           <ButtonWrapper>
