@@ -49,8 +49,8 @@ function LoginForm() {
               name="password"
               placeholder="password"
             />
-            {errors?.password.message ? (
-              <div>{errors?.password.message}</div>
+            {errors?.password?.message ? (
+              <div>{errors?.password?.message}</div>
             ) : null}
           </PasswordWrapper>
 
