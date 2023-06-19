@@ -1,6 +1,9 @@
 import React from 'react';
 export default function Head() {
-  // code bot test
+  const ha = (e) => {
+    console.log(e);
+  };
+
   return (
     <>
       <title>Create Next App</title>

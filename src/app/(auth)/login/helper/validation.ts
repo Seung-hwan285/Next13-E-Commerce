@@ -1,4 +1,4 @@
-export const validateKorenOnEnglish = (value) => {
+export const validateKorenOnEnglish = (value: string) => {
   const pattern = /^([a-zA-Z\s]+|[ㄱ-ㅎㅏ-ㅣ가-힣\s]+)$/;
   if (!pattern.test(value)) {
     return 'Please enter text in english or korean';
@@ -7,7 +7,7 @@ export const validateKorenOnEnglish = (value) => {
   }
 };
 
-export const validatePassword = (value) => {
+export const validatePassword = (value: string) => {
   const pattern = /^\d+$/;
   // Custom password validation logic
   if (value.length >= 6) {

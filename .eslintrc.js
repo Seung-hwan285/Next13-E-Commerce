@@ -17,7 +17,6 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
-    'no-console': 2,
     indent: 'off',
   },
 };
