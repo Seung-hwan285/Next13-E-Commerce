@@ -24,7 +24,7 @@ function LoginForm() {
       <LoginFormBox onSubmit={handleSubmit(onSubmit)}>
         <LoginContainer>
           <LoginUserNameWrapper>
-            <Label for="username">Username</Label>
+            <Label>Username</Label>
             <Input
               {...register('username', {
                 validate: (value) => validateKorenOnEnglish(value),
@@ -36,7 +36,7 @@ function LoginForm() {
             {errors.username ? <div>{errors.username.message}</div> : null}
           </LoginUserNameWrapper>
           <PasswordWrapper>
-            <Label for="password">Password</Label>
+            <Label>Password</Label>
             <Input
               {...register('password', {
                 validate: (value) => validatePassword(value),
