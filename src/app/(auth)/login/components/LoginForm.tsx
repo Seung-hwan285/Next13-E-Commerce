@@ -29,6 +29,7 @@ function LoginForm() {
               {...register('username', {
                 validate: (value) => validateKorenOnEnglish(value),
               })}
+              name="username"
               placeholder="username"
             />
 
@@ -40,6 +41,7 @@ function LoginForm() {
               {...register('password', {
                 validate: (value) => validatePassword(value),
               })}
+              name="password"
               placeholder="password"
             />
             {errors.password ? <div>{errors.password.message}</div> : null}
