@@ -7,6 +7,10 @@ import {
   validatePassword,
 } from '@/app/(auth)/login/helper/validation';
 
+type ButtonType = {
+  variant: string;
+};
+
 function LoginForm() {
   const {
     register,
@@ -46,7 +50,6 @@ function LoginForm() {
 
           <ButtonWrapper>
             <Button variant="login">Login</Button>
-
             <Button variant="register">Register</Button>
           </ButtonWrapper>
         </LoginContainer>
@@ -103,7 +106,7 @@ const ButtonWrapper = styled.div`
   margin-top: 4rem;
 `;
 
-const Button = styled.button`
+const Button = styled.button<ButtonType>`
   color: ${(props) => (props.variant === 'login' ? 'white' : 'black')};
   background-color: ${(props) =>
     props.variant === 'login' ? 'rgb(59 130 246)' : ''};
