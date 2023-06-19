@@ -62,7 +62,7 @@ export default LoginForm;
 const LoginContainer = styled.div``;
 
 const LoginFormBox = styled.form`
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: #fff;
   width: 35%;
   height: 25rem;
   display: flex;
@@ -80,7 +80,7 @@ const LoginUserNameWrapper = styled.div`
 `;
 
 const Label = styled.label`
-  color: ${(props) => props.theme.colors.black};
+  color: black;
   margin-right: 12rem;
 `;
 
