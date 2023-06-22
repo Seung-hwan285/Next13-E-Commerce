@@ -1,9 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+
+import React from 'react';
 import LoginForm from '@/app/(auth)/login/components/LoginForm';
 import styled from '@emotion/styled';
 
-function LoginPage() {
+async function LoginPage() {
   return (
     <LoginContainer>
       <LoginForm />

@@ -9,9 +9,8 @@ export const validateKorenOnEnglish = (value: string) => {
 
 export const validatePassword = (value: string) => {
   const pattern = /^\d+$/;
-  // Custom password validation logic
   if (value.length >= 6) {
-    return 'Plesase password length 6 lower'; // Password is valid
+    return 'Please password length 6 lower';
   }
   if (!pattern.test(value)) {
     return 'Please password number';

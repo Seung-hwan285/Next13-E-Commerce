@@ -18,5 +18,8 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     indent: 'off',
+    // 'no-console': 2,
+    // 'linebreak-style': 2,
+    // 'max-len': ['warn', { code: 100 }],
   },
 };

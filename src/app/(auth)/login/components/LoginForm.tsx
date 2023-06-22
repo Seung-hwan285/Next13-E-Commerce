@@ -6,6 +6,7 @@ import {
   validateKorenOnEnglish,
   validatePassword,
 } from '@/app/(auth)/login/helper/validation';
+import { authAPI } from '@/app/api/auth/login';
 
 type ButtonType = {
   variant: string;
@@ -19,8 +20,12 @@ function LoginForm() {
     reset,
   } = useForm();
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     reset();
+
+    const data = await authAPI.login();
+
+    console.log(data);
   };
 
   return (
@@ -122,11 +127,9 @@ const Button = styled.button<ButtonType>`
   padding: 5px 10px;
   border-radius: 6px;
   font-weight: bold;
-
   &:hover {
     background-color: ${(props) =>
       props.variant === 'login' ? 'rgb(29 78 216)' : ''};
-
     color: ${(props) => (props.variant === 'login' ? '' : 'rgb(30 64 175);')};
   }
 `;

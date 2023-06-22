@@ -1,9 +1,5 @@
 import React from 'react';
 export default function Head() {
-  const ha = (e) => {
-    console.log(e);
-  };
-
   return (
     <>
       <title>Create Next App</title>
