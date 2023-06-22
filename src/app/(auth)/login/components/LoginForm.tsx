@@ -7,6 +7,7 @@ import {
   validatePassword,
 } from '@/app/(auth)/login/helper/validation';
 import { authAPI } from '@/app/api/auth/login';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 type ButtonType = {
   variant: string;
@@ -20,13 +21,16 @@ function LoginForm() {
     reset,
   } = useForm();
 
+  const { data: session } = useSession();
+
   const onSubmit = async () => {
     reset();
 
     const data = await authAPI.login();
-
     console.log(data);
   };
+
+  console.log(session);
 
   return (
     <>
@@ -62,6 +66,13 @@ function LoginForm() {
           <ButtonWrapper>
             <Button variant="login">Login</Button>
             <Button variant="register">Register</Button>
+            <button type="button" onClick={() => signIn()}>
+              구글로그인
+            </button>
+
+            <button type="button" onClick={() => signOut()}>
+              구글 로그아웃
+            </button>
           </ButtonWrapper>
         </LoginContainer>
       </LoginFormBox>
