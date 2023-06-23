@@ -9,6 +9,9 @@ import {
 import { authAPI } from '@/app/api/auth/login';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
+import GoogleIcon from '/public/icons/icons8-google.svg';
+import Image from 'next/image';
+
 type ButtonType = {
   variant: string;
 };
@@ -30,7 +33,11 @@ function LoginForm() {
     console.log(data);
   };
 
-  console.log(session);
+  const handleLoginClick = () => {
+    signIn('google', {
+      callbackUrl: 'https://shop-seung-hwan285.vercel.app/',
+    });
+  };
 
   return (
     <>
@@ -66,20 +73,33 @@ function LoginForm() {
           <ButtonWrapper>
             <Button variant="login">Login</Button>
             <Button variant="register">Register</Button>
-            <button type="button" onClick={() => signIn()}>
-              구글로그인
-            </button>
-
-            <button type="button" onClick={() => signOut()}>
-              구글 로그아웃
-            </button>
+            <ButtonGoogle type="button" onClick={handleLoginClick}>
+              <Image src={GoogleIcon} height={32} width={22} />
+              Google Login
+            </ButtonGoogle>
           </ButtonWrapper>
         </LoginContainer>
       </LoginFormBox>
     </>
   );
 }
+
 export default LoginForm;
+
+const ButtonGoogle = styled.button`
+  border-radius: 6px;
+  border: 2px solid #ebeaea;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.75rem;
+  min-width: 1.75rem;
+  font-size: 1em;
+  margin: 0;
+  outline: none;
+  font-weight: 500;
+`;
 
 const LoginContainer = styled.div``;
 

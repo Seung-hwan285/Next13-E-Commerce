@@ -17,6 +17,8 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, account }) {
       if (account?.provider === 'google') {
         console.log(account);
+
+        return token;
       }
     },
   },
