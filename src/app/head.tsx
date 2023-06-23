@@ -1,6 +1,5 @@
 import React from 'react';
 export default function Head() {
-  // code bot test
   return (
     <>
       <title>Create Next App</title>

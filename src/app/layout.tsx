@@ -1,5 +1,11 @@
+'use client';
+
 import './globals.css';
+
 import React from 'react';
+import { ThemeProvider } from '@emotion/react';
+import theme from '@/app/theme';
+import { NextAuthProvider } from '@/app/NextAuthProvider';
 
 export default function RootLayout({
   children,
@@ -8,8 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head />
-      <body>{children}</body>
+      <ThemeProvider theme={theme}>
+        <head />
+        <body>
+          <NextAuthProvider>{children}</NextAuthProvider>
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
