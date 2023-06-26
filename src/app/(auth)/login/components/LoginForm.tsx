@@ -7,7 +7,7 @@ import {
   validatePassword,
 } from '@/app/(auth)/login/helper/validation';
 import { authAPI } from '@/app/api/auth/login';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 
 import GoogleIcon from '/public/icons/icons8-google.svg';
 import Image from 'next/image';
