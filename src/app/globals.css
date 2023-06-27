@@ -5,10 +5,13 @@
 
 body,
 body[data-theme="light"] {
-  --color-text-primary: #27201a;
+  --color-text-primary: #000000;
   --color-text-secondary: #076963;
   --color-bg-primary: #fff;
   --color-bg-toggle: #1e90ff;
+  --color-text-color : #27201a;
+
+
 }
 
 body[data-theme="dark"] {
@@ -16,6 +19,7 @@ body[data-theme="dark"] {
   --color-text-secondary: #ff6b00;
   --color-bg-primary: #15232d;
   --color-bg-toggle: #a9a9a9;
+
 }
 
 body {
@@ -25,6 +29,3 @@ body {
   transition: background 0.25s ease-in-out;
 }
 
-h1 {
-  color: var(--color-text-secondary);
-}

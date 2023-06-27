@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useAtom } from 'jotai';
+import { themState } from '@/app/jotail/themState';
 
 function ThemeToggle() {
-  const [activeThem, setActiveTheme] = useState('light');
+  const [activeThem, setActiveTheme] = useAtom(themState);
   const inactiveTheme = activeThem === 'light' ? 'dark' : 'light';
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+import { isJwt } from '@/utils/isJwt';
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -14,12 +15,9 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    async jwt({ token, account }) {
-      if (account?.provider === 'google') {
-        console.log(account);
-
-        return token;
-      }
+    async jwt({ token, account, profile }) {
+      isJwt(token);
+      return token;
     },
   },
 };

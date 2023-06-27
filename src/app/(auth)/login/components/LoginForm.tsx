@@ -7,10 +7,12 @@ import {
   validatePassword,
 } from '@/app/(auth)/login/helper/validation';
 import { authAPI } from '@/app/api/auth/login';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 
 import GoogleIcon from '/public/icons/icons8-google.svg';
 import Image from 'next/image';
+import { themState } from '@/app/jotail/themState';
+import { useAtom } from 'jotai';
 
 type ButtonType = {
   variant: string;
@@ -24,7 +26,7 @@ function LoginForm() {
     reset,
   } = useForm();
 
-  const { data: session } = useSession();
+  const [activeThem, setActiveTheme] = useAtom(themState);
 
   const onSubmit = async () => {
     reset();
@@ -41,7 +43,7 @@ function LoginForm() {
 
   return (
     <>
-      <LoginFormBox onSubmit={handleSubmit(onSubmit)}>
+      <LoginFormBox activeThem={activeThem} onSubmit={handleSubmit(onSubmit)}>
         <LoginContainer>
           <LoginUserNameWrapper>
             <Label for="username">Username</Label>
@@ -88,27 +90,31 @@ export default LoginForm;
 
 const ButtonGoogle = styled.button`
   border-radius: 6px;
+  width: 100%;
   border: 2px solid #ebeaea;
   padding: 0 0.5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
   height: 1.75rem;
   min-width: 1.75rem;
   font-size: 1em;
   margin: 0;
   outline: none;
+  align-items: center;
+  justify-content: center;
   font-weight: 500;
 `;
 
 const LoginContainer = styled.div``;
 
 const LoginFormBox = styled.form`
-  background-color: #fff;
+  background-color: #ffffff;
   width: 35%;
   height: 25rem;
   display: flex;
   align-items: center;
+  margin-bottom: 9rem;
+  border: 1px solid ${(p) => (p.activeThem === 'light' ? 'black' : 'white')};
+  margin-right: 1rem;
   justify-content: center;
   border-radius: 5px;
   color: black;
@@ -124,6 +130,7 @@ const LoginUserNameWrapper = styled.div`
 const Label = styled.label`
   color: black;
   margin-right: 12rem;
+  justify-content: flex-end;
 `;
 
 const Input = styled.input`
@@ -144,23 +151,21 @@ const PasswordWrapper = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 1rem;
 `;
 
 const Button = styled.button<ButtonType>`
-  color: ${(props) => (props.variant === 'login' ? 'white' : 'black')};
-  background-color: ${(props) =>
-    props.variant === 'login' ? 'rgb(59 130 246)' : ''};
+  color: #ffffff;
+  background-color: rgb(59 130 246);
   font-size: 20px;
-  margin: 10px;
-  border: 1px solid ${(props) => (props.variant === 'login' ? 'white' : 'none')};
+  margin: 5px;
   padding: 5px 10px;
+  width: 100%;
   border-radius: 6px;
   font-weight: bold;
   &:hover {
-    background-color: ${(props) =>
-      props.variant === 'login' ? 'rgb(29 78 216)' : ''};
-    color: ${(props) => (props.variant === 'login' ? '' : 'rgb(30 64 175);')};
+    background-color: rgba(30 64 175);
   }
 `;
