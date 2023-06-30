@@ -28,15 +28,13 @@ const sendRequest = async (url, options) => {
   }
 };
 
+// app dir 에서 fetch를  try~catch로 감싼 상태에서 {cahce : no-stroe} 사용하고 SSR 호출하게 되면
+// 프로덕션에서 에러나옴
 export const ProductAPI = {
   getAllProducts: async () => {
-    try {
-      const options = createRequestOptions('GET', '');
-      const url = `${baseUrl}/v1/products`;
+    const options = createRequestOptions('GET', '');
+    const url = `${baseUrl}/v1/products`;
 
-      return await sendRequest(url, options);
-    } catch (err) {
-      console.error(err);
-    }
+    return await sendRequest(url, options);
   },
 };
