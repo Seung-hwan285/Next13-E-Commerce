@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import LoginForm from '@/components/Login/LoginForm';
+import LoginForm from '@/components/login/LoginForm';
 import styled from '@emotion/styled';
 
 async function LoginPage() {
