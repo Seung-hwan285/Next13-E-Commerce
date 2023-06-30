@@ -1,31 +1,31 @@
 import React from 'react';
 import { ProductAPI } from '@/lib/requestApi/product';
-
 import styles from './product.module.css';
-type productsTYpe = {
-  id: number;
-  name: string;
-  image: string;
-};
+import { ProductsType } from '@/lib/types/product';
 
 async function getProduct() {
   const { data } = await ProductAPI.getAllProducts();
   console.log('---------------------test');
-  console.log(data);
 
   return data;
 }
 
 export default async function ProductItems() {
   const products = await getProduct();
-  console.log(products);
 
   return (
     <>
       <ul className={styles.productContainer}>
         {products &&
           products.map(
-            ({ id, name, image, categories, description, price }: any) => {
+            ({
+              id,
+              name,
+              image,
+              categories,
+              description,
+              price,
+            }: ProductsType) => {
               console.log(image);
               return (
                 <>
@@ -42,6 +42,7 @@ export default async function ProductItems() {
                           />
                         )}
                       </div>
+                      <p>{price.formatted_with_symbol}</p>
                     </li>
                   </div>
                 </>
