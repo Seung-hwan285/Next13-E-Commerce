@@ -7,12 +7,14 @@ async function getProduct() {
   const response = await ProductAPI.getAllProducts();
 
   const data = response?.data;
+  console.log(data);
   return data;
 }
 
 export default async function ProductItems() {
   const products = await getProduct();
 
+  console.log(products);
   return (
     <>
       <ul className={styles.productContainer}>
