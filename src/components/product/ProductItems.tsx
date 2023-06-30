@@ -5,11 +5,9 @@ import { ProductsType } from '@/lib/types/product';
 
 async function getProduct() {
   try {
-    const response = await ProductAPI.getAllProducts();
+    const { data: products } = await ProductAPI.getAllProducts();
 
-    const data = response.data;
-    console.log(data);
-    return data;
+    return products;
   } catch (error) {
     console.error('Error retrieving product data:', error);
     return null;
