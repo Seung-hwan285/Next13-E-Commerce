@@ -1,8 +1,9 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import { isJwt } from '@/utils/isJwt';
+import { isJwt } from '@/lib/utils/isJwt';
+import { Provider } from 'react';
 
-export const authOptions: NextAuthOptions = {
+export const authOptions: any = {
   session: {
     strategy: 'jwt',
   },
@@ -15,8 +16,15 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
+    async session({ token, session }) {
+      if (token) {
+        // set session here
+      }
+      return session;
+    },
+
     async jwt({ token, account, profile }) {
-      isJwt(token);
+      // window.localStorage.setItem('token', JSON.stringify(token));
       return token;
     },
   },

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, { useEffect } from 'react';
 import { useAtom } from 'jotai';
-import { themState } from '@/app/jotail/themState';
+import { themState } from '@/lib/jotail/themState';
 
 function ThemeToggle() {
   const [activeThem, setActiveTheme] = useAtom(themState);

@@ -1,0 +1,45 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  border-bottom: 0.1rem solid gray;
+}
+
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+.imageWrapper img {
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+.imageWrapper p {
+  margin-left: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.navbarUl {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbarUl li {
+  margin-right: 20px;
+  font-size: 19px;
+}
+
+.navbarUl li:hover {
+  color: #555;
+}
+
+.navbarWrapper {
+  display: flex;
+  align-items: center;
+}

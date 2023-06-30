@@ -1,8 +1,6 @@
-'use client';
 // import Image from 'next/image';
-import styles from './page.module.css';
 import React from 'react';
-
+import ProductItems from '@/components/product/ProductItems';
 // const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
@@ -10,6 +8,8 @@ export default function Home() {
   return (
     <>
       <h1>Home 입니다.</h1>
+      {/*    컴포넌트가 오는걸로 일단 page가 오면 안된다.*/}
+      <ProductItems />
     </>
   );
 }

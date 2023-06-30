@@ -5,13 +5,13 @@ import { useForm } from 'react-hook-form';
 import {
   validateKorenOnEnglish,
   validatePassword,
-} from '@/app/(auth)/login/helper/validation';
+} from '@/components/login/helper/validation';
 import { authAPI } from '@/app/api/auth/login';
 import { signIn } from 'next-auth/react';
 
 import GoogleIcon from '/public/icons/icons8-google.svg';
 import Image from 'next/image';
-import { themState } from '@/app/jotail/themState';
+import { themState } from '@/lib/jotail/themState';
 import { useAtom } from 'jotai';
 
 type ButtonType = {
@@ -30,9 +30,6 @@ function LoginForm() {
 
   const onSubmit = async () => {
     reset();
-
-    const data = await authAPI.login();
-    console.log(data);
   };
 
   const handleLoginClick = () => {
@@ -76,7 +73,7 @@ function LoginForm() {
             <Button variant="login">Login</Button>
             <Button variant="register">Register</Button>
             <ButtonGoogle type="button" onClick={handleLoginClick}>
-              <Image src={GoogleIcon} height={32} width={22} />
+              <Image src={GoogleIcon} height={32} width={22} alt="image" />
               Google Login
             </ButtonGoogle>
           </ButtonWrapper>

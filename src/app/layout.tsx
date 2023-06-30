@@ -2,11 +2,11 @@
 
 import './globals.css';
 import React from 'react';
-import { NextAuthProvider } from '@/app/provider/NextAuthProvider';
+import { NextAuthProvider } from '@/lib/provider/NextAuthProvider';
 import Head from '@/app/head';
 import { ThemeProvider } from '@emotion/react';
-import Navbar from '@/app/layouts/Navbar';
 import { theme } from '@/app/theme';
+import Navbar from '@/components/layout/Navbar';
 
 export default function RootLayout({
   children,
