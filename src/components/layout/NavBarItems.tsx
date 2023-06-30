@@ -35,10 +35,6 @@ function NavBarItems({ icon }: string) {
               <button onClick={handleLogoutClick}>Logout</button>
             )}
           </li>
-
-          <li className={styles.list}>
-            <Link href="/about">About</Link>
-          </li>
         </div>
       )}
     </div>
