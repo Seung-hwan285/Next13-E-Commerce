@@ -4,11 +4,16 @@ import styles from './product.module.css';
 import { ProductsType } from '@/lib/types/product';
 
 async function getProduct() {
-  const response = await ProductAPI.getAllProducts();
+  try {
+    const response = await ProductAPI.getAllProducts();
 
-  const data = response?.data;
-  console.log(data);
-  return data;
+    const data = response.data;
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error('Error retrieving product data:', error);
+    return null;
+  }
 }
 
 export default async function ProductItems() {
