@@ -6,6 +6,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    domains: ['lh3.googleusercontent.com', 'cdn.chec.io'],
+  },
 };
 
 module.exports = nextConfig;

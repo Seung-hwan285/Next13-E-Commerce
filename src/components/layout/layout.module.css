@@ -1,0 +1,78 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  border-bottom: 0.1rem solid gray;
+}
+
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+.imageWrapper img {
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+.imageWrapper p {
+  margin-left: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.navbarUl {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbarUl li {
+  margin-right: 20px;
+  font-size: 19px;
+}
+
+.navbarUl li:hover {
+  color: #555;
+}
+
+.navbarWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.navbarItem {
+  display: flex;
+  width: calc(var(--nav-size) * 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.dropDown {
+  position: absolute;
+  top: 2%;
+  font-size: 25px;
+  width: 10%;
+  color: black;
+  font-weight: bold;
+  background: var(--color-bg-primary);
+  padding: 1rem;
+  transition: background 0.25s ease-in-out;
+}
+.menu {
+  background-color: var(--color-bg-primary);
+  border: 5px solid black;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.list {
+  border-bottom: 1px solid black;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}

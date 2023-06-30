@@ -15,12 +15,9 @@ const isRequest = (config: InternalAxiosRequestConfig) => {
   const { method, url } = config;
 
   config.headers['Content-Type'] = 'application/json';
+  config.headers['X-Authorization'] = process.env.NEXT_PUBLIC_SHOP_KEY;
 
   console.log(`[API] ${method?.toUpperCase()} ${url} |Request`);
-
-  if (method === 'get') {
-    config.timeout = 15000;
-  }
 
   return config;
 };

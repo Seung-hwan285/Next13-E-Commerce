@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react';
 
-const theme: Theme = {
+export const theme: Theme = {
   fontSizes: {
     xxs: '12px',
     xs: '13px',
@@ -16,5 +16,3 @@ const theme: Theme = {
     secondary: '#8c8d96',
   },
 };
-
-export default theme;
