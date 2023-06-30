@@ -30,6 +30,7 @@ const sendRequest = async (url, options) => {
 
 // app dir 에서 fetch를  try~catch로 감싼 상태에서 {cahce : no-stroe} 사용하고 SSR 호출하게 되면
 // 프로덕션에서 에러나옴
+// DynamicServerError: Dynamic server usage: no-store fetch https://api.github.com/v1/products /
 export const ProductAPI = {
   getAllProducts: async () => {
     const options = createRequestOptions('GET', '');

@@ -4,9 +4,10 @@ import styles from './product.module.css';
 import { ProductsType } from '@/lib/types/product';
 
 async function getProduct() {
-  const { data: products } = await ProductAPI.getAllProducts();
+  const response = await ProductAPI.getAllProducts();
 
-  return products;
+  const data = response?.data;
+  return data;
 }
 
 export default async function ProductItems() {
