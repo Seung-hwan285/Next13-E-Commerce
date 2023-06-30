@@ -6,7 +6,6 @@ import {
   validateKorenOnEnglish,
   validatePassword,
 } from '@/components/login/helper/validation';
-import { authAPI } from '@/app/api/auth/login';
 import { signIn } from 'next-auth/react';
 
 import GoogleIcon from '/public/icons/icons8-google.svg';

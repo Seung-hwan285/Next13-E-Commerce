@@ -1,11 +1,11 @@
 'use client';
-import React, { useEffect } from 'react';
-import ThemeToggle from '@/components/commons/ThemeToggle';
+import React from 'react';
+import ThemeToggle from '@/components/layout/ThemeToggle';
 import { signOut, useSession } from 'next-auth/react';
-import Link from 'next/link';
 import Image from 'next/image';
-
+import { AiOutlineCaretDown } from 'react-icons/ai';
 import styles from './layout.module.css';
+import NavBarItems from '@/components/layout/NavBarItems';
 
 type sessionType = {
   email: string;
@@ -14,40 +14,18 @@ type sessionType = {
 };
 
 function Navbar() {
-  // useSession 클라이언트에서만 사용가능한 훅이라 ssr로 접근이 안댐
   const { data: session } = useSession();
-  console.log('ㄴㄷ');
 
   const { email, name, image }: sessionType = session?.user || {};
-
-  const handleLogoutClick = () => {
-    signOut({
-      callbackUrl: '/',
-      // callbackUrl: 'https://shop-seung-hwan285.vercel.app/',
-    });
-  };
 
   return (
     <nav className={styles.nav}>
       <div className={styles.imageWrapper}>
         <div className={styles.navbarUl}>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-
-          <li>
-            {!session ? (
-              <Link href="/login">Login</Link>
-            ) : (
-              <button onClick={handleLogoutClick}>Logout</button>
-            )}
-          </li>
-
-          <li>
-            <Link href="/about">About</Link>
-          </li>
+          <NavBarItems icon={<AiOutlineCaretDown />} />
         </div>
       </div>
+
       <div className={styles.navbarWrapper}>
         <ThemeToggle />
         {image && (
