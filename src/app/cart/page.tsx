@@ -1,10 +1,10 @@
 import React from 'react';
+import Cart from '@/components/cart/Cart';
 
-function CartPage() {
+export default async function CartPage() {
   return (
     <>
-      <h1>카트 페이지 입니다.</h1>
+      <Cart />
     </>
   );
 }
-export default CartPage;

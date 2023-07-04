@@ -5,10 +5,11 @@ type optionType = {
 
 const baseUrl = process.env.NEXT_PUBLIC_URL;
 
+const url = `${baseUrl}/v1/carts/cart_G6kVw79Wa252eD`;
+
 const createRequestOptions = (method, body): optionType => {
   const bodyObjects = body ? JSON.stringify(body) : body;
 
-  console.log(bodyObjects);
   const requesetOptions = {
     method,
     headers: {
@@ -35,7 +36,7 @@ const sendRequest = async (url, options) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
+
     return data;
   }
 };
@@ -52,14 +53,17 @@ export const ProductAPI = {
   },
 
   addCartItem: async (id: string) => {
-    const url = `${baseUrl}/v1/carts/cart_G6kVw79Wa252eD`;
-
     const body = {
       id: id,
       quality: 1,
     };
     const options = createRequestOptions('POST', body);
 
+    return await sendRequest(url, options);
+  },
+
+  getCartItems: async () => {
+    const options = createRequestOptions('GET', '');
     return await sendRequest(url, options);
   },
 };

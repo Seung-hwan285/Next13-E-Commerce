@@ -1,15 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isRoutesError } from '@/lib/type-guards/isRoutesError';
+import { ProductAPI } from '@/lib/requestApi/product';
 
 function formatErrorMessage(err: Error): string {
-  // 모든 키 반환
   return JSON.stringify(err, Object.getOwnPropertyNames(err));
 }
 
-export async function POST(req: NextRequest): Promise<Response> {
+export async function GET(req: NextRequest): Promise<Response> {
   try {
     // TODO..
-    return NextResponse.json({ status: 204 });
+
+    const data = await ProductAPI.getCartItems();
+    const result = await data.json();
+    console.log(result);
+
+    return NextResponse.json(result);
   } catch (err) {
     if (isRoutesError(err)) {
       return NextResponse.json({ message: formatErrorMessage(err.message) });

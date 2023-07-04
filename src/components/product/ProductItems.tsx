@@ -29,7 +29,6 @@ export default async function ProductItems() {
               description,
               price,
             }: ProductsType) => {
-              console.log(id);
               return (
                 <>
                   <li key={id}>
