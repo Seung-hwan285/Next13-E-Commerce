@@ -6,17 +6,28 @@ type optionType = {
 const baseUrl = process.env.NEXT_PUBLIC_URL;
 
 const createRequestOptions = (method, body): optionType => {
-  const bodyObjects = body ? body : JSON.stringify(body);
+  const bodyObjects = body ? JSON.stringify(body) : body;
 
-  return {
+  console.log(bodyObjects);
+  const requesetOptions = {
     method,
     headers: {
       'Content-Type': 'application/json',
       'X-Authorization': process.env.NEXT_PUBLIC_SHOP_KEY,
     },
-    bodyObjects,
     cache: 'no-store',
+    body: undefined,
   };
+
+  if (method === 'GET') {
+    return requesetOptions;
+  }
+
+  if (bodyObjects) {
+    requesetOptions.body = bodyObjects;
+  }
+
+  return requesetOptions;
 };
 
 const sendRequest = async (url, options) => {
@@ -24,6 +35,7 @@ const sendRequest = async (url, options) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log(data);
     return data;
   }
 };
@@ -35,6 +47,18 @@ export const ProductAPI = {
   getAllProducts: async () => {
     const options = createRequestOptions('GET', '');
     const url = `${baseUrl}/v1/products`;
+
+    return await sendRequest(url, options);
+  },
+
+  addCartItem: async (id: string) => {
+    const url = `${baseUrl}/v1/carts/cart_G6kVw79Wa252eD`;
+
+    const body = {
+      id: id,
+      quality: 1,
+    };
+    const options = createRequestOptions('POST', body);
 
     return await sendRequest(url, options);
   },
