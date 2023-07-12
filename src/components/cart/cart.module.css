@@ -17,12 +17,15 @@
 .cartListWrapper {
   border-bottom: 1px solid black;
   border-top: 1px solid black;
+  display: flex;
+  justify-content: space-between;
 }
 
 .cartImage {
   object-fit: cover;
   width: 100px;
   height: 100px;
+  margin-top: 20px;
 }
 
 .buttonContainer {
@@ -54,4 +57,13 @@
 .buttonWrapper {
   border: 1px solid blue;
   margin-left: 20px;
+}
+
+.cartDeleteButton {
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 95%;
 }

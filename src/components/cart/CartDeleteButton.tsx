@@ -2,6 +2,10 @@
 import React, { startTransition, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import LoadingSpinner from '@/components/commons/LodingSpinner';
+import crossSVG from '/public/icons/cross.svg';
+import Image from 'next/image';
+
+import styles from './cart.module.css';
 
 type DeleteProps = {
   cartId: string;
@@ -40,7 +44,9 @@ export default function CartDeleteButton({ cartId, lineId }: DeleteProps) {
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <button onClick={handleDeleteClick}>전체삭제</button>
+        <button className={styles.cartDeleteButton} onClick={handleDeleteClick}>
+          <Image src={crossSVG} alt={'image'} width={20} height={20} />
+        </button>
       )}
     </>
   );

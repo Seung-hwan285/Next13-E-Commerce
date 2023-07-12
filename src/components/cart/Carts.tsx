@@ -29,8 +29,10 @@ function LineItemComponent({ item, cartId }: any) {
       {item.map(({ id, name, image, quantity }) => {
         return (
           <div key={id} className={styles.cartListWrapper}>
-            <p>Name : {name}</p>
-            <img className={styles.cartImage} src={image.url} alt="image" />
+            <div>
+              <p>{name}</p>
+              <img className={styles.cartImage} src={image.url} alt="image" />
+            </div>
 
             <CartDeleteButton cartId={cartId} lineId={id} />
             <CartcCountButton cartId={cartId} lineId={id} count={quantity} />
