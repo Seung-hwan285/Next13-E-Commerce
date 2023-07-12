@@ -1,8 +1,8 @@
 import React from 'react';
-import { ProductAPI } from '@/lib/requestApi/product';
 import styles from './product.module.css';
 import { ProductsType } from '@/lib/types/product';
 import CartButton from '@/components/cart/CartButton';
+import { ProductAPI } from '@/lib/product';
 
 async function getProduct() {
   const { data: products } = await ProductAPI.getAllProducts();

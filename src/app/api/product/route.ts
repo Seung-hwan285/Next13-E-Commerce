@@ -8,7 +8,6 @@ function formatErrorMessage(err: Error): string {
 
 export async function POST(req: NextRequest): Promise<Response> {
   try {
-    // TODO..
     return NextResponse.json({ status: 204 });
   } catch (err) {
     if (isRoutesError(err)) {

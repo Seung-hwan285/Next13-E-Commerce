@@ -5,7 +5,7 @@ type optionType = {
 
 const baseUrl = process.env.NEXT_PUBLIC_URL;
 
-const url = `${baseUrl}/v1/carts/cart_G6kVw79Wa252eD`;
+const url = `${baseUrl}/v1/carts/cart_A12Jwr01rx5Pjn`;
 
 const createRequestOptions = (method, body): optionType => {
   const bodyObjects = body ? JSON.stringify(body) : body;
@@ -64,6 +64,13 @@ export const ProductAPI = {
 
   getCartItems: async () => {
     const options = createRequestOptions('GET', '');
+    return await sendRequest(url, options);
+  },
+
+  getDetailProductItem: async (id) => {
+    const url = `${baseUrl}/v1/products/${id}`;
+    const options = createRequestOptions('GET', '');
+
     return await sendRequest(url, options);
   },
 };

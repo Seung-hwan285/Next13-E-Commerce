@@ -24,3 +24,34 @@
   width: 100px;
   height: 100px;
 }
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 20px;
+  border: 1px solid red;
+  width: 50%;
+}
+
+.upbButton {
+  cursor: pointer;
+}
+.downButton {
+  cursor: pointer;
+}
+
+/* CSS for the up button */
+.upbButton:before {
+  content: '\25B2';
+}
+
+/* CSS for the down button */
+.downButton:before {
+  content: '\25BC';
+}
+
+.buttonWrapper {
+  border: 1px solid blue;
+  margin-left: 20px;
+}

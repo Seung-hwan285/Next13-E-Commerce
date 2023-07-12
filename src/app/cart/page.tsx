@@ -1,10 +1,9 @@
 import React from 'react';
-import Cart from '@/components/cart/Cart';
+import { ProductAPI } from '@/lib/product';
+import Carts from '@/components/cart/Carts';
 
-export default async function CartPage() {
-  return (
-    <>
-      <Cart />
-    </>
-  );
+export default async function Page() {
+  const carts = await ProductAPI.getCartItems();
+
+  return <Carts carts={carts} />;
 }
