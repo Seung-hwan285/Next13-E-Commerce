@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isRoutesError } from '@/lib/type-guards/isRoutesError';
-import { ProductAPI } from '@/lib/product';
 import { CartAPI } from '@/lib/cart';
 
 function formatErrorMessage(err: Error): string {
@@ -15,8 +14,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   try {
     // TODO..
-
-    return NextResponse.json(result);
+    // return NextResponse.json(result);
   } catch (err) {
     if (isRoutesError(err)) {
       return NextResponse.json({ message: formatErrorMessage(err.message) });
@@ -54,7 +52,6 @@ export async function PUT(req: NextRequest): Promise<Response> {
   try {
     const { cartId, lineId, quantity } = await req.json();
 
-    console.log(quantity);
     await CartAPI.updateCartItem(cartId, lineId, quantity);
 
     return NextResponse.json({ status: 204 });

@@ -32,38 +32,69 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 5px 20px;
-  border: 1px solid red;
-  width: 50%;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  right: 50%;
+  background-color: #f2f2f2;
 }
 
-.upbButton {
-  cursor: pointer;
-}
-.downButton {
-  cursor: pointer;
+.horizontalCount {
+  display: flex;
+  align-items: center;
 }
 
-/* CSS for the up button */
-.upbButton:before {
-  content: '\25B2';
+.countLabel {
+  font-size: 16px;
+  color: #555555;
+  margin-right: 10px;
 }
 
-/* CSS for the down button */
-.downButton:before {
-  content: '\25BC';
+.countNumber {
+  font-size: 24px;
+  font-weight: bold;
 }
-
 .buttonWrapper {
-  border: 1px solid blue;
   margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonContainer {
+  margin-left: 50px;
 }
 
 .cartDeleteButton {
-  border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  left: 95%;
+  top: 0;
+  right: 0;
+}
+
+.cartButtonWrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 120px;
+}
+
+.cartWrapper {
+  position: relative;
+  display: flex;
+}
+
+.productLink {
+  text-decoration: none;
+  color: #333;
+}
+
+.productContainer {
+  display: flex;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
 }

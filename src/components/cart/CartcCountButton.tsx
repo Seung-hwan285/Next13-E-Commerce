@@ -1,7 +1,10 @@
 'use client';
 import styles from './cart.module.css';
-import React, { startTransition, useState } from 'react';
+import React from 'react';
 import { experimental_useOptimistic as useOptimistic } from 'react';
+import upSVG from '/public/icons/free-icon-font-arrow-alt-square-down-7434694.svg';
+import downSVG from '/public/icons/free-icon-font-arrow-alt-square-up-7434723.svg';
+import Image from 'next/image';
 
 type DeleteProps = {
   cartId: string;
@@ -22,11 +25,11 @@ function CartcCountButton({ cartId, lineId, count }: DeleteProps) {
     })
   );
 
-  const handlePlusClick = async () => {
-    addOptimisticCount(optimistickCount.count + 1);
+  const handlePlusClick = async (amount: number) => {
+    addOptimisticCount(optimistickCount.count + amount);
 
     const data = {
-      quantity: optimistickCount.count + 1,
+      quantity: optimistickCount.count + amount,
       cartId: cartId,
       lineId: lineId,
     };
@@ -47,8 +50,8 @@ function CartcCountButton({ cartId, lineId, count }: DeleteProps) {
     }
   };
 
-  const handleMinusClick = async () => {
-    addOptimisticCount(optimistickCount.count - 1);
+  const handleMinusClick = async (amount: number) => {
+    addOptimisticCount(optimistickCount.count - amount);
 
     const data = {
       quantity: optimistickCount.count - 1,
@@ -76,10 +79,27 @@ function CartcCountButton({ cartId, lineId, count }: DeleteProps) {
     <>
       <div className={styles.buttonContainer}>
         <div className={styles.buttonWrapper}>
-          <span onClick={handleMinusClick} className={styles.downButton} />
-          <span onClick={handlePlusClick} className={styles.upbButton} />
+          <Image
+            onClick={() => handleMinusClick(1)}
+            alt={'image'}
+            width={25}
+            height={30}
+            src={upSVG}
+            style={{ margin: '5px', cursor: 'pointer' }}
+          />
+          <Image
+            onClick={() => handlePlusClick(1)}
+            alt={'image'}
+            width={25}
+            height={30}
+            src={downSVG}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
-        OptimistLikes : {optimistickCount.count}
+        <div className={styles.horizontalCount}>
+          <p className={styles.countLabel}>Count:</p>
+          <p className={styles.countNumber}>{optimistickCount.count}</p>
+        </div>
       </div>
     </>
   );

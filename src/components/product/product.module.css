@@ -6,8 +6,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid blue;
-
   flex-wrap: wrap;
 }
 
@@ -25,7 +23,6 @@
 }
 
 .detailWrapper {
-  border: 1px solid red;
   display: flex;
   margin: 10px 10px;
   justify-content: center;

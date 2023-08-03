@@ -36,6 +36,8 @@ const sendRequest = async (url, options) => {
 
   if (response.ok) {
     const data = await response.json();
+
+    console.log(data);
     return data;
   }
 };
@@ -57,6 +59,7 @@ export const CartAPI = {
     const url = `${baseUrl}/v1/carts/${cartId}/items/${lineId}`;
     const options = createRequestOptions('PUT', { quantity: quantity });
 
+    console.log(options);
     return await sendRequest(url, options);
   },
 };

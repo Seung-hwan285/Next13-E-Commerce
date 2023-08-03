@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import ThemeToggle from '@/components/layout/ThemeToggle';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { AiOutlineCaretDown } from 'react-icons/ai';
 import styles from './layout.module.css';

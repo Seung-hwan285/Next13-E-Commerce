@@ -26,6 +26,7 @@ export default function CartDeleteButton({ cartId, lineId }: DeleteProps) {
         method: 'DELETE',
       }
     );
+
     const data = await response.json();
 
     if (data.error) {

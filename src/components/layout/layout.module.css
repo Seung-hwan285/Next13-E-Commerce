@@ -25,6 +25,7 @@
 }
 
 .navbarUl {
+  z-index: 999;
   list-style: none;
   display: flex;
   align-items: center;

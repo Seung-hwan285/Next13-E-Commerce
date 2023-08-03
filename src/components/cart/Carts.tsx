@@ -1,18 +1,42 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
 import styles from '@/components/cart/cart.module.css';
 import CartDeleteButton from '@/components/cart/CartDeleteButton';
 import CartcCountButton from '@/components/cart/CartcCountButton';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-function Carts({ carts }: any) {
+type Carts = {
+  carts: {
+    created: number;
+    currency: {
+      code: string;
+      symbol: string;
+    };
+    discount?: string[];
+    expires: number;
+    hosted_checkout_url: string;
+    id: string;
+    line_items: any;
+    meta?: string;
+    subtotal: any;
+    total_items: number;
+    total_unique_items: number;
+    update: number;
+  };
+};
+
+function Carts({ carts }: Carts) {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.refresh();
+  }, [router]);
+
   return (
     <>
       {carts && (
         <div className={styles.cartContainer}>
-          {/*<h1 className={styles.cartTitle}>{carts.total_items}</h1>*/}
-          {/*<p className={styles.cartSubtotal}>*/}
-          {/*  {carts.subtotal.formatted_with_symbol}*/}
-          {/*</p>*/}
-
           {<LineItemComponent item={carts.line_items} cartId={carts.id} />}
         </div>
       )}
@@ -22,21 +46,60 @@ function Carts({ carts }: any) {
 
 export default Carts;
 
-function LineItemComponent({ item, cartId }: any) {
-  console.log(item);
+type Items = {
+  id: string;
+  image: any;
+  is_valid: boolean;
+  line_total: any;
+  name: string;
+  permalink: string;
+  price: any;
+  product_id: string;
+  product_meta?: string[];
+  product_name: string;
+  quantity: number;
+  selected_options: string[];
+  sky?: string;
+  tax?: string;
+  variant?: string;
+};
+
+type ItemType = {
+  item: Items[];
+  cartId: string;
+};
+
+function LineItemComponent({ item, cartId }: ItemType) {
   return (
     <div>
-      {item.map(({ id, name, image, quantity }) => {
+      {item.map(({ id, name, image, quantity, product_id, price }) => {
         return (
-          <div key={id} className={styles.cartListWrapper}>
-            <div>
-              <p>{name}</p>
-              <img className={styles.cartImage} src={image.url} alt="image" />
-            </div>
+          <>
+            <Link href={`/product/${product_id}`}>
+              <div key={id} className={styles.cartListWrapper}>
+                <div>
+                  <p>{name}</p>
+                  <img
+                    className={styles.cartImage}
+                    src={image.url}
+                    alt="image"
+                  />
+                  <p>{price.raw}</p>
+                </div>
+              </div>
+            </Link>
 
-            <CartDeleteButton cartId={cartId} lineId={id} />
-            <CartcCountButton cartId={cartId} lineId={id} count={quantity} />
-          </div>
+            <div className={styles.cartWrapper}>
+              <div className={styles.cartButtonWrapper}>
+                <CartDeleteButton cartId={cartId} lineId={id} />
+                <CartcCountButton
+                  cartId={cartId}
+                  lineId={id}
+                  count={quantity}
+                />
+              </div>
+            </div>
+          </>
         );
       })}
     </div>
