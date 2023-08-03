@@ -8,7 +8,7 @@ function formatErrorMessage(err: Error): string {
 
 export async function POST(req: NextRequest): Promise<Response> {
   try {
-    // TODO..
+    return NextResponse.json({ status: 204 });
   } catch (err) {
     if (isRoutesError(err)) {
       return NextResponse.json({ message: formatErrorMessage(err.message) });
@@ -16,4 +16,19 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
 
   return NextResponse.json({ status: 500 });
+}
+
+export async function PUT(req: NextRequest): Promise<Response> {
+  try {
+    const { searchParams } = new URL(req.url);
+    const { product_id } = searchParams.get('product_id');
+    const { variant_id } = searchParams.get('variant_id');
+
+    console.log(product_id);
+    console.log(variant_id);
+  } catch (err) {
+    if (isRoutesError(err)) {
+      return NextResponse.json({ message: formatErrorMessage(err.message) });
+    }
+  }
 }
