@@ -1,5 +1,4 @@
 .cartContainer {
-  background-color: #f2f2f2;
   border-radius: 5px;
   padding: 10px;
 }
@@ -37,22 +36,26 @@
   border-radius: 5px;
   position: absolute;
   right: 50%;
-  background-color: #f2f2f2;
 }
 
 .horizontalCount {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.countWrapper {
+  display: flex;
+  margin: 0 auto;
 }
 
 .countLabel {
   font-size: 16px;
-  color: #555555;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .countNumber {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
 }
 .buttonWrapper {
@@ -97,4 +100,23 @@
   border: 1px solid #ddd;
   padding: 10px;
   margin: 10px 0;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #000;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -20,12 +20,9 @@ export async function POST(req: NextRequest): Promise<Response> {
 
 export async function PUT(req: NextRequest): Promise<Response> {
   try {
-    const { searchParams } = new URL(req.url);
-    const { product_id } = searchParams.get('product_id');
-    const { variant_id } = searchParams.get('variant_id');
-
-    console.log(product_id);
-    console.log(variant_id);
+    // const { searchParams } = new URL(req.url);
+    // const { product_id } = searchParams.get('product_id');
+    // const { variant_id } = searchParams.get('variant_id');
   } catch (err) {
     if (isRoutesError(err)) {
       return NextResponse.json({ message: formatErrorMessage(err.message) });

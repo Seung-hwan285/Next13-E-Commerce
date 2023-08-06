@@ -37,7 +37,13 @@ function Carts({ carts }: Carts) {
     <>
       {carts && (
         <div className={styles.cartContainer}>
-          {<LineItemComponent item={carts.line_items} cartId={carts.id} />}
+          {
+            <LineItemComponent
+              key={carts.id}
+              item={carts.line_items}
+              cartId={carts.id}
+            />
+          }
         </div>
       )}
     </>
@@ -72,7 +78,7 @@ type ItemType = {
 function LineItemComponent({ item, cartId }: ItemType) {
   return (
     <div>
-      {item.map(({ id, name, image, quantity, product_id, price }) => {
+      {item.map(({ id, name, image, quantity, product_id, line_total }) => {
         return (
           <>
             <Link href={`/product/${product_id}`}>
@@ -84,7 +90,6 @@ function LineItemComponent({ item, cartId }: ItemType) {
                     src={image.url}
                     alt="image"
                   />
-                  <p>{price.raw}</p>
                 </div>
               </div>
             </Link>
@@ -96,6 +101,7 @@ function LineItemComponent({ item, cartId }: ItemType) {
                   cartId={cartId}
                   lineId={id}
                   count={quantity}
+                  formatted={line_total.formatted}
                 />
               </div>
             </div>
