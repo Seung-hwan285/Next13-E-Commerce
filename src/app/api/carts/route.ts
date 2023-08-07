@@ -52,6 +52,8 @@ export async function PUT(req: NextRequest): Promise<Response> {
   try {
     const { cartId, lineId, quantity } = await req.json();
 
+    console.log(quantity);
+
     await CartAPI.updateCartItem(cartId, lineId, quantity);
 
     return NextResponse.json({ status: 204 });

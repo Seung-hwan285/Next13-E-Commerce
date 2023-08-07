@@ -1,40 +1,39 @@
 import React from 'react';
 import { ProductAPI } from '@/lib/product';
-import styles from './product.module.css';
+import Gallery from '@/components/product/Gallery';
+import { RelatedImage } from '@/lib/types/cart';
 
 async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const getDetailItem = await ProductAPI.getDetailProductItem(id);
+
   return <CartDetail item={getDetailItem} />;
 }
 
 export default Page;
 
+// Server
 async function CartDetail({ item }: any) {
   console.log(item);
 
+  const relatedImages = item?.related_products.map(
+    (rel: RelatedImage, index: number) => ({
+      images: rel.image.url,
+      name: rel.name,
+      index: index + 1,
+    })
+  );
+
+  console.log(relatedImages);
+
   return (
     <>
-      <div className={styles.productContainer}>
-        <div className={styles.productImage}>
-          <img
-            className={styles.Image}
-            src={item.image.url}
-            width={200}
-            height={300}
-            alt="Product"
-          />
-        </div>
-
-        <div className={styles.productDetails}>
-          <div className={styles.productInfo}>
-            <h1 className={styles.productTitle}>{item.name}</h1>
-            <p className={styles.productPrice}>
-              {item.price.formatted_with_symbol}
-            </p>
-          </div>
-        </div>
-      </div>
+      <Gallery
+        name={item.name}
+        price={item.price.formatted_with_symbol}
+        title={item.image.url}
+        images={relatedImages}
+      />
     </>
   );
 }

@@ -13,7 +13,6 @@ export default async function ProductItems() {
 
   // const handleClick = () => {};
 
-  console.log(products);
   return (
     <>
       <ul className={styles.productContainer}>

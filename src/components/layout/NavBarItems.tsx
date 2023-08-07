@@ -1,6 +1,6 @@
 'use client';
 
-import React, { MouseEventHandler, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import styles from './layout.module.css';

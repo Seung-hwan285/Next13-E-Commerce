@@ -73,18 +73,4 @@ export const ProductAPI = {
 
     return await sendRequest(url, options);
   },
-  updateProduct: async (product_id, variant_id) => {
-    const url = `${baseUrl}/v1/products/${product_id}/variants/${variant_id}`;
-
-    const body = {
-      product_id: product_id,
-      variant_id: variant_id,
-    };
-
-    const options = createRequestOptions('PUT', body);
-
-    console.log(options);
-
-    return await sendRequest(url, options);
-  },
 };
