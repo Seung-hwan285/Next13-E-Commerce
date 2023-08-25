@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+}
+
+.wrapper {
+  text-align: center;
+  margin: 10px 5px;
+  border: 1px solid green;
+}
+
+.urlImage {
+  object-fit: cover;
+  width: 60%;
+  height: 50%;
+  border: 1px solid blue;
+  position: relative;
+  left: 20%;
+}

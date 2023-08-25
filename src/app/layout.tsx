@@ -1,11 +1,6 @@
-'use client';
-
 import './globals.css';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { NextAuthProvider } from '@/lib/provider/NextAuthProvider';
-import Head from '@/app/head';
-import { ThemeProvider } from '@emotion/react';
-import { theme } from '@/app/theme';
 import Navbar from '@/components/layout/Navbar';
 
 export default function RootLayout({
@@ -15,18 +10,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <ThemeProvider theme={theme}>
-        <Head />
-        <NextAuthProvider>
-          <body>
-            <header>
-              <Navbar />
-            </header>
+      <NextAuthProvider>
+        <body>
+          <header>
+            <Navbar />
+          </header>
+          <Suspense fallback={<h1>Error...</h1>}>
             <main>{children}</main>
-            <footer></footer>
-          </body>
-        </NextAuthProvider>
-      </ThemeProvider>
+          </Suspense>
+          <footer></footer>
+        </body>
+      </NextAuthProvider>
     </html>
   );
 }

@@ -6,15 +6,21 @@ function formatErrorMessage(err: Error): string {
   return JSON.stringify(err, Object.getOwnPropertyNames(err));
 }
 
-// POST는 잘들어간다. req값이
+export async function GET(): Promise<Response> {
+  try {
+    return NextResponse.json(cookie);
+  } catch (err) {
+    if (isRoutesError(err)) {
+      return NextResponse.json({ message: formatErrorMessage(err.message) });
+    }
+  }
+}
+
 export async function POST(req: NextRequest): Promise<Response> {
   const { cartId, lineId } = await req.json();
 
-  console.log(cartId);
-
   try {
     // TODO..
-    // return NextResponse.json(result);
   } catch (err) {
     if (isRoutesError(err)) {
       return NextResponse.json({ message: formatErrorMessage(err.message) });
@@ -24,7 +30,6 @@ export async function POST(req: NextRequest): Promise<Response> {
   return NextResponse.json({ status: 500 });
 }
 
-// DELETE는 안들어감  WHY?
 export async function DELETE(req: NextRequest): Promise<Response> {
   const { searchParams } = new URL(req.url);
 
@@ -47,14 +52,12 @@ export async function DELETE(req: NextRequest): Promise<Response> {
   }
 }
 
-// DELETE는 안들어감  WHY?
 export async function PUT(req: NextRequest): Promise<Response> {
   try {
     const { cartId, lineId, quantity } = await req.json();
 
-    console.log(quantity);
-
     await CartAPI.updateCartItem(cartId, lineId, quantity);
+    console.log('test');
 
     return NextResponse.json({ status: 204 });
   } catch (err) {

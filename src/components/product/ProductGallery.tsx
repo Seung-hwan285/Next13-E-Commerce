@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from './product.module.css';
 import { Gallery, Image } from '@/lib/types/cart';
 
-function Gallery({ title, name, price, images }: Gallery) {
+function ProductGallery({ title, name, price, images }: Gallery) {
   if (!images) {
     return null;
   }
@@ -12,9 +12,10 @@ function Gallery({ title, name, price, images }: Gallery) {
 
   const [change, setChange] = useState(false);
 
-  const handleClick = (idx: number) => {
+  const handleClick = async (idx: number) => {
     setCurrentImage(idx);
     setChange(true);
+    // window.history.pushState({}, '', `?images=${images[currentImage].index}`);
   };
 
   return (
@@ -23,9 +24,8 @@ function Gallery({ title, name, price, images }: Gallery) {
         <div className={styles.productImage}>
           <img
             className={styles.Image}
+            // src={images[0].images}
             src={change ? (images[currentImage].images as string) : title}
-            width={200}
-            height={300}
             alt="Product"
           />
         </div>
@@ -37,16 +37,13 @@ function Gallery({ title, name, price, images }: Gallery) {
           <ul className={styles.relatedContainer}>
             {images.map((image: Image, idx: number) => {
               return (
-                <div key={idx}>
-                  <li key={idx} className={styles.relatedLi}>
+                <div key={image.id}>
+                  <li key={image.id} className={styles.relatedLi}>
                     <img
                       onClick={() => handleClick(idx)}
                       className={styles.relatedcartImage}
                       src={image.images as string}
                     />
-                    <span style={{ display: 'flex', alignItems: 'center' }}>
-                      {image.name as string}
-                    </span>
                   </li>
                 </div>
               );
@@ -57,4 +54,4 @@ function Gallery({ title, name, price, images }: Gallery) {
     </>
   );
 }
-export default Gallery;
+export default ProductGallery;

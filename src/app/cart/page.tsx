@@ -1,9 +1,18 @@
+'use server';
+
 import React from 'react';
-import { ProductAPI } from '@/lib/product';
+import { CartAPI } from '@/lib/cart';
+
+import { notFound } from 'next/navigation';
 import Carts from '@/components/cart/Carts';
+import { cookies } from 'next/headers';
 
 export default async function Page() {
-  const carts = await ProductAPI.getCartItems();
+  const cookie = cookies().get('cartId')?.value;
+
+  const carts = await CartAPI.getCartItems(cookie);
+
+  if (!carts) notFound();
 
   return <Carts carts={carts} />;
 }
