@@ -6,8 +6,14 @@
 .pnp.js
 .idea
 .vercel
+.eslintcache
+/.idea
 # testing
 /coverage
+
+
+.gitignore/
+
 
 
 .env

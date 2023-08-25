@@ -2,29 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --neutral-800: #333333;
+  --neutral-100: #f0f0f0;
+  --blue-600: #007bff;
+  --gray-000: #ffffff;
+  --gray-005: #f5f7ff;
+  --gray-010: #e6e9f3;
+  --gray-015: #d8dbe7;
+  --gray-020: #bcc0cf;
+  --gray-030: #a1a5b6;
+  --gray-040: #878c9e;
+  --gray-050: #6f7486;
+  --gray-060: #585d6e;
+  --gray-070: #424755;
+  --gray-080: #2e313d;
+  --gray-085: #1b1d25;
+  --gray-090: #1b1d25;
+  --gray-095: #090a0d;
+  --gray-100: #191919ff;
+  --gray-110: #000000;
+
+  --green-000: #006400;
+  --green-010: #228b22;
+  --green-015: #008000;
+  --green-020: #00ff00;
+  --green-030: #7fff00;
+  --green-040: #7cfc00;
+  --green-050: #00ff7f;
+  --green-060: #00fa9a;
+  --green-070: #98fb98;
+  --green-080: #90ee90;
+  --green-090: #9ccbb5;
+  --green-100: #70b595;
+  --green-200: #459e74;
+  --green-300: #198754;
+  --green-400: #157347;
+  --green-500: #125f3b;
+  --green-600: #0e4a2e;
+  --green-700: #0a3622;
+}
+
 body,
 body[data-theme='light'] {
-  --color-text-primary: #000000;
+  --page-bg-color: #fff;
+  --header-text-color: #1b1d25;
+  /*--subheader-color: hsl(#colors[gray-040]);*/
+  /*--paragraph-color: hsl(#colors[gray-090]);*/
+  /*--callout-bg-color: hsl(#colors[gray-015]);*/
+  /******************************************/
+  --color-text-primary: #000;
   --color-text-secondary: #076963;
-  --color-bg-primary: #fff;
-  --color-bg-toggle: #1e90ff;
+  --color-bg-primary: rgb(23, 23, 23);
+  --color-bg-toggle: #008000;
   --color-text-color: #27201a;
   --nav-size: 60px;
+
+  --color-bg-product-container: #000000;
   --color-bg-navbar: #1e90ff;
+  /*************************************************************/
 }
 
 body[data-theme='dark'] {
-  --color-text-primary: #fff;
+  --page-bg-color: var(--gray-100);
+  --header-text-color: var(--gray-010);
+  --page-bg-detail: var(--gray-110);
+
+  /*--subheader-color: hsl(0, 0%, 60%);*/
+  /*--paragraph-color: hsl(0, 0%, 80%);*/
+  /*--callout-bg-color: hsl(0, 0%, 10%);*/
+  /*********************************************/
+  --color-text-primary: #d8dbe7;
   --color-text-secondary: #ff6b00;
   --color-bg-primary: #15232d;
   --color-bg-toggle: #a9a9a9;
-
+  --color-bg-product-container: #fff;
   --color-bg-navbar: #076963;
+  /************************************************************/
 }
 
 body {
-  background: var(--color-bg-primary);
+  background: var(--page-bg-color);
   color: var(--color-text-primary);
   font-family: sans-serif;
   transition: background 0.25s ease-in-out;
+  /*border: var(--);*/
 }

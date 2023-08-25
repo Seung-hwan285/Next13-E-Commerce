@@ -50,7 +50,7 @@
 }
 
 .countLabel {
-  font-size: 16px;
+  font-size: 12px;
   margin-right: 5px;
 }
 
@@ -74,8 +74,9 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 0;
   right: 0;
+  bottom: 50%;
+  background-color: red;
 }
 
 .cartButtonWrapper {

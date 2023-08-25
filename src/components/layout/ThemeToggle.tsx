@@ -3,21 +3,38 @@ import styled from '@emotion/styled';
 import React, { useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { themState } from '@/lib/jotail/themState';
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+import styles from './layout.module.css';
 
 function ThemeToggle() {
   const [activeThem, setActiveTheme] = useAtom(themState);
   const inactiveTheme = activeThem === 'light' ? 'dark' : 'light';
 
+  const { data: session } = useSession();
+  const { email, name, image }: sessionType = session?.user || {};
+
   useEffect(() => {
     document.body.dataset.theme = activeThem;
   }, [activeThem]);
 
+  const handleClick = () => {
+    setActiveTheme(inactiveTheme);
+  };
+
   return (
     <>
-      <ToggleButton type="button" onClick={() => setActiveTheme(inactiveTheme)}>
+      <ToggleButton type="button" onClick={handleClick}>
         <ToggleThumb activeTheme={activeThem} />
         <span>🌙</span>
         <span>☀️</span>
+
+        {image && (
+          <div className={styles.imageWrapper}>
+            <p>{name}</p>
+            <Image src={image} width="50" height="10" alt="image" />
+          </div>
+        )}
       </ToggleButton>
     </>
   );

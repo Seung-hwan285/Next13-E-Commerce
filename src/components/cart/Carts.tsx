@@ -4,35 +4,75 @@ import styles from '@/components/cart/cart.module.css';
 import CartDeleteButton from '@/components/cart/CartDeleteButton';
 import CartcCountButton from '@/components/cart/CartcCountButton';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import CartOptions from '@/components/cart/CartOptions';
+import { getSessionStroage } from '@/lib/utils/session';
+import { useAtom } from 'jotai';
+import { sessionState } from '@/lib/jotail/themState';
 
-type Carts = {
-  carts: {
-    created: number;
-    currency: {
-      code: string;
-      symbol: string;
-    };
-    discount?: string[];
-    expires: number;
-    hosted_checkout_url: string;
-    id: string;
-    line_items: any;
-    meta?: string;
-    subtotal: any;
-    total_items: number;
-    total_unique_items: number;
-    update: number;
-  };
-};
+// jotai
+//   const [updateAtom, setUpdateAtom] = updateAtom(itemIdState);
+// const [itemId] = useAtom(updateAtom);
+//   const [,update] = useAtom(setUpdateAtom);
 
-function Carts({ carts }: Carts) {
-  const router = useRouter();
+function LineItemComponent({ item, cartId }: ItemType) {
+  const [productOptions, setProductOptions] = useAtom(sessionState);
+
+  // session
 
   useEffect(() => {
-    router.refresh();
-  }, [router]);
+    const options = getSessionStroage('product');
+    setProductOptions(options);
+  }, []);
 
+  return (
+    <div>
+      {item.map(
+        ({ id, name, image, quantity, product_id, line_total }, index) => {
+          return (
+            <div key={product_id}>
+              <Link href={`/product/${product_id}`}>
+                <div key={id} className={styles.cartListWrapper}>
+                  <div>
+                    <p>{name}</p>
+                    <img
+                      className={styles.cartImage}
+                      src={image?.url}
+                      alt="image"
+                    />
+                  </div>
+
+                  <CartOptions id={product_id} />
+                  {/*  [ 0 : {color : PINK , size : 'S'} , 1: {color : 'GREEN'}]*/}
+                </div>
+              </Link>
+
+              <div className={styles.cartWrapper}>
+                <CartDeleteButton cartId={cartId} lineId={id} />
+
+                <div className={styles.cartButtonWrapper}>
+                  <CartcCountButton
+                    cartId={cartId}
+                    lineId={id}
+                    count={quantity}
+                    formatted={line_total.formatted}
+                  />
+                </div>
+              </div>
+            </div>
+          );
+        }
+      )}
+    </div>
+  );
+}
+
+function Carts({ carts }: Carts) {
+  // const router = useRouter();
+  //
+  // //
+  // // useEffect(() => {
+  // //   router.refresh();
+  // // }, [router]);
   return (
     <>
       {carts && (
@@ -51,63 +91,3 @@ function Carts({ carts }: Carts) {
 }
 
 export default Carts;
-
-type Items = {
-  id: string;
-  image: any;
-  is_valid: boolean;
-  line_total: any;
-  name: string;
-  permalink: string;
-  price: any;
-  product_id: string;
-  product_meta?: string[];
-  product_name: string;
-  quantity: number;
-  selected_options: string[];
-  sky?: string;
-  tax?: string;
-  variant?: string;
-};
-
-type ItemType = {
-  item: Items[];
-  cartId: string;
-};
-
-function LineItemComponent({ item, cartId }: ItemType) {
-  return (
-    <div>
-      {item.map(({ id, name, image, quantity, product_id, line_total }) => {
-        return (
-          <>
-            <Link href={`/product/${product_id}`}>
-              <div key={id} className={styles.cartListWrapper}>
-                <div>
-                  <p>{name}</p>
-                  <img
-                    className={styles.cartImage}
-                    src={image.url}
-                    alt="image"
-                  />
-                </div>
-              </div>
-            </Link>
-
-            <div className={styles.cartWrapper}>
-              <div className={styles.cartButtonWrapper}>
-                <CartDeleteButton cartId={cartId} lineId={id} />
-                <CartcCountButton
-                  cartId={cartId}
-                  lineId={id}
-                  count={quantity}
-                  formatted={line_total.formatted}
-                />
-              </div>
-            </div>
-          </>
-        );
-      })}
-    </div>
-  );
-}

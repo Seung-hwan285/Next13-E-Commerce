@@ -57,17 +57,18 @@
   top: 2%;
   font-size: 25px;
   width: 10%;
-  color: black;
   font-weight: bold;
-  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
   padding: 1rem;
   transition: background 0.25s ease-in-out;
 }
 .menu {
-  background-color: var(--color-bg-primary);
-  border: 5px solid black;
+  background-color: var(--color-text-primary);
+  border: var(--color-text-primary);
   border-radius: 4px;
   padding: 0.5rem;
+
+  color: var(--page-bg-color);
   margin-top: 0.5rem;
 }
 
