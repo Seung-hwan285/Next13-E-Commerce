@@ -2,10 +2,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useForm } from 'react-hook-form';
-import {
-  validateKorenOnEnglish,
-  validatePassword,
-} from '@/components/login/helper/validation';
+
 import { signIn } from 'next-auth/react';
 
 import GoogleIcon from '/public/icons/icons8-google.svg';
@@ -13,19 +10,14 @@ import Image from 'next/image';
 import { themState } from '@/lib/jotail/themState';
 import { useAtom } from 'jotai';
 
-type ButtonType = {
-  variant: string;
-};
-
 function LoginForm() {
   const {
-    register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
     reset,
   } = useForm();
 
-  const [activeThem, setActiveTheme] = useAtom(themState);
+  const [activeThem] = useAtom(themState);
 
   const onSubmit = async () => {
     reset();
@@ -33,7 +25,8 @@ function LoginForm() {
 
   const handleLoginClick = () => {
     signIn('google', {
-      callbackUrl: 'https://shop-seung-hwan285.vercel.app/',
+      callbackUrl: `${process.env.NEXT_PUBLIC_URL}`,
+      // callbackUrl: 'https://shop-seung-hwan285.vercel.app/',
     });
   };
 
@@ -41,36 +34,36 @@ function LoginForm() {
     <>
       <LoginFormBox activeThem={activeThem} onSubmit={handleSubmit(onSubmit)}>
         <LoginContainer>
-          <LoginUserNameWrapper>
-            <Label for="username">Username</Label>
-            <Input
-              {...register('username', {
-                validate: (value) => validateKorenOnEnglish(value),
-              })}
-              name="username"
-              placeholder="username"
-            />
-            {errors?.username?.message ? (
-              <div>{errors?.username?.message}</div>
-            ) : null}
-          </LoginUserNameWrapper>
-          <PasswordWrapper>
-            <Label for="password">Password</Label>
-            <Input
-              {...register('password', {
-                validate: (value) => validatePassword(value),
-              })}
-              name="password"
-              placeholder="password"
-            />
-            {errors?.password?.message ? (
-              <div>{errors?.password?.message}</div>
-            ) : null}
-          </PasswordWrapper>
+          {/*<LoginUserNameWrapper>*/}
+          {/*  <Label for="username">Username</Label>*/}
+          {/*  <Input*/}
+          {/*    {...register('username', {*/}
+          {/*      validate: (value) => validateKorenOnEnglish(value),*/}
+          {/*    })}*/}
+          {/*    name="username"*/}
+          {/*    placeholder="username"*/}
+          {/*  />*/}
+          {/*  {errors?.username?.message ? (*/}
+          {/*    <div>{errors?.username?.message}</div>*/}
+          {/*  ) : null}*/}
+          {/*</LoginUserNameWrapper>*/}
+          {/*<PasswordWrapper>*/}
+          {/*  <Label for="password">Password</Label>*/}
+          {/*  <Input*/}
+          {/*    {...register('password', {*/}
+          {/*      validate: (value) => validatePassword(value),*/}
+          {/*    })}*/}
+          {/*    name="password"*/}
+          {/*    placeholder="password"*/}
+          {/*  />*/}
+          {/*  {errors?.password?.message ? (*/}
+          {/*    <div>{errors?.password?.message}</div>*/}
+          {/*  ) : null}*/}
+          {/*</PasswordWrapper>*/}
 
           <ButtonWrapper>
-            <Button variant="login">Login</Button>
-            <Button variant="register">Register</Button>
+            {/*<Button variant="login">Login</Button>*/}
+            {/*<Button variant="register">Register</Button>*/}
             <ButtonGoogle type="button" onClick={handleLoginClick}>
               <Image src={GoogleIcon} height={32} width={22} alt="image" />
               Google Login
@@ -115,34 +108,34 @@ const LoginFormBox = styled.form`
   border-radius: 5px;
   color: black;
 `;
-
-const LoginUserNameWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-const Label = styled.label`
-  color: black;
-  margin-right: 12rem;
-  justify-content: flex-end;
-`;
-
-const Input = styled.input`
-  background-color: #fff;
-  border: 1px solid black;
-  font-size: 1.5rem;
-  color: black;
-`;
-
-const PasswordWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 1rem;
-`;
+//
+// const LoginUserNameWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+// `;
+//
+// const Label = styled.label`
+//   color: black;
+//   margin-right: 12rem;
+//   justify-content: flex-end;
+// `;
+//
+// const Input = styled.input`
+//   background-color: #fff;
+//   border: 1px solid black;
+//   font-size: 1.5rem;
+//   color: black;
+// `;
+//
+// const PasswordWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+//   margin-top: 1rem;
+// `;
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -152,16 +145,16 @@ const ButtonWrapper = styled.div`
   margin-top: 1rem;
 `;
 
-const Button = styled.button<ButtonType>`
-  color: #ffffff;
-  background-color: rgb(59 130 246);
-  font-size: 20px;
-  margin: 5px;
-  padding: 5px 10px;
-  width: 100%;
-  border-radius: 6px;
-  font-weight: bold;
-  &:hover {
-    background-color: rgba(30 64 175);
-  }
-`;
+// const Button = styled.button<ButtonType>`
+//   color: #ffffff;
+//   background-color: rgb(59 130 246);
+//   font-size: 20px;
+//   margin: 5px;
+//   padding: 5px 10px;
+//   width: 100%;
+//   border-radius: 6px;
+//   font-weight: bold;
+//   &:hover {
+//     background-color: rgba(30 64 175);
+//   }
+// `;

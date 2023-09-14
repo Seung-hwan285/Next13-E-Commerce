@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   --neutral-800: #333333;
   --neutral-100: #f0f0f0;
@@ -43,6 +45,8 @@
   --green-700: #0a3622;
 }
 
+
+
 body,
 body[data-theme='light'] {
   --page-bg-color: #fff;
@@ -71,14 +75,29 @@ body[data-theme='dark'] {
   /*--subheader-color: hsl(0, 0%, 60%);*/
   /*--paragraph-color: hsl(0, 0%, 80%);*/
   /*--callout-bg-color: hsl(0, 0%, 10%);*/
-  /*********************************************/
   --color-text-primary: #d8dbe7;
   --color-text-secondary: #ff6b00;
   --color-bg-primary: #15232d;
   --color-bg-toggle: #a9a9a9;
   --color-bg-product-container: #fff;
   --color-bg-navbar: #076963;
-  /************************************************************/
+}
+
+
+
+button[data-set='GREEN']{
+  background-color: green;
+}
+
+button[data-set='RED']{
+  background-color : red;
+}
+
+button[data-set='Blue']{
+  background-color: blue;
+}
+button[data-set='PINK']{
+  background-color: pink;
 }
 
 body {
@@ -86,5 +105,19 @@ body {
   color: var(--color-text-primary);
   font-family: sans-serif;
   transition: background 0.25s ease-in-out;
-  /*border: var(--);*/
+}
+
+textarea {
+  color: var(--page-bg-detail);
+}
+
+#resultList{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
 }

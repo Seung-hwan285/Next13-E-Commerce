@@ -1,22 +1,19 @@
-'use client';
-
 import React from 'react';
-import styles from '@/components/product/product.module.css';
-import { Product } from '@/lib/types/product';
+import styles from './product.module.css';
+import { ProductAPI } from '@/lib/product';
 import Link from 'next/link';
-import { productData } from '@/lib/jotail/themState';
-import { useAtom } from 'jotai';
+import { Product } from '@/lib/types/product';
 
-function ProductItems() {
-  const [productAtom] = useAtom(productData);
+async function Product() {
+  const { data: products } = await ProductAPI.getAllProducts();
 
   return (
     <>
       <ul className={styles.productContainer}>
-        {productAtom &&
-          productAtom.data.map(({ id, name, image, price }: Product) => {
+        {products &&
+          products.map(({ id, name, image, price }: Product) => {
             return (
-              <div key={id}>
+              <>
                 <Link href={`/product/${id}`} key={id}>
                   <h1 className={styles.title}>{name}</h1>
 
@@ -34,11 +31,12 @@ function ProductItems() {
                     {/*<CartButton id={id} />*/}
                   </div>
                 </Link>
-              </div>
+              </>
             );
           })}
       </ul>
     </>
   );
 }
-export default ProductItems;
+
+export default Product;

@@ -6,6 +6,8 @@ import Link from 'next/link';
 async function Categories() {
   const categories = await ProductAPI.getCategories();
 
+  console.log(categories);
+
   return (
     <>
       <ul className={styles.container}>

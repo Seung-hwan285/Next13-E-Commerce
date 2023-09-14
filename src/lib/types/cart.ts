@@ -1,3 +1,5 @@
+import { PriceType } from '@/lib/types/product';
+
 export type Image = {
   index: number;
   id: string;
@@ -22,6 +24,7 @@ export type Gallery = {
   name: string;
   price: string;
   images: Image[];
+  description: string;
   skus: string | string[];
 };
 
@@ -31,7 +34,7 @@ export type RelatedImage = {
   index: string;
 };
 
-export type Carts = {
+export type Cart = {
   carts: {
     created: number;
     currency: {
@@ -42,9 +45,9 @@ export type Carts = {
     expires: number;
     hosted_checkout_url: string;
     id: string;
-    line_items: any;
+    line_items: string[];
     meta?: string;
-    subtotal: any;
+    subtotal: string;
     total_items: number;
     total_unique_items: number;
     update: number;
@@ -53,12 +56,12 @@ export type Carts = {
 
 type Items = {
   id: string;
-  image: any;
+  image: string;
   is_valid: boolean;
-  line_total: any;
+  line_total: string | number;
   name: string;
   permalink: string;
-  price: any;
+  price: PriceType;
   product_id: string;
   product_meta?: string[];
   product_name: string;
@@ -76,7 +79,7 @@ export type Temp = {
   variant_id: string;
 };
 
-// export type ItemType = {
-//   item: Items[];
-//   cartId: string;
-// };
+export type Item = {
+  item: Items[];
+  cartId: string;
+};

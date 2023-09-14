@@ -3,23 +3,28 @@ import { checkUrl } from '@/lib/utils/checkUrl';
 type optionType = {
   method: string;
   body?: string;
-  image?: any;
+  obj?: any;
 };
 
 const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
 
-const createRequestOptions = (method, body, image): optionType => {
+const createRequestOptions = (method, obj?, body?): optionType => {
   const bodyObjects = body ? JSON.stringify(body) : body;
+
+  const isCache = obj?.cache ? 'force-cache' : 'no-store';
+
+  console.log(isCache);
 
   const requesetOptions = {
     method,
     headers: {
       'Content-Type': 'application/json',
-      'X-Authorization': image
-        ? process.env.NEXT_PUBLIC_SECRET_KEY
-        : process.env.NEXT_PUBLIC_SHOP_KEY,
+      'X-Authorization': process.env.NEXT_PUBLIC_SHOP_KEY,
     },
-    cache: 'no-store',
+    cache: isCache,
+    // cache: 'force-cache',
+
+    // cache: ${ob 'no-store',
     body: undefined,
   };
 
@@ -31,6 +36,7 @@ const createRequestOptions = (method, body, image): optionType => {
     requesetOptions.body = bodyObjects;
   }
 
+  console.log(requesetOptions);
   return requesetOptions;
 };
 
@@ -38,57 +44,90 @@ const sendRequest = async (url, options) => {
   const response = await fetch(url, options);
 
   if (!response.ok) {
-    throw new Error('error');
+    console.error('error');
   }
 
-  const data = await response.json();
-
-  return data;
+  return await response.json();
 };
 
-// app dir 에서 fetch를  try~catch로 감싼 상태에서 {cahce : no-stroe} 사용하고 SSR 호출하게 되면
-// 프로덕션에서 에러나옴
-// DynamicServerError: Dynamic server usage: no-store fetch https://api.github.com/v1/products /
+// // 1. search
+// // 2. main
+// // 3. collection
+// const createUrl = (name: string, key: string) => {
+//   const urls = [
+//     {
+//       main: `${baseUrl}/v1/products`,
+//     },
+//     {
+//       search: `${baseUrl}/v1/products?query=${name}`,
+//     },
+//     {
+//       collection: 'url',
+//     },
+//   ];
+//
+//   // const findUrl = urls.find((url)=>url.)
+// };
+
 export const ProductAPI = {
   getAllProducts: async () => {
-    const options = createRequestOptions('GET', '', '');
+    const options = createRequestOptions('GET');
     const url = `${baseUrl}/v1/products`;
 
     return await sendRequest(url, options);
   },
 
-  getDetailProductItem: async (id) => {
+  getDetail: async (id) => {
     const url = `${baseUrl}/v1/products/${id}`;
-    const options = createRequestOptions('GET', '', '');
+
+    const options = createRequestOptions('GET');
 
     return await sendRequest(url, options);
   },
 
   getVariantItems: async (id) => {
     const url = `${baseUrl}/v1/products/${id}/variant_groups`;
-    const options = createRequestOptions('GET', '', '');
+    const options = createRequestOptions('GET');
 
     return await sendRequest(url, options);
   },
 
-  getCategories: async (id: string | unknown) => {
-    if (!id) {
-      const url = `${baseUrl}/v1/categories`;
-      const options = createRequestOptions('GET', '', '');
+  getCategories: async (id?: string | unknown) => {
+    const url = id
+      ? `${baseUrl}/v1/categories?parent_id=${id}`
+      : `${baseUrl}/v1/categories`;
 
+    const obj = {
+      cache: true,
+    };
+
+    const options = createRequestOptions('GET', obj);
+
+    return await sendRequest(url, options);
+  },
+
+  getSearchProducts: async (name: string | unknown) => {
+    if (name.length > 0) {
+      const url = `${baseUrl}/v1/products?query=${name}`;
+
+      const options = createRequestOptions('GET');
       return await sendRequest(url, options);
     }
+  },
 
-    const url = `${baseUrl}/v1/categories?parent_id=${id}`;
-    const options = createRequestOptions('GET', '', '');
+  getRelatedProducts: async (fileds: string | unknown) => {
+    const url = `${baseUrl}/v1/products?include=${fileds}`;
+
+    const options = createRequestOptions('GET');
+
     return await sendRequest(url, options);
   },
 
-  updateProduct: async (id: string, image: string | unknown) => {
-    const url = `${baseUrl}/v1/products/${id}`;
-
-    const options = createRequestOptions('PUT', body, image);
-
-    return await sendRequest(url, options);
-  },
+  // updateProduct: async (id: string, image: string | unknown) => {
+  //   const url = `${baseUrl}/v1/products/${id}`;
+  //
+  //   const options = createRequestOptions('PUT', body, image);
+  //
+  //   return await sendRequest(url, options);
+  // },
 };

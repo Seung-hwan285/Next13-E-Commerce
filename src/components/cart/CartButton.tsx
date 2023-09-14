@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect } from 'react';
 import styles from '@/components/product/product.module.css';
-import { useParams, usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { CartAPI } from '@/lib/cart';
 import { useAtom } from 'jotai';
 import { sessionState } from '@/lib/jotail/themState';
@@ -34,7 +34,7 @@ function CartButton() {
       },
     };
 
-    const isProductId = optionAtom.some((data) => {
+    const isProductId = optionAtom?.some((data) => {
       if (data.product_id === id) {
         return true;
       }
@@ -49,11 +49,11 @@ function CartButton() {
         return tempData;
       });
     } else {
-      // setOptionAtom((prev) => [...prev, data]);
-
       setOptionAtom((prev) => {
+        if (!prev) {
+          return null;
+        }
         const tempData = [...prev, data];
-        console.log(tempData);
         setSessionStroage('product', tempData);
         return tempData;
       });

@@ -1,11 +1,12 @@
 'use client';
-import React, { startTransition, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useTransition } from 'react';
+import { redirect, useRouter } from 'next/navigation';
 import LoadingSpinner from '@/components/commons/LodingSpinner';
 import crossSVG from '/public/icons/cross.svg';
 import Image from 'next/image';
 
 import styles from './cart.module.css';
+import { deleteCartItem } from '@/components/cart/actions';
 
 type DeleteProps = {
   cartId: string;
@@ -15,38 +16,22 @@ type DeleteProps = {
 export default function CartDeleteButton({ cartId, lineId }: DeleteProps) {
   const router = useRouter();
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const handleDeleteClick = async () => {
-    setIsLoading(true);
-
-    const response = await fetch(
-      `/api/carts?cartId=${cartId}&lineId=${lineId}`,
-      {
-        method: 'DELETE',
-      }
-    );
-
-    const data = await response.json();
-
-    if (data.error) {
-      alert(data.error);
-      return;
-    }
-    setIsLoading(false);
-
     startTransition(() => {
+      deleteCartItem(cartId, lineId);
       router.refresh();
     });
   };
 
   return (
     <>
-      {isLoading ? (
+      {isPending ? (
         <LoadingSpinner />
       ) : (
         <button className={styles.cartDeleteButton} onClick={handleDeleteClick}>
-          <Image src={crossSVG} alt={'image'} width={20} height={20} />
+          <Image src={crossSVG} alt={'image'} width={15} height={15} />
         </button>
       )}
     </>

@@ -4,20 +4,14 @@ import styles from '@/components/cart/cart.module.css';
 import CartDeleteButton from '@/components/cart/CartDeleteButton';
 import CartcCountButton from '@/components/cart/CartcCountButton';
 import Link from 'next/link';
-import CartOptions from '@/components/cart/CartOptions';
 import { getSessionStroage } from '@/lib/utils/session';
 import { useAtom } from 'jotai';
 import { sessionState } from '@/lib/jotail/themState';
+import { Cart, Item } from '@/lib/types/cart';
+import CartOptions from '@/components/cart/CartOptions';
 
-// jotai
-//   const [updateAtom, setUpdateAtom] = updateAtom(itemIdState);
-// const [itemId] = useAtom(updateAtom);
-//   const [,update] = useAtom(setUpdateAtom);
-
-function LineItemComponent({ item, cartId }: ItemType) {
+function LineItemComponent({ item, cartId }: Item) {
   const [productOptions, setProductOptions] = useAtom(sessionState);
-
-  // session
 
   useEffect(() => {
     const options = getSessionStroage('product');
@@ -25,67 +19,56 @@ function LineItemComponent({ item, cartId }: ItemType) {
   }, []);
 
   return (
-    <div>
-      {item.map(
-        ({ id, name, image, quantity, product_id, line_total }, index) => {
-          return (
-            <div key={product_id}>
-              <Link href={`/product/${product_id}`}>
-                <div key={id} className={styles.cartListWrapper}>
-                  <div>
-                    <p>{name}</p>
-                    <img
-                      className={styles.cartImage}
-                      src={image?.url}
-                      alt="image"
-                    />
-                  </div>
-
-                  <CartOptions id={product_id} />
-                  {/*  [ 0 : {color : PINK , size : 'S'} , 1: {color : 'GREEN'}]*/}
-                </div>
-              </Link>
-
-              <div className={styles.cartWrapper}>
-                <CartDeleteButton cartId={cartId} lineId={id} />
-
-                <div className={styles.cartButtonWrapper}>
-                  <CartcCountButton
-                    cartId={cartId}
-                    lineId={id}
-                    count={quantity}
-                    formatted={line_total.formatted}
+    <div className={styles.cartWrapper}>
+      {item.map(({ id, name, image, quantity, product_id, line_total }) => {
+        return (
+          <div key={product_id} className={styles.cartContainer}>
+            <CartDeleteButton cartId={cartId} lineId={id} />
+            {/* Image */}
+            <Link href={`/product/${product_id}`}>
+              <div key={id} className={styles.cartListWrapper}>
+                <div className={styles.cartImageWrapper}>
+                  <img
+                    className={styles.cartImage}
+                    src={image?.url}
+                    alt="image"
                   />
+
+                  <div className={styles.optionContainer}>
+                    <h1>{name}</h1>
+                    <CartOptions id={product_id} />
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        }
-      )}
+            </Link>
+            <CartcCountButton
+              cartId={cartId}
+              lineId={id}
+              count={quantity}
+              product_id={product_id}
+              formatted={line_total.formatted}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-function Carts({ carts }: Carts) {
-  // const router = useRouter();
-  //
-  // //
-  // // useEffect(() => {
-  // //   router.refresh();
-  // // }, [router]);
+function Carts({ carts }: Cart) {
   return (
     <>
-      {carts && (
-        <div className={styles.cartContainer}>
-          {
-            <LineItemComponent
-              key={carts.id}
-              item={carts.line_items}
-              cartId={carts.id}
-            />
-          }
-        </div>
-      )}
+      <div className={styles.cartBox}>
+        <h1>My Cart ({carts.total_items})</h1>
+
+        {carts && (
+          <LineItemComponent
+            key={carts.id}
+            item={carts.line_items}
+            cartId={carts.id}
+          />
+        )}
+      </div>
     </>
   );
 }

@@ -1,123 +1,109 @@
-.cartContainer {
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.cartTitle {
-  font-size: 24px;
-  margin-bottom: 5px;
-}
-
-.cartSubtotal {
-  font-size: 16px;
-  color: #555555;
-}
-
-.cartListWrapper {
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
-  display: flex;
-  justify-content: space-between;
+.cartWrapper{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .cartImage {
-  object-fit: cover;
-  width: 100px;
-  height: 100px;
-  margin-top: 20px;
+    object-fit: cover;
+    width: 150px;
+    height: 200px;
+    border-radius: 5%;
+    box-shadow: 2px 1px 5px 0.5px gray;
 }
 
-.buttonContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  border-radius: 5px;
-  position: absolute;
-  right: 50%;
+.cartDeleteButton{
+    padding: 10px 12px;
+    float: right;
 }
 
-.horizontalCount {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+.cartBox h1{
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
 }
 
-.countWrapper {
-  display: flex;
-  margin: 0 auto;
+.cartContainer{
+    border: 1px solid #a9a9a9;
+    width: 50%;
+    margin-bottom: 10px;
 }
 
-.countLabel {
-  font-size: 12px;
-  margin-right: 5px;
+.cartListWrapper{
+    display: flex;
 }
 
-.countNumber {
-  font-size: 18px;
-  font-weight: bold;
-}
-.buttonWrapper {
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.cartImageWrapper{
+    width: 50%;
+    height: 155px;
+    margin-top: 20px;
+    padding: 5px 10px;
 }
 
-.buttonContainer {
-  margin-left: 50px;
+.optionContainer{
+    display: flex;
+    width: 145px;
+    position: relative;
+    left: 200px;
+    bottom: 180px;
+    flex-wrap: wrap;
 }
 
-.cartDeleteButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  right: 0;
-  bottom: 50%;
-  background-color: red;
+.buttonContainer{
+    position: relative;
+    left: 50%;
+    width: 50%;
+    bottom: 100px;
 }
 
-.cartButtonWrapper {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin-bottom: 120px;
+.buttonTemp{
+    border: 1px solid #a9a9a9;
+    float: right;
+    width: 35%;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
 }
 
-.cartWrapper {
-  position: relative;
-  display: flex;
+.buttonPrice{
+    margin-bottom: 20px;
 }
 
-.productLink {
-  text-decoration: none;
-  color: #333;
+
+.count{
+    margin-left: 5px;
+    color: #a9a9a9;
 }
 
-.productContainer {
-  display: flex;
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin: 10px 0;
+.countButtonWrapper{
+    text-align: center;
+}
+
+.temp{
+    display: flex;
+    justify-content: center;
+}
+
+.fontContainer p{
+    color: #9E9E9E;
 }
 
 .spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left: 4px solid #000;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  animation: spin 1s linear infinite;
-  margin: 0 auto;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
