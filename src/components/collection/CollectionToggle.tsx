@@ -29,13 +29,15 @@ function CollectionToggle() {
   }, []);
   return (
     <>
-      <div onClick={() => setIsShow(!show)} className={styles.toggle}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <div className={styles.toogleBox}>
+        <div onClick={() => setIsShow(!show)} className={styles.toggle}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
-      <NavBarItems />
+        <NavBarItems />
+      </div>
     </>
   );
 }

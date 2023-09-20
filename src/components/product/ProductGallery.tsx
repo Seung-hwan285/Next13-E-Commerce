@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 import styles from './product.module.css';
 import { Gallery, Image } from '@/lib/types/cart';
 
-function ProductGallery({ title, name, price, images, description }: Gallery) {
+function ProductGallery({ title, name, price, images }: Gallery) {
   if (!images) {
-    return null;
+    return <></>;
   }
 
   const [currentImage, setCurrentImage] = useState(0);
 
   const [change, setChange] = useState(false);
 
-  const handleClick = async (idx: number) => {
+  const handleClick = (idx: number) => {
     setCurrentImage(idx);
     setChange(true);
   };
@@ -22,20 +22,22 @@ function ProductGallery({ title, name, price, images, description }: Gallery) {
       <div className={styles.productContainer}>
         <div className={styles.productImage}>
           <div className={styles.imageBox}>
-            <ul className={styles.relatedContainer}>
-              {images.map((image: Image, idx: number) => {
-                return (
-                  <li key={image.id} className={styles.relatedLi}>
-                    <img
-                      onClick={() => handleClick(idx)}
-                      className={styles.relatedcartImage}
-                      src={image.images as string}
-                      alt="image"
-                    />
-                  </li>
-                );
-              })}
-            </ul>
+            {images ? (
+              <ul className={styles.relatedContainer}>
+                {images.map((image: Image, idx: number) => {
+                  return (
+                    <li key={image.id} className={styles.relatedLi}>
+                      <img
+                        onClick={() => handleClick(idx)}
+                        className={styles.relatedcartImage}
+                        src={image.images as string}
+                        alt="image"
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
             <img
               className={styles.Image}
               src={change ? (images[currentImage].images as string) : title}

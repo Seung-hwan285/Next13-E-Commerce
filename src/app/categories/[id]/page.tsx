@@ -2,18 +2,14 @@ import React from 'react';
 import { ProductAPI } from '@/lib/product';
 import styles from './categories.module.css';
 import { Product, Props } from '@/lib/types/product';
-import { Metadata, ResolvedMetadata } from 'next';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-export async function generateMetadata(
-  { params, searchParms }: Props,
-  parent: ResolvedMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;
 
   const data = await ProductAPI.getCategories(id);
 
-  console.log(data);
   if (!data) return notFound();
 
   return {

@@ -1,12 +1,10 @@
 'use client';
 
 import React, { startTransition, useEffect, useState } from 'react';
-import globalStyle from '/src/app/page.module.css';
 
 import styles from './search.module.css';
-import { productState } from '@/lib/jotail/themState';
-import { useAtom } from 'jotai';
-import SearchList from '@/components/search/SearchList';
+import { productState, searchListState } from '@/lib/jotail/themState';
+import { useAtom, useSetAtom } from 'jotai';
 import { ProductAPI } from '@/lib/product';
 import { useThrottle } from '@uidotdev/usehooks';
 
@@ -16,10 +14,12 @@ function SearchBar() {
 
   const throttledValue = useThrottle(name, 2000);
 
+  const setIsShow = useSetAtom(searchListState);
+
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setName(value);
-
+    setIsShow(true);
     if (value.length > 0) {
       startTransition(() => {
         const fetch = async () => {
@@ -41,10 +41,12 @@ function SearchBar() {
   return (
     <>
       <div className={styles.searchContainer}>
-        <input type="text" onChange={handleChange} value={name} />
-
-        <SearchList />
-        <p>{throttledValue}</p>
+        <input
+          className={styles.searchInput}
+          type="text"
+          onChange={handleChange}
+          value={name}
+        />
       </div>
     </>
   );

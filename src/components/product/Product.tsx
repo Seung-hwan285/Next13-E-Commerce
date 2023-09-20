@@ -1,40 +1,22 @@
 import React from 'react';
-import styles from './product.module.css';
 import { ProductAPI } from '@/lib/product';
-import Link from 'next/link';
-import { Product } from '@/lib/types/product';
+import { Props } from '@/lib/types/product';
+import { Metadata } from 'next';
+import ProductItems from '@/components/product/ProductItems';
+import ProductPagination from '@/components/product/ProductPagination';
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return {};
+}
 
 async function Product() {
-  const { data: products } = await ProductAPI.getAllProducts();
+  const { result, total, per_page } = await ProductAPI.getAllProducts();
 
   return (
     <>
-      <ul className={styles.productContainer}>
-        {products &&
-          products.map(({ id, name, image, price }: Product) => {
-            return (
-              <>
-                <Link href={`/product/${id}`} key={id}>
-                  <h1 className={styles.title}>{name}</h1>
+      <ProductItems items={result.data} />
 
-                  <div className={styles.imageWrapper}>
-                    {image && (
-                      <img
-                        className={styles.image}
-                        src={image?.url}
-                        alt="image"
-                      />
-                    )}
-                  </div>
-                  <div className={styles.detailWrapper}>
-                    <p>{price.formatted_with_symbol}</p>
-                    {/*<CartButton id={id} />*/}
-                  </div>
-                </Link>
-              </>
-            );
-          })}
-      </ul>
+      <ProductPagination pages={Math.ceil(total / per_page)} />
     </>
   );
 }

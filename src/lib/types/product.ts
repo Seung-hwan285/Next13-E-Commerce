@@ -227,6 +227,8 @@ export type Product = {
   };
   categories: Category[];
   image: Image;
+
+  pages?: number[];
 };
 
 export type Props = {

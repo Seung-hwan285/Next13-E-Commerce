@@ -1,8 +1,13 @@
 import { ProductAPI } from '@/lib/product';
 import styles from '@/components/product/product.module.css';
-import { Product } from '@/lib/types/product';
+import { Product, Props } from '@/lib/types/product';
 import Link from 'next/link';
 import React from 'react';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return {};
+}
 
 async function Page({ params }: { params: { id: string } }) {
   const { name } = params;
@@ -14,7 +19,7 @@ async function Page({ params }: { params: { id: string } }) {
 
 export default Page;
 
-async function Products({ products }: string) {
+async function Products({ products }: Product[]) {
   return (
     <ul className={styles.productContainer}>
       {products &&

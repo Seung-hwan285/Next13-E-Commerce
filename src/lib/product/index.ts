@@ -13,8 +13,6 @@ const createRequestOptions = (method, obj?, body?): optionType => {
 
   const isCache = obj?.cache ? 'force-cache' : 'no-store';
 
-  console.log(isCache);
-
   const requesetOptions = {
     method,
     headers: {
@@ -36,7 +34,6 @@ const createRequestOptions = (method, obj?, body?): optionType => {
     requesetOptions.body = bodyObjects;
   }
 
-  console.log(requesetOptions);
   return requesetOptions;
 };
 
@@ -50,29 +47,28 @@ const sendRequest = async (url, options) => {
   return await response.json();
 };
 
-// // 1. search
-// // 2. main
-// // 3. collection
-// const createUrl = (name: string, key: string) => {
-//   const urls = [
-//     {
-//       main: `${baseUrl}/v1/products`,
-//     },
-//     {
-//       search: `${baseUrl}/v1/products?query=${name}`,
-//     },
-//     {
-//       collection: 'url',
-//     },
-//   ];
-//
-//   // const findUrl = urls.find((url)=>url.)
-// };
-
 export const ProductAPI = {
   getAllProducts: async () => {
     const options = createRequestOptions('GET');
     const url = `${baseUrl}/v1/products`;
+    // const url = `${baseUrl}/v1/products?limit=5&page=${pageNumber}`;
+
+    const result = await sendRequest(url, options);
+
+    const { total } = result.meta.pagination;
+
+    const per_page = 5;
+
+    return {
+      result,
+      total,
+      per_page,
+    };
+  },
+
+  getNextPage: async (pageNumber: number) => {
+    const options = createRequestOptions('GET');
+    const url = `${baseUrl}/v1/products?limit=5&page=${pageNumber}`;
 
     return await sendRequest(url, options);
   },

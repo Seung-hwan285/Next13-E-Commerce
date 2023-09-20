@@ -1,22 +1,23 @@
 'use client';
 
-import React from 'react';
+import { notFound } from 'next/navigation';
 import styles from '@/components/product/product.module.css';
-import { Product } from '@/lib/types/product';
 import Link from 'next/link';
-import { productData } from '@/lib/jotail/themState';
-import { useAtom } from 'jotai';
+import React from 'react';
+import { Product } from '@/lib/types/product';
 
-function ProductItems() {
-  const [productAtom] = useAtom(productData);
+function ProductItems({ items, pages }: Product[]) {
+  if (!items) {
+    return notFound();
+  }
 
   return (
     <>
       <ul className={styles.productContainer}>
-        {productAtom &&
-          productAtom.data.map(({ id, name, image, price }: Product) => {
+        {items &&
+          items.map(({ id, name, image, price }: Product) => {
             return (
-              <div key={id}>
+              <>
                 <Link href={`/product/${id}`} key={id}>
                   <h1 className={styles.title}>{name}</h1>
 
@@ -31,10 +32,9 @@ function ProductItems() {
                   </div>
                   <div className={styles.detailWrapper}>
                     <p>{price.formatted_with_symbol}</p>
-                    {/*<CartButton id={id} />*/}
                   </div>
                 </Link>
-              </div>
+              </>
             );
           })}
       </ul>

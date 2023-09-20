@@ -1,9 +1,17 @@
-
 .nav {
   display: flex;
   border-bottom: 0.1rem solid gray;
   height: 5rem;
 }
+
+.iconContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
 
 .searchWrapper{
   margin: 0 auto;
@@ -53,41 +61,20 @@
   width: calc(var(--nav-size) * 0.8);
 }
 
-
-/*.toggle{*/
-/*  position: fixed;*/
-
-/*  border: 1px solid red;*/
-/*  top: 4vh;*/
-/*  right: 3vw;*/
-/*  width: 1.75rem;*/
-/*  height: 1.3rem;*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  justify-content: space-between;*/
-/*  cursor: pointer;*/
-/*  overflow: hidden;*/
-/*}*/
-
-
 .sidebar{
   padding: 2.8rem 0;
 }
-
 
 .open{
   position: relative;
   bottom: 63%;
   z-index: 9999;
-  /*border: 1px solid red;*/
   padding: 1.5rem;
-  height: 150vh;
-  /*background-color: var(--bg-colo);*/
+  height: 1550px;
   pointer-events: none;
   background-color: #191919ff;
   color: #a9afc3;
 }
-
 
 .closeToggle{
   width: 1.75rem;
@@ -99,6 +86,7 @@
   margin: 10px;
   pointer-events: auto;
   transform: translate(12.5rem,-0.5rem);
+
 }
 
 .dropDown{
@@ -143,7 +131,6 @@
   position: relative;
   border: 1px solid red;
   padding: 1.5rem;
-  height: 115vh;
   pointer-events: none;
   z-index: 6;
   transition: opacity 0.1s ease, visibility 0.1s ease, transform 0.1s ease;
@@ -160,7 +147,6 @@
 
 
 .sidebarHead{
-  border-top : 1px solid blue;
   border-bottom: 1px  dashed #ddd;
   width: 100%;
   text-align: center;
@@ -182,7 +168,6 @@
 
 
 .dropDownContainer{
-  margin-top: 50px;
 
   pointer-events: auto;
   width: 100%;
@@ -191,7 +176,7 @@
   justify-content: center;
   flex-direction: column;
   position: relative;
-  top: -5%;
+  top: 2%;
   left : 0;
   bottom: 0;
 }

@@ -36,9 +36,6 @@ function ProductCategories({ relatedItem }: Related[]) {
             image_dimensions: { width, height },
           },
         }) => {
-          console.log(url);
-
-          console.log(width);
           return (
             <>
               <img src={url} />

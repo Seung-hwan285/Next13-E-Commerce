@@ -8,6 +8,8 @@ import { useAtom, useSetAtom } from 'jotai';
 import { productSSRState, showState } from '@/lib/jotail/themState';
 import { getCollection } from '@/components/collection/action';
 import ClientColletions from '@/components/collection/ClientColletions';
+import Image from 'next/image';
+import Icon from '../../../public/free-icon-font-cart-minus-9795335.svg';
 
 function NavBarItems() {
   const { data: session } = useSession();
@@ -37,6 +39,10 @@ function NavBarItems() {
           <span></span>
           <span></span>
         </div>
+        <div className={styles.iconContainer}>
+          <Image src={Icon} height={100} width={120} alt="shop" />
+        </div>
+
         <div className={styles.dropDownContainer}>
           <div className={styles.sidebarHead}>
             <h1>Sidebar</h1>

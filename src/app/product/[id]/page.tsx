@@ -44,7 +44,7 @@ function CartDetail({ relatedItem, variantItems }: any) {
   if (!relatedItem) return notFound();
   if (!variantItems) return notFound();
 
-  const relatedImages = relatedItem?.related_products.map(
+  const relatedImages = relatedItem?.related_products?.map(
     (rel: RelatedImage) => ({
       id: rel.id,
       images: rel.image.url,

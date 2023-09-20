@@ -30,7 +30,6 @@ const createRequestOptions = (method, body): optionType => {
     requestOptions.body = bodyObjects;
   }
 
-  console.log(requestOptions);
   return requestOptions;
 };
 

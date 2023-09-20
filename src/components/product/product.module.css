@@ -8,29 +8,41 @@
 }
 
 .resultList{
-  width: 100%;
+  width: 300px;
+  margin-top: 70px;
+  margin-right: 120px;
+  position: relative;
+  z-index: 1;
   color: black;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 8px #ddd;
   border-radius: 10px;
-  margin-top: 1rem;
   max-height: 300px;
   overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.resultList a{
+  padding: 10px 20px;
+}
+
+.resultList a:hover{
+  background-color: #a9a9a9;
+  cursor: pointer;
 }
 
 .productContainer {
-  position: relative;
-  border-radius: 10px;
-  margin: 10px 20px;
   display: flex;
+  gap: 20px 5%;
+  width: 97%;
   background-color: var(--page-bg-detail);
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   padding: 30px 20px;
 }
-
 
 .co {
   color: rgba(25, 25, 25);
@@ -62,27 +74,26 @@
 }
 
 .relatedLi {
-  margin: 20px 60px;
+  margin: 10px 10px;
+  object-fit: cover;
+  width: 100%;
 }
 
 .relatedcartImage {
-  height: 100px;
   object-fit: cover;
-  border: 1px solid #ddd;
   transition: transform 0.2s ease-in-out;
-
+  width: 60%;
 }
 
 .relatedLi img{
   object-fit: cover;
   border-radius: 5%;
-
 }
 
 .Image{
-  object-fit: none;
+  object-fit: cover;
   border-radius: 5%;
-
+  width: 100%;
 }
 
 
@@ -117,13 +128,11 @@
   justify-content: center;
   flex: 1;
   flex-direction: column;
-
 }
 
 .productInfo {
   text-align: center;
-  margin-bottom: 29rem;
-
+  margin-bottom: 30rem;
 }
 
 .productTitle {
@@ -150,8 +159,8 @@
 }
 
 .imageBox{
+  padding: 5px 10px;
   display: flex;
-  margin-right: 100px;
   width: 100%;
 }
 
@@ -210,6 +219,16 @@
   transition: all 0.3s ease-in-out;
 }
 
+
+.loadContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid green;
+}
+
+
 .selectColor{
   padding: 15px 15px;
   border-radius: 50%;
@@ -221,4 +240,41 @@
 
 .flexContainer:hover {
   transform: scale(1.1);
+}
+
+.paginationContainer{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 20px;
+  margin-right: 50px;
+}
+
+.pageNumber{
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+  padding: 8px 16px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 4px;
+}
+
+.pageNumber.active {
+  background-color: #fff;
+  color: #007bff;
+}
+
+
+.pageNumber:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  color: #fff;
+}
+
+.pageNumber.disabled {
+  background-color: #ccc;
+  color: #333;
+  cursor: not-allowed;
 }
