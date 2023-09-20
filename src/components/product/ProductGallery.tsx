@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styles from './product.module.css';
 import { Gallery, Image } from '@/lib/types/cart';
 
+// git action test
 function ProductGallery({ title, name, price, images }: Gallery) {
   if (!images) {
     return <></>;
