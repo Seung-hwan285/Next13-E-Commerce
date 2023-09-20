@@ -50,8 +50,8 @@ const sendRequest = async (url, options) => {
 export const ProductAPI = {
   getAllProducts: async () => {
     const options = createRequestOptions('GET');
-    const url = `${baseUrl}/v1/products`;
-    // const url = `${baseUrl}/v1/products?limit=5&page=${pageNumber}`;
+    // const url = `${baseUrl}/v1/products`;
+    const url = `${baseUrl}/v1/products?limit=5`;
 
     const result = await sendRequest(url, options);
 
@@ -70,7 +70,17 @@ export const ProductAPI = {
     const options = createRequestOptions('GET');
     const url = `${baseUrl}/v1/products?limit=5&page=${pageNumber}`;
 
-    return await sendRequest(url, options);
+    const result = await sendRequest(url, options);
+
+    const { total } = result.meta.pagination;
+
+    const per_page = 5;
+
+    return {
+      result,
+      total,
+      per_page,
+    };
   },
 
   getDetail: async (id) => {

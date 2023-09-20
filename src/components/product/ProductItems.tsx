@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React from 'react';
 import { Product } from '@/lib/types/product';
 
-function ProductItems({ items, pages }: Product[]) {
+function ProductItems({ items }: Product[]) {
   if (!items) {
     return notFound();
   }

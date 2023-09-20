@@ -15,7 +15,6 @@ async function Product() {
   return (
     <>
       <ProductItems items={result.data} />
-
       <ProductPagination pages={Math.ceil(total / per_page)} />
     </>
   );
