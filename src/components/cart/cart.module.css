@@ -44,6 +44,7 @@
 }
 
 .optionContainer{
+
     display: flex;
     width: 145px;
     position: relative;
@@ -51,6 +52,15 @@
     bottom: 180px;
     flex-wrap: wrap;
 }
+
+.optionContainer h1{
+    position: relative;
+    text-align: left;
+
+    right: 15%;
+}
+
+
 
 .buttonContainer{
     position: relative;
@@ -89,8 +99,20 @@
     justify-content: center;
 }
 
+.fontContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    position: absolute;
+    top:60%;
+    bottom: 0;
+    right: 1%;
+}
+
 .fontContainer p{
     color: #9E9E9E;
+    display: flex;
+    align-items: center;
 }
 
 .spinner {

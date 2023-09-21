@@ -12,7 +12,7 @@ import CartButton from '@/components/cart/CartButton';
 function ProductOptions({ id, options }: OptionsVariant[]) {
   const CONFIG = ['X', 'XL', 'XXL', 'M', 'S'];
   const keys = ['Color', 'Size'];
-  const [, setVariantIdAtom] = useAtom(variantIdState);
+  const [variantAtom, setVariantIdAtom] = useAtom(variantIdState);
 
   const router: any = useRouter();
   const pathname = usePathname();
@@ -29,6 +29,7 @@ function ProductOptions({ id, options }: OptionsVariant[]) {
       optionSearchParams.set(keys[0], name);
     }
     const optionUrl = createUrl(pathname, optionSearchParams);
+    console.log(optionUrl);
     router.replace(optionUrl, { scroll: false });
   };
 
