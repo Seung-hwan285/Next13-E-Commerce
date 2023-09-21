@@ -1,7 +1,15 @@
 import './globals.css';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { NextAuthProvider } from '@/lib/provider/NextAuthProvider';
 import Navbar from '@/components/layout/Navbar';
+import { Inter } from '@next/font/google';
+import Footer from '@/components/layout/Footer';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 export default function RootLayout({
   children,
@@ -11,14 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <NextAuthProvider>
-        <body>
-          <header>
-            <Navbar />
-          </header>
-          <Suspense fallback={<h1>Error...</h1>}>
-            <main>{children}</main>
-          </Suspense>
-          <footer></footer>
+        <body className={inter.className}>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </body>
       </NextAuthProvider>
     </html>

@@ -7,10 +7,10 @@ type optionType = {
 };
 const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
 
-type CartButtonObject = {
-  size?: string;
-  color?: string;
-};
+// type CartButtonObject = {
+//   size?: string;
+//   color?: string;
+// };
 
 const createRequestOptions = (method, body): optionType => {
   const bodyObjects = body ? JSON.stringify(body) : body;
@@ -22,12 +22,9 @@ const createRequestOptions = (method, body): optionType => {
       'X-Authorization': process.env.NEXT_PUBLIC_SHOP_KEY,
     },
     cache: 'no-store',
+
     body: undefined,
   };
-
-  if (method === 'GET' || method === 'DELETE') {
-    return requestOptions;
-  }
 
   if (bodyObjects) {
     requestOptions.body = bodyObjects;
@@ -40,9 +37,7 @@ const sendRequest = async (url, options) => {
   const response = await fetch(url, options);
 
   if (response.ok) {
-    const data = await response.json();
-
-    return data;
+    return await response.json();
   }
 };
 
@@ -66,7 +61,7 @@ export const CartAPI = {
     return await sendRequest(url, options);
   },
 
-  addCartItem: async (id?: string, option?: string, varinatId?: string) => {
+  addCartItem: async (id?: string) => {
     const cookie = getCookie('cartId');
 
     const url = `${baseUrl}/v1/carts/${cookie}`;

@@ -1,16 +1,21 @@
-import React from 'react';
-import styles from './product.module.css';
-import { ProductAPI } from '@/lib/product';
-import Link from 'next/link';
+'use client';
 
-async function ProductItems() {
-  const { data: products } = await ProductAPI.getAllProducts();
+import { notFound } from 'next/navigation';
+import styles from '@/components/product/product.module.css';
+import Link from 'next/link';
+import React from 'react';
+import { Product } from '@/lib/types/product';
+
+function ProductItems({ items }: Product[]) {
+  if (!items) {
+    return notFound();
+  }
 
   return (
     <>
       <ul className={styles.productContainer}>
-        {products &&
-          products.map(({ id, name, image, price }: any) => {
+        {items &&
+          items.map(({ id, name, image, price }: Product) => {
             return (
               <>
                 <Link href={`/product/${id}`} key={id}>
@@ -27,7 +32,6 @@ async function ProductItems() {
                   </div>
                   <div className={styles.detailWrapper}>
                     <p>{price.formatted_with_symbol}</p>
-                    {/*<CartButton id={id} />*/}
                   </div>
                 </Link>
               </>
@@ -37,5 +41,4 @@ async function ProductItems() {
     </>
   );
 }
-
 export default ProductItems;

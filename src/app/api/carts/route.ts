@@ -8,7 +8,7 @@ function formatErrorMessage(err: Error): string {
 
 export async function GET(): Promise<Response> {
   try {
-    return NextResponse.json(cookie);
+    // return NextResponse.json(cookie);
   } catch (err) {
     if (isRoutesError(err)) {
       return NextResponse.json({ message: formatErrorMessage(err.message) });
@@ -16,19 +16,18 @@ export async function GET(): Promise<Response> {
   }
 }
 
-export async function POST(req: NextRequest): Promise<Response> {
-  const { cartId, lineId } = await req.json();
-
-  try {
-    // TODO..
-  } catch (err) {
-    if (isRoutesError(err)) {
-      return NextResponse.json({ message: formatErrorMessage(err.message) });
-    }
-  }
-
-  return NextResponse.json({ status: 500 });
-}
+// export async function POST(req: NextRequest): Promise<Response> {
+//   const { cartId, lineId } = await req.json();
+//
+//   try {
+//   } catch (err) {
+//     if (isRoutesError(err)) {
+//       return NextResponse.json({ message: formatErrorMessage(err.message) });
+//     }
+//   }
+//
+//   return NextResponse.json({ status: 500 });
+// }
 
 export async function DELETE(req: NextRequest): Promise<Response> {
   const { searchParams } = new URL(req.url);
@@ -57,7 +56,6 @@ export async function PUT(req: NextRequest): Promise<Response> {
     const { cartId, lineId, quantity } = await req.json();
 
     await CartAPI.updateCartItem(cartId, lineId, quantity);
-    console.log('test');
 
     return NextResponse.json({ status: 204 });
   } catch (err) {

@@ -1,21 +1,18 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './product.module.css';
-import { OptionsVariant, Variant } from '@/lib/types/product';
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from 'next/navigation';
+
+import { OptionsVariant, Variant, VariantItems } from '@/lib/types/product';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { createUrl } from '@/lib/utils/queryString';
 import { variantIdState } from '@/lib/jotail/themState';
 import { useAtom } from 'jotai';
+import CartButton from '@/components/cart/CartButton';
 
 function ProductOptions({ id, options }: OptionsVariant[]) {
   const CONFIG = ['X', 'XL', 'XXL', 'M', 'S'];
   const keys = ['Color', 'Size'];
-  const [, setVariantIdAtom] = useAtom(variantIdState);
+  const [variantAtom, setVariantIdAtom] = useAtom(variantIdState);
 
   const router: any = useRouter();
   const pathname = usePathname();
@@ -32,69 +29,92 @@ function ProductOptions({ id, options }: OptionsVariant[]) {
       optionSearchParams.set(keys[0], name);
     }
     const optionUrl = createUrl(pathname, optionSearchParams);
+    console.log(optionUrl);
     router.replace(optionUrl, { scroll: false });
   };
 
   return (
-    <>
+    <div className={styles.productBox}>
       <p>{options.name}</p>
       <div className={styles.productOption}>
         {options.map(({ id, name }) => {
           return (
-            <div style={{ margin: '10px' }} key={id}>
+            <div className={styles.productOptionItem} key={id}>
               <button
-                className={styles.flexContainer}
+                data-set={name}
+                className={
+                  CONFIG.includes(name)
+                    ? styles.flexContainer
+                    : styles.selectColor
+                }
                 onClick={() => handleClick(name)}
               >
-                {name}
+                {CONFIG.includes(name) && `${name}`}
               </button>
             </div>
           );
         })}
       </div>
+    </div>
+  );
+}
+
+function ProductItems({ title, data }: VariantItems) {
+  const dtElement = title === 'Size' ? 'Choose Size' : 'Select Color';
+
+  return (
+    <>
+      <div>
+        <dt className={styles.productOptionTitle}>{dtElement}</dt>
+
+        <dd className={styles.productOption}>
+          {data &&
+            data.map(({ id, options }) => {
+              return (
+                <div key={id}>
+                  <ProductOptions id={id} options={options} />
+                </div>
+              );
+            })}
+        </dd>
+      </div>
     </>
   );
 }
 
-function ProductVariantSelector({ variantItems }: Variant) {
+function ProductVariantSelector({ description, variantItems }: Variant) {
   if (!variantItems.data) {
     return <></>;
   }
+
+  const sliceDescription = description
+    ?.slice(3, description?.length - 4)
+    .trim();
 
   const sizeData = variantItems.data.filter((d) => d.name === 'Size');
   const colorData = variantItems.data.filter((d) => d.name === 'Color');
 
   return (
     <>
-      {variantItems.data && (
+      {variantItems?.data && (
         <dl className={styles.productSelectorContainer}>
-          <dt className={styles.productOptionTitle}>Size</dt>
-          <dd className={styles.productOption}>
-            {sizeData &&
-              sizeData.map(
-                ({ id, name, meta, created, updated, options }: Data) => {
-                  return (
-                    <div key={id}>
-                      <ProductOptions id={id} options={options} />
-                    </div>
-                  );
-                }
-              )}
-          </dd>
+          <ProductItems title={'Size'} data={sizeData} />
+          <ProductItems title={'Color'} data={colorData} />
 
-          <dt className={styles.productOptionTitle}>Color</dt>
-          <dd className={styles.productOption}>
-            {colorData &&
-              colorData.map(
-                ({ id, name, meta, created, updated, options }: Data) => {
-                  return (
-                    <div key={id}>
-                      <ProductOptions id={id} options={options} />
-                    </div>
-                  );
-                }
-              )}
-          </dd>
+          <div>
+            <h2 className={styles.productOptionTitle}>Product information</h2>
+
+            <textarea
+              cols={10}
+              rows={5}
+              readOnly={true}
+              className={styles.productDescription}
+            >
+              {sliceDescription}
+            </textarea>
+
+            <CartButton />
+          </div>
         </dl>
       )}
     </>

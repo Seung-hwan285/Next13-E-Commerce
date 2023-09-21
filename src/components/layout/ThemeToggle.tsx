@@ -7,12 +7,18 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import styles from './layout.module.css';
 
+type Session = {
+  email: string;
+  name: string;
+  image: string;
+};
+
 function ThemeToggle() {
   const [activeThem, setActiveTheme] = useAtom(themState);
   const inactiveTheme = activeThem === 'light' ? 'dark' : 'light';
 
   const { data: session } = useSession();
-  const { email, name, image }: sessionType = session?.user || {};
+  const { name, image }: Session = session?.user || {};
 
   useEffect(() => {
     document.body.dataset.theme = activeThem;

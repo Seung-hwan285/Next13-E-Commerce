@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
     serverActions: true,
+    serverActionsBodySizeLimit: '2mb',
   },
   typescript: {
     ignoreBuildErrors: true,

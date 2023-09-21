@@ -6,12 +6,18 @@ import upSVG from '/public/icons/free-icon-font-arrow-alt-square-down-7434694.sv
 import downSVG from '/public/icons/free-icon-font-arrow-alt-square-up-7434723.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { putLikeButton } from '@/components/cart/actions';
 
 type DeleteProps = {
   cartId: string;
   lineId: string;
   count: number;
   formatted?: string | number;
+};
+
+type State = {
+  count: number;
+  sending: boolean;
 };
 
 function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
@@ -24,14 +30,14 @@ function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
       count,
       sending: false,
     },
-    (state: any, newCount: any) => ({
+    (state: State, newCount: number) => ({
       ...state,
       count: newCount,
       sending: true,
     })
   );
 
-  const handlePlusClick = (amount: number) => {
+  const handlePlusClick = async (amount: number) => {
     addOptimisticCount(optimistickCount.count + amount);
 
     const data = {
@@ -41,54 +47,22 @@ function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
     };
 
     startTransition(() => {
-      const fetchPlus = async () => {
-        const response = await fetch(
-          `/api/carts?cartId=${cartId}&lineId=${lineId}`,
-          {
-            method: 'PUT',
-            body: JSON.stringify(data),
-          }
-        );
-
-        const result = await response.json();
-
-        if (result.error) {
-          alert(result.error);
-          return;
-        }
-      };
-      fetchPlus();
+      putLikeButton(data);
       router.refresh();
     });
   };
 
-  const handleMinusClick = (amount: number) => {
+  const handleMinusClick = async (amount: number) => {
     addOptimisticCount(optimistickCount.count - amount);
 
     const data = {
-      quantity: optimistickCount.count - 1,
+      quantity: optimistickCount.count - amount,
       cartId: cartId,
       lineId: lineId,
     };
 
     startTransition(() => {
-      const fetchMinus = async () => {
-        const response = await fetch(
-          `/api/carts?cartId=${cartId}&lineId=${lineId}`,
-          {
-            method: 'PUT',
-            body: JSON.stringify(data),
-          }
-        );
-
-        const result = await response.json();
-
-        if (result.error) {
-          alert(result.error);
-          return;
-        }
-      };
-      fetchMinus();
+      putLikeButton(data);
       router.refresh();
     });
   };
@@ -96,33 +70,37 @@ function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
   return (
     <>
       <div className={styles.buttonContainer}>
-        <div className={styles.buttonWrapper}>
-          <Image
-            onClick={() => handleMinusClick(1)}
-            alt={'image'}
-            width={25}
-            height={30}
-            src={upSVG}
-            style={{ margin: '5px', cursor: 'pointer' }}
-          />
-          <Image
-            onClick={() => handlePlusClick(1)}
-            alt={'image'}
-            width={25}
-            height={30}
-            src={downSVG}
-            style={{ cursor: 'pointer' }}
-          />
-        </div>
-        <div className={styles.horizontalCount}>
-          <p className={styles.countLabel}>Count:</p>
+        <div className={styles.buttonTemp}>
+          <div className={styles.countButtonWrapper}>
+            {isPending ? (
+              <div className={styles.spinner}></div>
+            ) : (
+              <div className={styles.buttonPrice}>
+                <p>${formatted}</p>
+              </div>
+            )}
 
-          <p className={styles.countNumber}>{optimistickCount.count}</p>
-          {isPending ? (
-            <div className={styles.spinner}></div>
-          ) : (
-            <p>{formatted}</p>
-          )}
+            <p className={styles.count}>{optimistickCount.count}</p>
+
+            <div className={styles.temp}>
+              <Image
+                onClick={() => handleMinusClick(1)}
+                alt={'image'}
+                width={25}
+                height={30}
+                src={upSVG}
+                style={{ margin: '5px', cursor: 'pointer' }}
+              />
+              <Image
+                onClick={() => handlePlusClick(1)}
+                alt={'image'}
+                width={25}
+                height={30}
+                src={downSVG}
+                style={{ cursor: 'pointer' }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>

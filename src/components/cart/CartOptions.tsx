@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import styles from './cart.module.css';
+
 import { readOnlySession } from '@/lib/jotail/themState';
 import { useAtomValue } from 'jotai';
 
@@ -16,11 +18,10 @@ function CartOptions({ id }: string) {
 
             return (
               <div key={index}>
-                {/*<li style={{ color: 'blue' }}>{color}</li>*/}
                 {isId && (
-                  <div>
-                    {color && <p style={{ color: 'blue' }}>{color}</p>}
-                    {size && <p style={{ color: 'blue' }}>{size}</p>}
+                  <div className={styles.fontContainer}>
+                    {size && <p>SIZE : {size}</p>}
+                    {color && <p>COLOR : {color}</p>}
                   </div>
                 )}
               </div>
