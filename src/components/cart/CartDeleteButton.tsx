@@ -1,6 +1,6 @@
 'use client';
 import React, { useTransition } from 'react';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import LoadingSpinner from '@/components/commons/LodingSpinner';
 import crossSVG from '/public/icons/cross.svg';
 import Image from 'next/image';
