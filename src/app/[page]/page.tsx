@@ -3,7 +3,6 @@ import React from 'react';
 import ProductItems from '@/components/product/ProductItems';
 import ProductPagination from '@/components/product/ProductPagination';
 
-// test
 async function Page({ params }: { params: { id: string } }) {
   const { page } = params;
 
@@ -13,7 +12,7 @@ async function Page({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <ProductItems items={result.data} />;
+      <ProductItems items={result.data} />
       <ProductPagination pages={Math.ceil(total / per_page)} />
     </>
   );
