@@ -1,6 +1,6 @@
 'use client';
 
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import styles from '@/components/product/product.module.css';
 import Link from 'next/link';
 import React from 'react';
@@ -8,7 +8,7 @@ import { Product } from '@/lib/types/product';
 
 function ProductItems({ items }: Product[]) {
   if (!items) {
-    return notFound();
+    notFound();
   }
 
   return (

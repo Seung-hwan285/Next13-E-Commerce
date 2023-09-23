@@ -43,7 +43,7 @@ const sendRequest = async (url, options) => {
   const response = await fetch(url, options);
 
   if (!response.ok) {
-    console.error('error');
+    throw new Error('Error');
   }
 
   return await response.json();
@@ -52,7 +52,6 @@ const sendRequest = async (url, options) => {
 export const ProductAPI = {
   getAllProducts: async (number?: number) => {
     const options = createRequestOptions('GET');
-    // const url = `${baseUrl}/v1/products`;
     const url = `${baseUrl}/v1/products?limit=${number}`;
 
     const result = await sendRequest(url, options);
@@ -74,12 +73,10 @@ export const ProductAPI = {
     const url = limit
       ? `${baseUrl}/v1/products?limit=${limit}&page=${pageNumber}`
       : `${baseUrl}/v1/products?limit=5&page=${pageNumber}`;
-
     const result = await sendRequest(url, options);
 
     const { total } = result.meta.pagination;
-
-    const per_page = 5;
+    const per_page = limit ? limit : 5;
 
     return {
       result,

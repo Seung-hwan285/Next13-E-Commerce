@@ -13,9 +13,14 @@ function ProductPagination({ pages }: number) {
         {pageItems.length &&
           pageItems.map((p: number) => {
             const page = p + 1;
+
             return (
               <>
-                <Link href={`/${page}`}>
+                <Link
+                  href={{
+                    pathname: `/${page}`,
+                  }}
+                >
                   <li className={styles.pageNumber} key={p}>
                     {page}
                   </li>
