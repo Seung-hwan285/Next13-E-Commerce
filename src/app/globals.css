@@ -51,6 +51,9 @@ body,
 body[data-theme='light'] {
   --page-bg-color: #fff;
   --header-text-color: #1b1d25;
+
+  --footer-top-br-color : #bcddfe;
+  --footer-bg-color : #bcddfe;
   /*--subheader-color: hsl(#colors[gray-040]);*/
   /*--paragraph-color: hsl(#colors[gray-090]);*/
   /*--callout-bg-color: hsl(#colors[gray-015]);*/
@@ -68,6 +71,9 @@ body[data-theme='light'] {
 }
 
 body[data-theme='dark'] {
+  --footer-bg-color : --gray-100;
+
+  --footer-top-br-color: none;
   --page-bg-color: var(--gray-100);
   --header-text-color: var(--gray-010);
   --page-bg-detail: var(--gray-110);

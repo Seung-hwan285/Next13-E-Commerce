@@ -42,6 +42,10 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 30px 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 1%;
+
 }
 
 .co {
@@ -277,4 +281,10 @@
   background-color: #ccc;
   color: #333;
   cursor: not-allowed;
+}
+
+
+.columnOptions{
+  float: right;
+  transform: translate(-270px,-30px);
 }
