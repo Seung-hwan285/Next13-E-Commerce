@@ -3,7 +3,7 @@
 import { notFound, redirect } from 'next/navigation';
 import styles from '@/components/product/product.module.css';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Product } from '@/lib/types/product';
 
 function ProductItems({ items }: Product[]) {

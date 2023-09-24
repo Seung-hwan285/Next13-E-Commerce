@@ -14,6 +14,8 @@ export default async function Page({
   const { page } = params;
   const { limit } = searchParams;
 
+  console.log(page);
+
   const { result, total, per_page } = await ProductAPI.getNextPage(
     page as number,
     limit as number

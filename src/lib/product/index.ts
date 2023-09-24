@@ -1,4 +1,5 @@
 import { checkUrl } from '@/lib/utils/checkUrl';
+import { getProperError } from '@/lib/utils/errpr';
 
 type optionType = {
   method: string;
@@ -40,13 +41,16 @@ const createRequestOptions = (method, obj?, body?): optionType => {
 };
 
 const sendRequest = async (url, options) => {
-  const response = await fetch(url, options);
-
-  if (!response.ok) {
-    throw new Error('Error');
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error('Error');
+    }
+    return await response.json();
+  } catch (err) {
+    // const error = getProperError(err);
+    console.error(err);
   }
-
-  return await response.json();
 };
 
 export const ProductAPI = {
