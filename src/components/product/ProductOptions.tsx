@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import ProductColumn from '@/components/product/ProductColumn';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import ProductSort from '@/components/product/ProductSort';
 
 async function ProductOptions() {
   // [x] : show
@@ -26,6 +27,11 @@ async function ProductOptions() {
     }
   }, []);
 
-  return <ProductColumn />;
+  return (
+    <>
+      <ProductSort />
+      <ProductColumn />;
+    </>
+  );
 }
 export default ProductOptions;

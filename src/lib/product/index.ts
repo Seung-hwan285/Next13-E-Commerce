@@ -1,5 +1,4 @@
 import { checkUrl } from '@/lib/utils/checkUrl';
-import { getProperError } from '@/lib/utils/errpr';
 
 type optionType = {
   method: string;
@@ -7,6 +6,12 @@ type optionType = {
   obj?: {
     cache: boolean;
   };
+};
+
+type Obj = {
+  o_sortBy: string | string[] | undefined;
+  o_limit: string | string[] | undefined;
+  o_page: string | string[] | undefined;
 };
 
 const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
@@ -23,9 +28,6 @@ const createRequestOptions = (method, obj?, body?): optionType => {
       'X-Authorization': process.env.NEXT_PUBLIC_SHOP_KEY,
     },
     cache: isCache,
-    // cache: 'force-cache',
-
-    // cache: ${ob 'no-store',
     body: undefined,
   };
 
@@ -71,12 +73,35 @@ export const ProductAPI = {
     };
   },
 
-  getNextPage: async (pageNumber: number, limit?: number) => {
+  getNextPage: async (obj: Obj) => {
+    const { o_page, o_limit, o_sortBy } = obj;
+
     const options = createRequestOptions('GET');
 
+    const defaultOption = {
+      limit: o_limit,
+      page: o_page,
+    };
+
+    const urlOptions = [
+      { limit: o_limit, page: o_page, sortBy: 'name' },
+      { limit: o_limit, page: o_page, sortBy: 'price' },
+      { limit: o_limit, page: o_page, sortBy: 'asc' },
+      { limit: o_limit, page: o_page, sortBy: 'desc' },
+      { limit: o_limit, page: o_page, sortBy: 'updated_at' },
+    ];
+
+    const findOptions =
+      urlOptions.find((option) => option.sortBy === o_sortBy) || defaultOption;
+
+    console.log(findOptions);
+
+    const { limit, page, sortBy } = findOptions;
+
     const url = limit
-      ? `${baseUrl}/v1/products?limit=${limit}&page=${pageNumber}`
-      : `${baseUrl}/v1/products?limit=5&page=${pageNumber}`;
+      ? `${baseUrl}/v1/products?limit=${limit}&page=${page}&sortBy=${sortBy}`
+      : `${baseUrl}/v1/products?limit=5&page=${page}`;
+
     const result = await sendRequest(url, options);
 
     const { total } = result.meta.pagination;

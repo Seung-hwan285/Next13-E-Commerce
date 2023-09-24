@@ -12,14 +12,15 @@ export default async function Page({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const { page } = params;
-  const { limit } = searchParams;
+  const { limit, sortBy } = searchParams;
 
-  console.log(page);
+  const obj = {
+    o_page: page,
+    o_limit: limit,
+    o_sortBy: sortBy,
+  };
 
-  const { result, total, per_page } = await ProductAPI.getNextPage(
-    page as number,
-    limit as number
-  );
+  const { result, total, per_page } = await ProductAPI.getNextPage(obj);
 
   return (
     <>
