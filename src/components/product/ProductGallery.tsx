@@ -26,7 +26,6 @@ function ProductGallery({
 
   const [formatedPrice, setFormatedPrice] = useState('');
 
-  // 1000
   const saleValue =
     discountItems[0]?.product_ids?.includes(id) && discountItems[0].value;
 
@@ -45,6 +44,7 @@ function ProductGallery({
       const str = price.formatted_with_symbol.substring(0, 6);
 
       const temp2 = price.formatted_with_symbol.replace(str, replacePrice);
+
       setFormatedPrice(temp2);
     }
   }, []);
@@ -86,7 +86,10 @@ function ProductGallery({
               <div>
                 <h1 className={styles.productSale}>{formatedPrice}</h1>
 
-                <h1>{price.formatted_with_symbol}</h1>
+                <div className={styles.originPrice}>
+                  <h1>{price.formatted_with_symbol}</h1>
+                  <span>{discountItems[0].value}</span>
+                </div>
               </div>
             ) : (
               <h1 className={styles.productPrice}>

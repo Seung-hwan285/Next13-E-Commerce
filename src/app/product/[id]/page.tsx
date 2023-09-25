@@ -91,12 +91,6 @@ function ProductDetail({ relatedItem, variantItems, discountItems }: any) {
           description={relatedItem.description}
           variantItems={variantItems}
         />
-
-        {/*Client */}
-
-        {/*Server */}
-        {/*<ProductCategories categories={relatedItem.categories} />*/}
-        {/*<Categories relatedItem={relatedItem} />*/}
       </div>
     </>
   );
