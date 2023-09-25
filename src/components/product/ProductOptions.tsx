@@ -6,9 +6,6 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import ProductSort from '@/components/product/ProductSort';
 
 async function ProductOptions() {
-  // [x] : show
-  // [] : sort By
-
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();

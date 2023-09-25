@@ -34,8 +34,8 @@ function ProductSort() {
         <option value="name">Name</option>
         <option value="updated_at">Updated</option>
         <option value="price">Price</option>
-        <option value="desc">High to low</option>
-        <option value="asc">Low to high</option>
+        {/*<option value="desc">High to low</option>*/}
+        {/*<option value="asc">Low to high</option>*/}
       </select>
     </div>
   );

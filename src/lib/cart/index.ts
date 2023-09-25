@@ -1,5 +1,6 @@
 import { checkUrl } from '@/lib/utils/checkUrl';
 import { getCookie } from '@/lib/utils/cookies';
+import { getProperError } from 'next/dist/lib/is-error';
 
 type optionType = {
   method: string;
@@ -34,10 +35,15 @@ const createRequestOptions = (method, body): optionType => {
 };
 
 const sendRequest = async (url, options) => {
-  const response = await fetch(url, options);
-
-  if (response.ok) {
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error('Error');
+    }
     return await response.json();
+  } catch (err) {
+    const error = getProperError(err);
+    console.error(error);
   }
 };
 

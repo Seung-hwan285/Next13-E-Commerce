@@ -1,22 +1,10 @@
 import { checkUrl } from '@/lib/utils/checkUrl';
-
-type optionType = {
-  method: string;
-  body?: string;
-  obj?: {
-    cache: boolean;
-  };
-};
-
-type Obj = {
-  o_sortBy: string | string[] | undefined;
-  o_limit: string | string[] | undefined;
-  o_page: string | string[] | undefined;
-};
+import { getProperError } from 'next/dist/lib/is-error';
+import { Obj, Option } from '@/lib/types/product';
 
 const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
 
-const createRequestOptions = (method, obj?, body?): optionType => {
+const createRequestOptions = (method, obj?, body?): Option => {
   const bodyObjects = body ? JSON.stringify(body) : body;
 
   const isCache = obj?.cache ? 'force-cache' : 'no-store';
@@ -50,8 +38,8 @@ const sendRequest = async (url, options) => {
     }
     return await response.json();
   } catch (err) {
-    // const error = getProperError(err);
-    console.error(err);
+    const error = getProperError(err);
+    console.error(error);
   }
 };
 
@@ -84,17 +72,13 @@ export const ProductAPI = {
     };
 
     const urlOptions = [
-      { limit: o_limit, page: o_page, sortBy: 'name' },
-      { limit: o_limit, page: o_page, sortBy: 'price' },
-      { limit: o_limit, page: o_page, sortBy: 'asc' },
-      { limit: o_limit, page: o_page, sortBy: 'desc' },
-      { limit: o_limit, page: o_page, sortBy: 'updated_at' },
+      { limit: o_limit || 5, page: o_page, sortBy: 'name' },
+      { limit: o_limit || 5, page: o_page, sortBy: 'price' },
+      { limit: o_limit || 5, page: o_page, sortBy: 'updated_at' },
     ];
 
     const findOptions =
       urlOptions.find((option) => option.sortBy === o_sortBy) || defaultOption;
-
-    console.log(findOptions);
 
     const { limit, page, sortBy } = findOptions;
 

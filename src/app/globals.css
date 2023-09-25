@@ -8,9 +8,11 @@
   --neutral-800: #333333;
   --neutral-100: #f0f0f0;
   --blue-600: #007bff;
+
+
   --gray-000: #ffffff;
   --gray-005: #f5f7ff;
-  --gray-010: #e6e9f3;
+  --gray-010: #a0a0a0;
   --gray-015: #d8dbe7;
   --gray-020: #bcc0cf;
   --gray-030: #a1a5b6;
@@ -52,6 +54,8 @@ body[data-theme='light'] {
   --page-bg-color: #fff;
   --header-text-color: #1b1d25;
 
+  --product-option-color : var(--gray-010);
+  --product-title-color : #262626;
   --footer-top-br-color : #bcddfe;
   --footer-bg-color : #bcddfe;
   /*--subheader-color: hsl(#colors[gray-040]);*/
@@ -72,7 +76,7 @@ body[data-theme='light'] {
 
 body[data-theme='dark'] {
   --footer-bg-color : --gray-100;
-
+  --product-title-color : var(--gray-110);
   --footer-top-br-color: none;
   --page-bg-color: var(--gray-100);
   --header-text-color: var(--gray-010);

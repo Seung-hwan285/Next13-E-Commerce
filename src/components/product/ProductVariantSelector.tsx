@@ -29,7 +29,6 @@ function ProductOptions({ id, options }: OptionsVariant[]) {
       optionSearchParams.set(keys[0], name);
     }
     const optionUrl = createUrl(pathname, optionSearchParams);
-    console.log(optionUrl);
     router.replace(optionUrl, { scroll: false });
   };
 
@@ -66,7 +65,6 @@ function ProductItems({ title, data }: VariantItems) {
     <>
       <div>
         <dt className={styles.productOptionTitle}>{dtElement}</dt>
-
         <dd className={styles.productOption}>
           {data &&
             data.map(({ id, options }) => {
@@ -98,21 +96,19 @@ function ProductVariantSelector({ description, variantItems }: Variant) {
     <>
       {variantItems?.data && (
         <dl className={styles.productSelectorContainer}>
+          <textarea
+            cols={3}
+            rows={3}
+            readOnly={true}
+            className={styles.productDescription}
+          >
+            {sliceDescription}
+          </textarea>
+
           <ProductItems title={'Size'} data={sizeData} />
           <ProductItems title={'Color'} data={colorData} />
 
           <div>
-            <h2 className={styles.productOptionTitle}>Product information</h2>
-
-            <textarea
-              cols={10}
-              rows={5}
-              readOnly={true}
-              className={styles.productDescription}
-            >
-              {sliceDescription}
-            </textarea>
-
             <CartButton />
           </div>
         </dl>

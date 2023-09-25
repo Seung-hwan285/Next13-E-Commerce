@@ -35,12 +35,14 @@ async function Page({ params }: { params: { id: string } }) {
     asyncVariantsItems,
   ]);
 
-  return <CartDetail relatedItem={relatedItem} variantItems={variantItems} />;
+  return (
+    <ProductDetail relatedItem={relatedItem} variantItems={variantItems} />
+  );
 }
 
 export default Page;
 
-function CartDetail({ relatedItem, variantItems }: any) {
+function ProductDetail({ relatedItem, variantItems }: any) {
   if (!relatedItem) return notFound();
   if (!variantItems) return notFound();
 

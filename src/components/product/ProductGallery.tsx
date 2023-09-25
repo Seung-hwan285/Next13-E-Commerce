@@ -50,7 +50,7 @@ function ProductGallery({ title, name, price, images }: Gallery) {
         <div className={styles.productDetails}>
           <div className={styles.productInfo}>
             <h1 className={styles.productTitle}>{name}</h1>
-            <p className={styles.productPrice}>{price}</p>
+            <h1 className={styles.productPrice}>{price}</h1>
           </div>
         </div>
       </div>
