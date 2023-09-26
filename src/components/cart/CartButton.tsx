@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { startTransition, useEffect } from 'react';
 import styles from '@/components/product/product.module.css';
 import { usePathname, useRouter } from 'next/navigation';
 import { CartAPI } from '@/lib/cart';
@@ -58,8 +58,11 @@ function CartButton() {
         return tempData;
       });
     }
-
     await CartAPI.addCartItem(id);
+
+    startTransition(() => {
+      router.refresh();
+    });
   };
 
   useEffect(() => {

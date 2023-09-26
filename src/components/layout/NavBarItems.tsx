@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import styles from './layout.module.css';
@@ -10,11 +10,28 @@ import { getCollection } from '@/components/collection/action';
 import ClientColletions from '@/components/collection/ClientColletions';
 import Image from 'next/image';
 import Icon from '../../../public/free-icon-font-cart-minus-9795335.svg';
+import { IconButton } from '@mui/material';
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import HomeIcon from '@mui/icons-material/Home';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import CollectionsIcon from '@mui/icons-material/Collections';
+import { useRouter } from 'next/navigation';
 
-function NavBarItems() {
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    position: 'absolute',
+    right: 32,
+    top: 0,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 2px',
+  },
+}));
+
+function NavBarItems({ totalItems }: number) {
   const { data: session } = useSession();
   const [show, setShow] = useAtom(showState);
-  // const [data] = useAtom(asyncData);
 
   const setData = useSetAtom(productSSRState);
 
@@ -51,22 +68,41 @@ function NavBarItems() {
             <nav>
               <div className={styles.menu}>
                 <li className={styles.list}>
-                  <Link href="/">Home</Link>
+                  <Link href="/">
+                    <HomeIcon color="primary" />
+                  </Link>
                 </li>
                 <li className={styles.list}>
                   {!session ? (
-                    <Link href="/login">Login</Link>
+                    <Link href="/login">
+                      <AssignmentIndIcon color="primary" />
+                    </Link>
                   ) : (
                     <button onClick={handleLogoutClick}>Logout</button>
                   )}
                 </li>
                 <li className={styles.list}>
-                  <Link href="/cart">Cart</Link>
+                  <Link href="/cart">
+                    <IconButton color="primary" aria-label="cart">
+                      {totalItems > 0 ? (
+                        <StyledBadge
+                          badgeContent={totalItems}
+                          color="secondary"
+                        >
+                          <ShoppingCartIcon />
+                        </StyledBadge>
+                      ) : (
+                        <StyledBadge color="secondary">
+                          <ShoppingCartIcon />
+                        </StyledBadge>
+                      )}
+                    </IconButton>
+                  </Link>
                 </li>
 
                 <form action={handleClick}>
                   <li onClick={handleClick} className={styles.listCollection}>
-                    <span>Collection</span>
+                    <CollectionsIcon color="primary" />
 
                     <div className={styles.dropDown}>
                       <ClientColletions />

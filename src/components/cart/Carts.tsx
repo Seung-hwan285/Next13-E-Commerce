@@ -11,7 +11,7 @@ import { Cart, Item } from '@/lib/types/cart';
 import CartOptions from '@/components/cart/CartOptions';
 
 function LineItemComponent({ item, cartId }: Item) {
-  const [productOptions, setProductOptions] = useAtom(sessionState);
+  const [, setProductOptions] = useAtom(sessionState);
 
   useEffect(() => {
     const options = getSessionStroage('product');
@@ -60,7 +60,11 @@ function Carts({ carts }: Cart) {
     <>
       <div className={styles.cartBox}>
         <h1>My Cart ({carts.total_items})</h1>
-
+        {/*<IconButton aria-label="cart">*/}
+        {/*  <StyledBadge badgeContent={4} color="secondary">*/}
+        {/*    <ShoppingCartIcon />*/}
+        {/*  </StyledBadge>*/}
+        {/*</IconButton>*/}
         {carts && (
           <LineItemComponent
             key={carts.id}

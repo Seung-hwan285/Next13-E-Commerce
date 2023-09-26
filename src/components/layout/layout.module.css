@@ -188,14 +188,10 @@
 }
 
 .menu {
-  /*background-color: var(--color-text-primary);*/
-  /*border: var(--color-text-primary);*/
   border-radius: 4px;
   padding: 0.5rem;
-
   position: relative;
   z-index: 2;
-  /*color: var(--page-bg-color);*/
   margin-top: 0.5rem;
 }
 
@@ -203,14 +199,17 @@
   border-bottom: 1px solid #ddd;
   margin: 0 auto;
   padding: 1rem;
-
 }
+
+.list:hover{
+  opacity: 0.5;
+}
+
+
 
 .listCollection{
   padding: 1rem;
-
   border-bottom: 1px solid #ddd;
-
 }
 
 

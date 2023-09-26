@@ -64,7 +64,6 @@ const ToggleButton = styled.button`
   border: 0;
   border-radius: calc(var(--toggle-width) / 2);
   cursor: pointer;
-  background: var(--color-bg-toggle);
   transition: background 0.25s ease-in-out;
   span {
     font-size: 20px;

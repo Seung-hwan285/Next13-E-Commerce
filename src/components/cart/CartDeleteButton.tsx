@@ -31,7 +31,13 @@ export default function CartDeleteButton({ cartId, lineId }: DeleteProps) {
         <LoadingSpinner />
       ) : (
         <button className={styles.cartDeleteButton} onClick={handleDeleteClick}>
-          <Image src={crossSVG} alt={'image'} width={15} height={15} />
+          <Image
+            className={styles.cartDeleteIcon}
+            src={crossSVG}
+            alt={'image'}
+            width={15}
+            height={15}
+          />
         </button>
       )}
     </>

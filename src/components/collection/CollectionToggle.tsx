@@ -6,7 +6,7 @@ import { useAtom } from 'jotai';
 import { showState } from '@/lib/jotail/themState';
 import NavBarItems from '@/components/layout/NavBarItems';
 
-function CollectionToggle() {
+function CollectionToggle({ totalItems }: number) {
   const [show, setIsShow] = useAtom(showState);
   const wrapperRef = React.useRef<HTMLInputElement>(null as HTMLInputElement);
 
@@ -36,7 +36,7 @@ function CollectionToggle() {
           <span></span>
         </div>
 
-        <NavBarItems />
+        <NavBarItems totalItems={totalItems} />
       </div>
     </>
   );

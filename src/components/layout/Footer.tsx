@@ -38,6 +38,10 @@ function Footer() {
               <li>
                 <Link href={'/search/T-shirt'}>T-Shirt</Link>
               </li>
+
+              <li>
+                <Link href={'/cart'}>Cart</Link>
+              </li>
             </ul>
           </div>
 
