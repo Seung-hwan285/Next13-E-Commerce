@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useEffect } from 'react';
 import styles from '@/components/cart/cart.module.css';
 import CartDeleteButton from '@/components/cart/CartDeleteButton';
@@ -60,11 +61,7 @@ function Carts({ carts }: Cart) {
     <>
       <div className={styles.cartBox}>
         <h1>My Cart ({carts.total_items})</h1>
-        {/*<IconButton aria-label="cart">*/}
-        {/*  <StyledBadge badgeContent={4} color="secondary">*/}
-        {/*    <ShoppingCartIcon />*/}
-        {/*  </StyledBadge>*/}
-        {/*</IconButton>*/}
+
         {carts && (
           <LineItemComponent
             key={carts.id}

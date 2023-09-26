@@ -5,7 +5,7 @@ import ProductColumn from '@/components/product/ProductColumn';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import ProductSort from '@/components/product/ProductSort';
 
-async function ProductOptions() {
+function ProductOptions() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();

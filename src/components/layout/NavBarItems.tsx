@@ -31,7 +31,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 function NavBarItems({ totalItems }: number) {
   const { data: session } = useSession();
-  const [show, setShow] = useAtom(showState);
+  // const [show, setShow] = useAtom(showState);
 
   const setData = useSetAtom(productSSRState);
 
@@ -48,10 +48,36 @@ function NavBarItems({ totalItems }: number) {
     setData(res.data);
   }
 
+  const [show, setIsShow] = useAtom(showState);
+  const wrapperRef = React.useRef<HTMLInputElement>(null as HTMLInputElement);
+
+  const handleOutsideClick = (
+    e: DocumentEventMap['mousedown'] | React.MouseEvent
+  ) => {
+    if (
+      e.target instanceof HTMLElement &&
+      !wrapperRef?.current?.contains(e.target)
+    ) {
+      console.log(e.target);
+      setIsShow(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
   return (
     <>
-      <aside className={`${show ? styles.open : styles.close}`}>
-        <div onClick={() => setShow(!show)} className={styles.closeToggle}>
+      <aside
+        ref={wrapperRef}
+        className={`${show ? styles.open : styles.close}`}
+        onMouseDown={handleOutsideClick}
+      >
+        <div onClick={() => setIsShow(!show)} className={styles.closeToggle}>
           <span></span>
           <span></span>
           <span></span>

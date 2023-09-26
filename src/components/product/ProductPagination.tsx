@@ -15,7 +15,7 @@ function ProductPagination({ pages }: number) {
             const page = p + 1;
 
             return (
-              <>
+              <div key={p}>
                 <Link
                   href={{
                     pathname: `/${page}`,
@@ -25,7 +25,7 @@ function ProductPagination({ pages }: number) {
                     {page}
                   </li>
                 </Link>
-              </>
+              </div>
             );
           })}
       </ul>

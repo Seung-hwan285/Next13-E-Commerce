@@ -63,19 +63,17 @@ function ProductItems({ title, data }: VariantItems) {
 
   return (
     <>
-      <div>
-        <dt className={styles.productOptionTitle}>{dtElement}</dt>
-        <dd className={styles.productOption}>
-          {data &&
-            data.map(({ id, options }) => {
-              return (
-                <div key={id}>
-                  <ProductOptions id={id} options={options} />
-                </div>
-              );
-            })}
-        </dd>
-      </div>
+      <dt className={styles.productOptionTitle}>{dtElement}</dt>
+      <dd className={styles.productOption}>
+        {data &&
+          data.map(({ id, options, index }) => {
+            return (
+              <div key={index}>
+                <ProductOptions id={id} options={options} />
+              </div>
+            );
+          })}
+      </dd>
     </>
   );
 }

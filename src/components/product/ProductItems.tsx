@@ -1,9 +1,9 @@
 'use client';
 
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import styles from '@/components/product/product.module.css';
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Product } from '@/lib/types/product';
 
 function ProductItems({ items }: Product[]) {
@@ -17,7 +17,7 @@ function ProductItems({ items }: Product[]) {
         {items &&
           items.map(({ id, name, image, price }: Product) => {
             return (
-              <>
+              <div key={id}>
                 <Link href={`/product/${id}`} key={id}>
                   <h1 className={styles.title}>{name}</h1>
 
@@ -34,7 +34,7 @@ function ProductItems({ items }: Product[]) {
                     <p>{price.formatted_with_symbol}</p>
                   </div>
                 </Link>
-              </>
+              </div>
             );
           })}
       </ul>
