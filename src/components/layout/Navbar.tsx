@@ -13,6 +13,7 @@ export default async function Navbar() {
   const cookie = cookies().get('cartId')?.value;
   const carts = await CartAPI.getCartItems(cookie);
 
+  // console.log('test@@@@@@@@@', carts);
   const { total_items } = carts;
 
   return (

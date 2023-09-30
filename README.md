@@ -1,1 +1,15 @@
-![제목 없음-2023-08-08-1316 excalidraw](https://github.com/Seung-hwan285/next13-husky-action-boilerplate/assets/74364667/a89be9b8-741a-4392-8b7a-8943162fc905)
+## Next js 13 App dir
+
+
+
+- [x] Server Component
+- [x] SEO (Meta data)
+- [x] OAuth (google)
+- [x] Pagination
+- [x] Server Action
+- [x] Dark Mode
+- [x] CSS Module
+- [ ] i18n
+- [ ] E2E Test (playwright)
+
+
