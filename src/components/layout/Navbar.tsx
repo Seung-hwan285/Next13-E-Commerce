@@ -14,11 +14,11 @@ export default async function Navbar() {
   const carts = await CartAPI.getCartItems(cookie);
 
   // console.log('test@@@@@@@@@', carts);
-  const { total_items } = carts;
+  // const { total_items } = carts;
 
   return (
     <nav className={styles.nav}>
-      <CollectionToggle totalItems={total_items} />
+      {/*<CollectionToggle totalItems={total_items} />*/}
 
       <div className={styles.searchWrapper}>
         <SearchBar />
