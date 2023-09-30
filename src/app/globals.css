@@ -8,9 +8,11 @@
   --neutral-800: #333333;
   --neutral-100: #f0f0f0;
   --blue-600: #007bff;
+
+
   --gray-000: #ffffff;
   --gray-005: #f5f7ff;
-  --gray-010: #e6e9f3;
+  --gray-010: #a0a0a0;
   --gray-015: #d8dbe7;
   --gray-020: #bcc0cf;
   --gray-030: #a1a5b6;
@@ -51,6 +53,13 @@ body,
 body[data-theme='light'] {
   --page-bg-color: #fff;
   --header-text-color: #1b1d25;
+
+  --product-option-color : var(--gray-010);
+  --product-title-color : #262626;
+  --product-detail-title-color : #40BFFF;
+
+  --footer-top-br-color : #bcddfe;
+  --footer-bg-color : #bcddfe;
   /*--subheader-color: hsl(#colors[gray-040]);*/
   /*--paragraph-color: hsl(#colors[gray-090]);*/
   /*--callout-bg-color: hsl(#colors[gray-015]);*/
@@ -62,12 +71,18 @@ body[data-theme='light'] {
   --color-text-color: #27201a;
   --nav-size: 60px;
 
-  --color-bg-product-container: #000000;
+  --color-bg-product-container: none;
   --color-bg-navbar: #1e90ff;
   /*************************************************************/
 }
 
 body[data-theme='dark'] {
+  --footer-bg-color : --gray-100;
+  --product-title-color : var(--gray-110);
+
+  --product-detail-title-color: #fff;
+
+  --footer-top-br-color: none;
   --page-bg-color: var(--gray-100);
   --header-text-color: var(--gray-010);
   --page-bg-detail: var(--gray-110);
@@ -79,7 +94,7 @@ body[data-theme='dark'] {
   --color-text-secondary: #ff6b00;
   --color-bg-primary: #15232d;
   --color-bg-toggle: #a9a9a9;
-  --color-bg-product-container: #fff;
+  --color-bg-product-container: #000000;
   --color-bg-navbar: #076963;
 }
 

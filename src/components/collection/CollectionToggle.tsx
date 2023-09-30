@@ -1,32 +1,13 @@
 'use client';
-
 import React, { useEffect } from 'react';
 import styles from './collection.module.css';
 import { useAtom } from 'jotai';
 import { showState } from '@/lib/jotail/themState';
 import NavBarItems from '@/components/layout/NavBarItems';
 
-function CollectionToggle() {
+function CollectionToggle({ totalItems }: number) {
   const [show, setIsShow] = useAtom(showState);
-  const wrapperRef = React.useRef<HTMLInputElement>(null as HTMLInputElement);
 
-  const handleOutsideClick = (
-    e: DocumentEventMap['mousedown'] | React.MouseEvent
-  ) => {
-    if (
-      e.target instanceof HTMLElement &&
-      wrapperRef?.current?.contains(e.target)
-    ) {
-      setIsShow(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
   return (
     <>
       <div className={styles.toogleBox}>
@@ -36,7 +17,7 @@ function CollectionToggle() {
           <span></span>
         </div>
 
-        <NavBarItems />
+        <NavBarItems totalItems={totalItems} />
       </div>
     </>
   );

@@ -8,7 +8,7 @@ import { Product } from '@/lib/types/product';
 
 function ProductItems({ items }: Product[]) {
   if (!items) {
-    return notFound();
+    notFound();
   }
 
   return (
@@ -17,7 +17,7 @@ function ProductItems({ items }: Product[]) {
         {items &&
           items.map(({ id, name, image, price }: Product) => {
             return (
-              <>
+              <div key={id}>
                 <Link href={`/product/${id}`} key={id}>
                   <h1 className={styles.title}>{name}</h1>
 
@@ -34,7 +34,7 @@ function ProductItems({ items }: Product[]) {
                     <p>{price.formatted_with_symbol}</p>
                   </div>
                 </Link>
-              </>
+              </div>
             );
           })}
       </ul>

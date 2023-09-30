@@ -40,7 +40,6 @@ async function Products({ products }: Product[]) {
                 </div>
                 <div className={styles.detailWrapper}>
                   <p>{price.formatted_with_symbol}</p>
-                  {/*<CartButton id={id} />*/}
                 </div>
               </Link>
             </>

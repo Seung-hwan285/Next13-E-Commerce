@@ -1,6 +1,6 @@
 'use client';
 import React, { useTransition } from 'react';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import LoadingSpinner from '@/components/commons/LodingSpinner';
 import crossSVG from '/public/icons/cross.svg';
 import Image from 'next/image';
@@ -31,7 +31,13 @@ export default function CartDeleteButton({ cartId, lineId }: DeleteProps) {
         <LoadingSpinner />
       ) : (
         <button className={styles.cartDeleteButton} onClick={handleDeleteClick}>
-          <Image src={crossSVG} alt={'image'} width={15} height={15} />
+          <Image
+            className={styles.cartDeleteIcon}
+            src={crossSVG}
+            alt={'image'}
+            width={15}
+            height={15}
+          />
         </button>
       )}
     </>

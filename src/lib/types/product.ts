@@ -242,3 +242,17 @@ export type VariantItems = {
 
   sliceDescription?: string;
 };
+
+export type Option = {
+  method: string;
+  body?: string;
+  obj?: {
+    cache: boolean;
+  };
+};
+
+export type Obj = {
+  o_sortBy: string | string[] | undefined;
+  o_limit: string | string[] | undefined;
+  o_page: string | string[] | undefined;
+};

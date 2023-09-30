@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useEffect } from 'react';
 import styles from '@/components/cart/cart.module.css';
 import CartDeleteButton from '@/components/cart/CartDeleteButton';
@@ -11,7 +12,7 @@ import { Cart, Item } from '@/lib/types/cart';
 import CartOptions from '@/components/cart/CartOptions';
 
 function LineItemComponent({ item, cartId }: Item) {
-  const [productOptions, setProductOptions] = useAtom(sessionState);
+  const [, setProductOptions] = useAtom(sessionState);
 
   useEffect(() => {
     const options = getSessionStroage('product');

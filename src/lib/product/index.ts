@@ -1,14 +1,10 @@
 import { checkUrl } from '@/lib/utils/checkUrl';
-
-type optionType = {
-  method: string;
-  body?: string;
-  obj?: any;
-};
+import { getProperError } from 'next/dist/lib/is-error';
+import { Obj, Option } from '@/lib/types/product';
 
 const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
 
-const createRequestOptions = (method, obj?, body?): optionType => {
+const createRequestOptions = (method, obj?, body?): Option => {
   const bodyObjects = body ? JSON.stringify(body) : body;
 
   const isCache = obj?.cache ? 'force-cache' : 'no-store';
@@ -20,9 +16,6 @@ const createRequestOptions = (method, obj?, body?): optionType => {
       'X-Authorization': process.env.NEXT_PUBLIC_SHOP_KEY,
     },
     cache: isCache,
-    // cache: 'force-cache',
-
-    // cache: ${ob 'no-store',
     body: undefined,
   };
 
@@ -38,20 +31,22 @@ const createRequestOptions = (method, obj?, body?): optionType => {
 };
 
 const sendRequest = async (url, options) => {
-  const response = await fetch(url, options);
-
-  if (!response.ok) {
-    console.error('error');
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error('Error');
+    }
+    return await response.json();
+  } catch (err) {
+    const error = getProperError(err);
+    console.error(error);
   }
-
-  return await response.json();
 };
 
 export const ProductAPI = {
-  getAllProducts: async () => {
+  getAllProducts: async (number?: number) => {
     const options = createRequestOptions('GET');
-    // const url = `${baseUrl}/v1/products`;
-    const url = `${baseUrl}/v1/products?limit=5`;
+    const url = `${baseUrl}/v1/products?limit=${number}`;
 
     const result = await sendRequest(url, options);
 
@@ -66,15 +61,35 @@ export const ProductAPI = {
     };
   },
 
-  getNextPage: async (pageNumber: number) => {
+  getNextPage: async (obj: Obj) => {
+    const { o_page, o_limit, o_sortBy } = obj;
+
     const options = createRequestOptions('GET');
-    const url = `${baseUrl}/v1/products?limit=5&page=${pageNumber}`;
+
+    const defaultOption = {
+      limit: o_limit,
+      page: o_page,
+    };
+
+    const urlOptions = [
+      { limit: o_limit || 5, page: o_page, sortBy: 'name' },
+      { limit: o_limit || 5, page: o_page, sortBy: 'price' },
+      { limit: o_limit || 5, page: o_page, sortBy: 'updated_at' },
+    ];
+
+    const findOptions =
+      urlOptions.find((option) => option.sortBy === o_sortBy) || defaultOption;
+
+    const { limit, page, sortBy } = findOptions;
+
+    const url = limit
+      ? `${baseUrl}/v1/products?limit=${limit}&page=${page}&sortBy=${sortBy}`
+      : `${baseUrl}/v1/products?limit=5&page=${page}`;
 
     const result = await sendRequest(url, options);
 
     const { total } = result.meta.pagination;
-
-    const per_page = 5;
+    const per_page = limit ? limit : 5;
 
     return {
       result,
@@ -121,19 +136,8 @@ export const ProductAPI = {
     }
   },
 
-  getRelatedProducts: async (fileds: string | unknown) => {
-    const url = `${baseUrl}/v1/products?include=${fileds}`;
-
-    const options = createRequestOptions('GET');
-
-    return await sendRequest(url, options);
-  },
-
-  // updateProduct: async (id: string, image: string | unknown) => {
-  //   const url = `${baseUrl}/v1/products/${id}`;
-  //
-  //   const options = createRequestOptions('PUT', body, image);
-  //
-  //   return await sendRequest(url, options);
-  // },
+  // sort
+  // -name
+  // -price
+  // -created
 };

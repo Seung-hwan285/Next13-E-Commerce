@@ -1,10 +1,16 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './product.module.css';
 import { Gallery, Image } from '@/lib/types/cart';
 
-// git action test
-function ProductGallery({ title, name, price, images }: Gallery) {
+function ProductGallery({
+  id,
+  title,
+  name,
+  price,
+  images,
+  discountItems,
+}: Gallery) {
   if (!images) {
     return <></>;
   }
@@ -17,6 +23,31 @@ function ProductGallery({ title, name, price, images }: Gallery) {
     setCurrentImage(idx);
     setChange(true);
   };
+
+  const [formatedPrice, setFormatedPrice] = useState('');
+
+  const saleValue =
+    discountItems[0]?.product_ids?.includes(id) && discountItems[0].value;
+
+  const saleProduct = price.raw - saleValue;
+
+  const temp = String(saleProduct).padStart(5, '$').split('');
+
+  const number = temp[2];
+
+  const replacePrice = temp
+    .join('')
+    .replace(/(\d)(?=(?:\d{2})+(?!\d))/g, `,${number}`);
+
+  useEffect(() => {
+    if (saleValue) {
+      const str = price.formatted_with_symbol.substring(0, 6);
+
+      const temp2 = price.formatted_with_symbol.replace(str, replacePrice);
+
+      setFormatedPrice(temp2);
+    }
+  }, []);
 
   return (
     <>
@@ -50,7 +81,21 @@ function ProductGallery({ title, name, price, images }: Gallery) {
         <div className={styles.productDetails}>
           <div className={styles.productInfo}>
             <h1 className={styles.productTitle}>{name}</h1>
-            <p className={styles.productPrice}>{price}</p>
+
+            {saleValue ? (
+              <div>
+                <h1 className={styles.productSale}>{formatedPrice}</h1>
+
+                <div className={styles.originPrice}>
+                  <h1>{price.formatted_with_symbol}</h1>
+                  <span>{discountItems[0].value}</span>
+                </div>
+              </div>
+            ) : (
+              <h1 className={styles.productPrice}>
+                {price.formatted_with_symbol}
+              </h1>
+            )}
           </div>
         </div>
       </div>

@@ -19,13 +19,21 @@ export type Image = {
 };
 
 export type Gallery = {
+  id: string;
   key: string;
   title: string;
   name: string;
-  price: string;
+  price: {
+    raw: number;
+    formatted_with_symbol: string;
+  };
   images: Image[];
   description: string;
   skus: string | string[];
+  discountItems: {
+    value: number;
+    product_ids: string[] | string | unknown;
+  };
 };
 
 export type RelatedImage = {

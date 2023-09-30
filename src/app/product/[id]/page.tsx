@@ -6,6 +6,7 @@ import ProductGallery from '@/components/product/ProductGallery';
 import ProductVariantSelector from '@/components/product/ProductVariantSelector';
 import { Metadata } from 'next';
 import { Props } from '@/lib/types/product';
+import { DiscountAPI } from '@/lib/discount';
 
 export async function generateMetadata({
   params,
@@ -29,18 +30,26 @@ async function Page({ params }: { params: { id: string } }) {
 
   const asyncRelatedItem = ProductAPI.getDetail(id);
   const asyncVariantsItems = ProductAPI.getVariantItems(id);
+  const asyncDiscountItems = DiscountAPI.getDisCount();
 
-  const [relatedItem, variantItems] = await Promise.all([
+  const [relatedItem, variantItems, discountItems] = await Promise.all([
     asyncRelatedItem,
     asyncVariantsItems,
+    asyncDiscountItems,
   ]);
 
-  return <CartDetail relatedItem={relatedItem} variantItems={variantItems} />;
+  return (
+    <ProductDetail
+      relatedItem={relatedItem}
+      variantItems={variantItems}
+      discountItems={discountItems}
+    />
+  );
 }
 
 export default Page;
 
-function CartDetail({ relatedItem, variantItems }: any) {
+function ProductDetail({ relatedItem, variantItems, discountItems }: any) {
   if (!relatedItem) return notFound();
   if (!variantItems) return notFound();
 
@@ -53,16 +62,28 @@ function CartDetail({ relatedItem, variantItems }: any) {
     })
   );
 
+  const discounts = discountItems.data.map((d) => ({
+    value: d.value,
+    product_ids: d.product_ids,
+  }));
+
+  const prices = {
+    raw: relatedItem.price.raw,
+    formatted_with_symbol: relatedItem.price.formatted_with_symbol,
+  };
+
   return (
     <>
       <div style={{ position: 'relative' }}>
         {/*Client */}
         <ProductGallery
           name={relatedItem.name}
-          price={relatedItem.price.formatted_with_symbol}
+          price={prices}
           title={relatedItem.image.url}
+          id={relatedItem.id}
           description={relatedItem.description}
           images={relatedImages}
+          discountItems={discounts}
         />
 
         {/*Client */}
@@ -70,12 +91,6 @@ function CartDetail({ relatedItem, variantItems }: any) {
           description={relatedItem.description}
           variantItems={variantItems}
         />
-
-        {/*Client */}
-
-        {/*Server */}
-        {/*<ProductCategories categories={relatedItem.categories} />*/}
-        {/*<Categories relatedItem={relatedItem} />*/}
       </div>
     </>
   );
