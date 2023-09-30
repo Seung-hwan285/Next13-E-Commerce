@@ -13,12 +13,9 @@ export default async function Navbar() {
   const cookie = cookies().get('cartId')?.value;
   const carts = await CartAPI.getCartItems(cookie);
 
-  // console.log('test@@@@@@@@@', carts);
-  // const { total_items } = carts;
-
   return (
     <nav className={styles.nav}>
-      {/*<CollectionToggle totalItems={total_items} />*/}
+      <CollectionToggle totalItems={carts?.total_items} />
 
       <div className={styles.searchWrapper}>
         <SearchBar />

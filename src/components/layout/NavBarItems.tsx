@@ -139,9 +139,7 @@ function NavBarItems({ totalItems }: number) {
             </nav>
           </div>
 
-          <div className={styles.sidebarFoot}>
-            <p>2023-09-01</p>
-          </div>
+          <div className={styles.sidebarFoot}></div>
         </div>
       </aside>
     </>
