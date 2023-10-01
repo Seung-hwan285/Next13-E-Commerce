@@ -12,10 +12,13 @@ export default async function Page({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const { page } = params;
+
+  const p = page === 'globals.css' ? 1 : page;
+
   const { limit, sortBy } = searchParams;
 
   const obj = {
-    o_page: page,
+    o_page: p,
     o_limit: limit,
     o_sortBy: sortBy,
   };
@@ -24,7 +27,7 @@ export default async function Page({
 
   return (
     <>
-      <ProductItems items={result.data} />
+      <ProductItems items={result?.data} />
       <ProductPagination pages={Math.ceil(total / per_page)} />
       <ProductOptions />
     </>
