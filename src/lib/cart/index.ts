@@ -8,11 +8,6 @@ type optionType = {
 };
 const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
 
-// type CartButtonObject = {
-//   size?: string;
-//   color?: string;
-// };
-
 const createRequestOptions = (method, body): optionType => {
   const bodyObjects = body ? JSON.stringify(body) : body;
 
@@ -37,9 +32,9 @@ const createRequestOptions = (method, body): optionType => {
 const sendRequest = async (url, options) => {
   try {
     const response = await fetch(url, options);
-    if (!response.ok) {
-      throw new Error('Request Error');
-    }
+    // if (!response.ok) {
+    //   throw new Error('Request Error');
+    // }
     return await response.json();
   } catch (err) {
     const error = getProperError(err);
@@ -84,16 +79,13 @@ export const CartAPI = {
 
   getCartItems: async (cookie: string | undefined) => {
     const options = createRequestOptions('GET', '');
-
     const url = `${baseUrl}/v1/carts/${cookie}`;
-
     return await sendRequest(url, options);
   },
 
   createCart: async () => {
     const url = `${baseUrl}/v1/carts`;
     const options = createRequestOptions('GET', '');
-
     return await sendRequest(url, options);
   },
 };

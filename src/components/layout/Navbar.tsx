@@ -11,7 +11,6 @@ import { CartAPI } from '@/lib/cart';
 
 export default async function Navbar() {
   const cookie = cookies().get('cartId')?.value;
-
   const carts = await CartAPI.getCartItems(cookie);
 
   return (
