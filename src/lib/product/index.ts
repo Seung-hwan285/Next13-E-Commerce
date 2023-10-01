@@ -50,7 +50,8 @@ export const ProductAPI = {
 
     const result = await sendRequest(url, options);
 
-    const { total } = result.meta.pagination;
+    // eslint-disable-next-line no-unsafe-optional-chaining
+    const { total } = result?.meta?.pagination;
 
     const per_page = 5;
 
@@ -61,7 +62,11 @@ export const ProductAPI = {
     };
   },
 
-  getNextPage: async (obj: Obj) => {
+  getNextPage: async (obj?: {
+    o_sortBy: string | string[] | undefined;
+    o_page: number | string;
+    o_limit: string | string[] | undefined;
+  }) => {
     const { o_page, o_limit, o_sortBy } = obj;
 
     const options = createRequestOptions('GET');
@@ -88,7 +93,13 @@ export const ProductAPI = {
 
     const result = await sendRequest(url, options);
 
-    const { total } = result.meta.pagination;
+    if (!result) {
+      return { err: 'Not found', status: 401 };
+    }
+
+    // eslint-disable-next-line no-unsafe-optional-chaining
+    const { total } = result?.meta?.pagination;
+
     const per_page = limit ? limit : 5;
 
     return {
@@ -135,9 +146,4 @@ export const ProductAPI = {
       return await sendRequest(url, options);
     }
   },
-
-  // sort
-  // -name
-  // -price
-  // -created
 };

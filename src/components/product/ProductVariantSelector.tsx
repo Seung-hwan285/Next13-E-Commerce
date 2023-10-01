@@ -106,9 +106,7 @@ function ProductVariantSelector({ description, variantItems }: Variant) {
           <ProductItems title={'Size'} data={sizeData} />
           <ProductItems title={'Color'} data={colorData} />
 
-          <div>
-            <CartButton />
-          </div>
+          <CartButton />
         </dl>
       )}
     </>

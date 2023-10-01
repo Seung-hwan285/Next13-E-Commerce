@@ -34,6 +34,8 @@
 }
 
 .productContainer {
+  border: 1px solid var(--page-br-detail);
+
   display: flex;
   gap: 20px 5%;
   width: 97%;
@@ -42,9 +44,9 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 30px 20px;
-  margin: 0 auto;
-  margin-top: 20px;
-  border-radius: 1%;
+  margin: 20px auto;
+  border-radius: 10px;
+
 
 
 }
@@ -208,10 +210,11 @@
 
 .productSelectorContainer {
   width: 30%;
-  height: 40%;
+  top:15%;
   position: absolute;
   left: 60%;
-  bottom: 40%;
+  height: 18%;
+  bottom: 25%;
 }
 
 .productOption {
@@ -226,7 +229,7 @@
 }
 
 .productBox{
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .productOptionTitle {
@@ -331,4 +334,50 @@
 .columnOptions{
   float: right;
   transform: translate(-270px,-30px);
+}
+
+
+
+.relatedProduct {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.relatedBox{
+  border: 1px solid var(--page-br-detail);
+  margin: 12px 22px;
+  border-radius: 10px;
+  background-color: var(--page-bg-detail);
+
+}
+
+.relatedTitle{
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 15px 50px;
+}
+
+
+.relatedProductLi{
+  margin: 2rem 2rem;
+}
+
+.relatedProductLi img{
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.relatedProductLi h1{
+  margin-top: 1rem;
+}
+.relatedProductLi h2{
+  color: #9E9E9E;
+}
+
+.relatedOptionWrapper{
+  margin-left: 0.5rem;
 }

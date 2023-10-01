@@ -18,7 +18,6 @@ export const asyncData = atom(null, async (set, get) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/v1/categories`);
 
   const result = await response.json();
-  console.log(result);
 
   return result;
 });
@@ -66,18 +65,18 @@ export type OptionAtom = OptionalUtils<{
 export type Temp = {
   options: OptionAtom;
 };
-
-export const productData = atom((get) => {
-  const id = get(idState);
-  console.log(id);
-
-  const pathname = get(pathnameState);
-
-  // const pathname = get(locationAtom);
-
-  if (!id) {
-    return ProductAPI.getAllProducts();
-  }
-
-  return ProductAPI.getSearchProducts(id);
-});
+//
+// export const productData = atom((get) => {
+//   const id = get(idState);
+//   console.log(id);
+//
+//   const pathname = get(pathnameState);
+//
+//   // const pathname = get(locationAtom);
+//
+//   if (!id) {
+//     return ProductAPI.getAllProducts();
+//   }
+//
+//   return ProductAPI.getSearchProducts(id);
+// });

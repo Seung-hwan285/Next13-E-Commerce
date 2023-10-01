@@ -26,8 +26,9 @@ function ProductGallery({
 
   const [formatedPrice, setFormatedPrice] = useState('');
 
-  const saleValue =
-    discountItems[0]?.product_ids?.includes(id) && discountItems[0].value;
+  const saleValue = discountItems[0]?.product_ids?.includes(id)
+    ? discountItems[0].value
+    : null;
 
   const saleProduct = price.raw - saleValue;
 

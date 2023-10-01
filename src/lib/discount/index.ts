@@ -34,7 +34,7 @@ const sendRequest = async (url, options) => {
   try {
     const response = await fetch(url, options);
     if (!response.ok) {
-      throw new Error('Error');
+      throw new Error('Request Error');
     }
     return await response.json();
   } catch (err) {
