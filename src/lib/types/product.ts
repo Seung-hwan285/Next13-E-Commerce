@@ -256,8 +256,3 @@ export type Obj = {
   o_limit: string | string[] | undefined;
   o_page: string | string[] | undefined;
 };
-
-type Related = {
-  image: Image;
-  name: string;
-};

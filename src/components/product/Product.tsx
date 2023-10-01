@@ -5,7 +5,6 @@ import { Metadata } from 'next';
 import ProductItems from '@/components/product/ProductItems';
 import ProductPagination from '@/components/product/ProductPagination';
 import ProductOptions from '@/components/product/ProductOptions';
-import ProductRelated from '@/components/product/ProductRelated';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {};
@@ -17,7 +16,6 @@ async function Product() {
   return (
     <>
       <ProductItems items={result.data} />
-
       <ProductPagination pages={Math.ceil(total / per_page)} />
       <ProductOptions />
     </>
