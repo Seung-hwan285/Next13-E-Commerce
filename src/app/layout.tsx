@@ -22,7 +22,6 @@ export default function RootLayout({
       <NextAuthProvider>
         <body className={inter.className}>
           <Cookie />
-
           <Navbar />
           <main>{children}</main>
           <Footer />

@@ -9,10 +9,7 @@ import { Props } from '@/lib/types/product';
 import { DiscountAPI } from '@/lib/discount';
 import ProductRelated from '@/components/product/ProductRelated';
 
-export async function generateMetadata({
-  params,
-}: Props): // parent: ResolvedMetadata
-Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;
 
   const data = await ProductAPI.getDetail(id);
@@ -22,7 +19,6 @@ Promise<Metadata> {
   return {
     title: data.name,
     description: data.description || '',
-    // ima
   };
 }
 

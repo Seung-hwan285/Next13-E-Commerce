@@ -50,7 +50,8 @@ export const ProductAPI = {
 
     const result = await sendRequest(url, options);
 
-    const { total } = result.meta.pagination;
+    // eslint-disable-next-line no-unsafe-optional-chaining
+    const { total } = result?.meta?.pagination;
 
     const per_page = 5;
 
