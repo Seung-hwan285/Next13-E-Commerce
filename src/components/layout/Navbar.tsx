@@ -10,7 +10,13 @@ import { cookies } from 'next/headers';
 import { CartAPI } from '@/lib/cart';
 
 export default async function Navbar() {
+  // 딜레이 걸리고 있음
   const cookie = cookies().get('cartId')?.value;
+
+  if (!cookie) {
+    return 'Error';
+  }
+
   const carts = await CartAPI.getCartItems(cookie);
 
   return (

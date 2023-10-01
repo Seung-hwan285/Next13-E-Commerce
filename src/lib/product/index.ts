@@ -92,8 +92,6 @@ export const ProductAPI = {
 
     const result = await sendRequest(url, options);
 
-    console.log(result);
-
     if (!result) {
       return { err: 'Not found', status: 401 };
     }
