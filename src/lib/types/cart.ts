@@ -89,4 +89,5 @@ export type Related = {
   image?: Image;
   id: string;
   name: string;
+  price: PriceType;
 };

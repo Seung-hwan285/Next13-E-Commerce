@@ -115,9 +115,8 @@ function ProductDetail({
           description={relatedItem.description}
           variantItems={variantItems}
         />
-
-        <ProductRelated productItems={productItems} />
         {/*Client */}
+        <ProductRelated productItems={productItems} />
       </div>
     </>
   );

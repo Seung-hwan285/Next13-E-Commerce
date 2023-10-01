@@ -58,6 +58,9 @@ body[data-theme='light'] {
   --product-title-color : #262626;
   --product-detail-title-color : #40BFFF;
 
+
+  --page-br-detail :var(--gray-040);
+
   --footer-top-br-color : #bcddfe;
   --footer-bg-color : #bcddfe;
   /*--subheader-color: hsl(#colors[gray-040]);*/
@@ -86,6 +89,9 @@ body[data-theme='dark'] {
   --page-bg-color: var(--gray-100);
   --header-text-color: var(--gray-010);
   --page-bg-detail: var(--gray-110);
+
+
+  --page-br-detail :var(--gray-110);
 
   /*--subheader-color: hsl(0, 0%, 60%);*/
   /*--paragraph-color: hsl(0, 0%, 80%);*/
@@ -118,9 +124,10 @@ button[data-set='PINK']{
 button[data-set='BLACK']{
   background-color: black;
   border: 1px solid  var(--color-text-primary);
-
-
 }
+
+
+
 
 body {
   background: var(--page-bg-color);
