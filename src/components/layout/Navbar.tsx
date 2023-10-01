@@ -23,9 +23,7 @@ export default async function Navbar() {
       </div>
 
       <div className={styles.navbarWrapper}>
-        <div>
-          <ThemeToggle />
-        </div>
+        <ThemeToggle />
       </div>
     </nav>
   );

@@ -80,14 +80,13 @@ type Items = {
   variant?: string;
 };
 
-export type Temp = {
-  product_id: string;
-  key: string;
-  option: string;
-  variant_id: string;
-};
-
 export type Item = {
   item: Items[];
   cartId: string;
+};
+
+export type Related = {
+  image?: Image;
+  id: string;
+  name: string;
 };

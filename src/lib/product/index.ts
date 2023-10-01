@@ -135,9 +135,4 @@ export const ProductAPI = {
       return await sendRequest(url, options);
     }
   },
-
-  // sort
-  // -name
-  // -price
-  // -created
 };
