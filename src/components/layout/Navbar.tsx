@@ -10,27 +10,37 @@ import { cookies } from 'next/headers';
 import { CartAPI } from '@/lib/cart';
 
 export default async function Navbar() {
-  // 딜레이 걸리고 있음
   const cookie = cookies().get('cartId')?.value;
-
-  if (!cookie) {
-    return 'Error';
-  }
-
   const carts = await CartAPI.getCartItems(cookie);
 
   return (
-    <nav className={styles.nav}>
-      <CollectionToggle totalItems={carts?.total_items} />
+    <>
+      {!cookie ? (
+        <nav className={styles.nav}>
+          <CollectionToggle />
+          <div className={styles.searchWrapper}>
+            <SearchBar />
+            <SearchList />
+          </div>
 
-      <div className={styles.searchWrapper}>
-        <SearchBar />
-        <SearchList />
-      </div>
+          <div className={styles.navbarWrapper}>
+            <ThemeToggle />
+          </div>
+        </nav>
+      ) : (
+        <nav className={styles.nav}>
+          <CollectionToggle totalItems={carts?.total_items} />
 
-      <div className={styles.navbarWrapper}>
-        <ThemeToggle />
-      </div>
-    </nav>
+          <div className={styles.searchWrapper}>
+            <SearchBar />
+            <SearchList />
+          </div>
+
+          <div className={styles.navbarWrapper}>
+            <ThemeToggle />
+          </div>
+        </nav>
+      )}
+    </>
   );
 }

@@ -82,7 +82,7 @@ export const CartAPI = {
     return await sendRequest(url, options);
   },
 
-  getCartItems: async (cookie: string) => {
+  getCartItems: async (cookie: string | undefined) => {
     const options = createRequestOptions('GET', '');
 
     const url = `${baseUrl}/v1/carts/${cookie}`;

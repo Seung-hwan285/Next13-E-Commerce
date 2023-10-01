@@ -21,10 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <NextAuthProvider>
         <body className={inter.className}>
+          <Cookie />
+
           <Navbar />
           <main>{children}</main>
           <Footer />
-          <Cookie />
         </body>
       </NextAuthProvider>
     </html>

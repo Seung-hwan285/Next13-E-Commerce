@@ -5,7 +5,11 @@ import { useAtom } from 'jotai';
 import { showState } from '@/lib/jotail/themState';
 import NavBarItems from '@/components/layout/NavBarItems';
 
-function CollectionToggle({ totalItems }: number) {
+type Toggle = {
+  totalItems?: number;
+};
+
+function CollectionToggle({ totalItems }: Toggle) {
   const [show, setIsShow] = useAtom(showState);
 
   return (
