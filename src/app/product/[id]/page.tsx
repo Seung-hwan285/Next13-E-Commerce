@@ -91,6 +91,8 @@ function ProductDetail({
     product_ids: d.product_ids,
   }));
 
+  console.log(discountItems);
+
   const prices = {
     raw: relatedItem.price.raw,
     formatted_with_symbol: relatedItem.price.formatted_with_symbol,
