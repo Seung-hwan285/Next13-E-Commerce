@@ -32,9 +32,9 @@ const createRequestOptions = (method, body): optionType => {
 const sendRequest = async (url, options) => {
   try {
     const response = await fetch(url, options);
-    // if (!response.ok) {
-    //   throw new Error('Request Error');
-    // }
+    if (!response.ok) {
+      throw new Error('Request Error');
+    }
     return await response.json();
   } catch (err) {
     const error = getProperError(err);
