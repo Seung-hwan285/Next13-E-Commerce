@@ -14,6 +14,9 @@ const inter = Inter({
   display: 'swap',
 });
 
+// Error: Invariant: Method expects to have requestAsyncStorage, none available
+// export const runtime = 'edge'; // 'nodejs' (default) | 'edge'
+
 export const metadata: Metadata = {
   title: 'Shop',
   description: 'E-Commerce',

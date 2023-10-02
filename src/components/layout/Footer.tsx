@@ -6,6 +6,7 @@ import Icon from '/public/free-icon-font-cart-minus-9795335.svg';
 import Image from 'next/image';
 import { Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/content/dictionary';
+import FooterOptions from '@/components/layout/FooterOptions';
 
 async function Footer({ lang }: { lang: Locale }) {
   const { page } = await getDictionary(lang);
@@ -149,13 +150,7 @@ async function Footer({ lang }: { lang: Locale }) {
             <p> © 2023 Ecommerce theme by www.shop.com</p>
           </div>
 
-          <div className={styles.footerCountry}>
-            <select>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </select>
-          </div>
+          <FooterOptions />
         </div>
       </div>
     </footer>
