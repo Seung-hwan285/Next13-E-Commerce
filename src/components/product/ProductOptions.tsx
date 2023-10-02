@@ -13,7 +13,7 @@ function ProductOptions() {
   const optionSearchParams = new URLSearchParams(searchParams.toString());
 
   useEffect(() => {
-    if (pathname === '/') {
+    if (pathname === '/en' || pathname === '/kr') {
       optionSearchParams.set('', '/1');
     }
 

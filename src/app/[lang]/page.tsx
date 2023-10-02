@@ -4,6 +4,7 @@ import React from 'react';
 import Product from '@/components/product/Product';
 import { Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/content/dictionary';
+import { Suspense } from 'react';
 
 export default async function Home({
   params: { lang },
@@ -13,8 +14,8 @@ export default async function Home({
   const { page } = await getDictionary(lang);
 
   return (
-    <div>
+    <Suspense>
       <Product page={page} />
-    </div>
+    </Suspense>
   );
 }

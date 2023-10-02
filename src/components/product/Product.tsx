@@ -8,7 +8,6 @@ import { Locale } from '@/i18n.config';
 async function Product({ page: { lang } }: { params: { lang: Locale } }) {
   const { result, total, per_page } = await ProductAPI.getAllProducts(5);
 
-  console.log(lang);
   return (
     <>
       <ProductItems items={result.data} />

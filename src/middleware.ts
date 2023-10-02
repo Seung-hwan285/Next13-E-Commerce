@@ -14,23 +14,34 @@ function getLocale(request: NextRequest): string | undefined {
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
   const locale = matchLocale(languages, locales, i18n.defaultLocale);
+
   return locale;
 }
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  // locale : en , kr
   const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/1`) && pathname !== `/${locale}`
+    (locale) => !pathname.startsWith(`/${locale}`) && pathname !== `/${locale}`
   );
 
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
+
+    if (pathname.length > 1) {
+      return NextResponse.redirect(
+        new URL(
+          `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
+          request.url
+        )
+      );
+    }
+
     return NextResponse.redirect(
       new URL(
-        `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
+        `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}/1`,
         request.url
       )
     );
