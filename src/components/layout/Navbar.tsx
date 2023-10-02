@@ -8,10 +8,13 @@ import CollectionToggle from '@/components/collection/CollectionToggle';
 import SearchList from '@/components/search/SearchList';
 import { cookies } from 'next/headers';
 import { CartAPI } from '@/lib/cart';
+import { Locale } from '@/i18n.config';
 
-export default async function Navbar() {
+export default async function Navbar({ lang }: { lang: Locale }) {
   const cookie = cookies().get('cartId')?.value;
   const carts = await CartAPI.getCartItems(cookie);
+
+  console.log(lang);
 
   return (
     <>

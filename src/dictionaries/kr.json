@@ -1,0 +1,22 @@
+{
+  "page": {
+    "home": {
+      "title": "Welcome to NextJs i18n",
+      "description": "Internationalization in NextJs 13 App router"
+    },
+    "about": {
+      "title": "About Us",
+      "description": "This is the about page"
+    },
+    "footer" : {
+      "title" : "매장",
+      "footerAbout" : {
+        "title" : "메뉴",
+        "Home" : "홈",
+        "Cat" : "고양이",
+        "Tshirt" : "티셔츠",
+        "Cart" : "장바구니"
+      }
+    }
+  }
+}

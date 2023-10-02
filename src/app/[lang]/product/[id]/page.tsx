@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const data = await ProductAPI.getDetail(id);
 
-  if (!data) return notFound();
+  if (!data) notFound();
 
   return {
     title: data.name,
@@ -30,7 +30,7 @@ async function Page({ params }: { params: { id: string } }) {
   const asyncDiscountItems = DiscountAPI.getDisCount();
   const asyncAllProducts = ProductAPI.getAllProducts();
 
-  const [relatedItem, variantItems, discountItems, productItems] =
+  const [relatedItems, variantItems, discountItems, productItems] =
     await Promise.all([
       asyncRelatedItem,
       asyncVariantsItems,
@@ -54,7 +54,7 @@ async function Page({ params }: { params: { id: string } }) {
 
   return (
     <ProductDetail
-      relatedItem={relatedItem}
+      relatedItems={relatedItems}
       variantItems={variantItems}
       discountItems={discountItems}
       productItems={findItems}
@@ -65,15 +65,15 @@ async function Page({ params }: { params: { id: string } }) {
 export default Page;
 
 function ProductDetail({
-  relatedItem,
+  relatedItems,
   variantItems,
   discountItems,
   productItems,
 }: any) {
-  if (!relatedItem) return notFound();
-  if (!variantItems) return notFound();
+  if (!relatedItems) notFound();
+  if (!variantItems) notFound();
 
-  const relatedImages = relatedItem?.related_products?.map(
+  const relatedImages = relatedItems?.related_products?.map(
     (rel: RelatedImage) => ({
       id: rel.id,
       images: rel.image.url,
@@ -88,8 +88,8 @@ function ProductDetail({
   }));
 
   const prices = {
-    raw: relatedItem.price.raw,
-    formatted_with_symbol: relatedItem.price.formatted_with_symbol,
+    raw: relatedItems.price.raw,
+    formatted_with_symbol: relatedItems.price.formatted_with_symbol,
   };
 
   return (
@@ -97,18 +97,18 @@ function ProductDetail({
       <div style={{ position: 'relative' }}>
         {/*Client */}
         <ProductGallery
-          name={relatedItem.name}
+          name={relatedItems.name}
           price={prices}
-          title={relatedItem.image.url}
-          id={relatedItem.id}
-          description={relatedItem.description}
+          title={relatedItems.image.url}
+          id={relatedItems.id}
+          description={relatedItems.description}
           images={relatedImages}
           discountItems={discounts}
         />
 
         {/*Client */}
         <ProductVariantSelector
-          description={relatedItem.description}
+          description={relatedItems.description}
           variantItems={variantItems}
         />
         {/*Client */}

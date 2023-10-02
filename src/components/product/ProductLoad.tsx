@@ -1,7 +1,7 @@
 import { useInView } from 'react-intersection-observer';
 import React, { useEffect, useState } from 'react';
 import { fetchProduct } from '@/components/product/action';
-import styles from '@/app/page.module.css';
+import styles from '@/app/[lang]/page.module.css';
 import LoadingSpinner from '@/components/commons/LodingSpinner';
 import ProductItems from '@/components/product/ProductItems';
 

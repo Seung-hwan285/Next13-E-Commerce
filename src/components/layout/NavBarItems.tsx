@@ -17,7 +17,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import HomeIcon from '@mui/icons-material/Home';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import CollectionsIcon from '@mui/icons-material/Collections';
-import { useRouter } from 'next/navigation';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -58,7 +57,6 @@ function NavBarItems({ totalItems }: number) {
       e.target instanceof HTMLElement &&
       !wrapperRef?.current?.contains(e.target)
     ) {
-      console.log(e.target);
       setIsShow(false);
     }
   };
