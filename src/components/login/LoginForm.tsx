@@ -6,6 +6,9 @@ import { useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
 
 import GoogleIcon from '/public/icons/icons8-google.svg';
+
+import KR from '/public/icons/free-icon-south-korea-11699663.svg';
+
 import Image from 'next/image';
 import { themState } from '@/lib/jotail/themState';
 import { useAtom } from 'jotai';

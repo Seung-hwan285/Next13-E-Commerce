@@ -1,12 +1,17 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
 import styles from '@/app/[lang]/page.module.css';
+import KR from '/public/icons/kr.svg';
+import US from '/public/icons/us.svg';
+import Link from 'next/link';
+import Image from 'next/image';
 
 function FooterOptions() {
   const pathname = usePathname();
 
+  // Error Fix : hydration error
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -17,21 +22,39 @@ function FooterOptions() {
     return <></>;
   }
 
-  // const redirectPathName = (location: string) => {};
+  const CONFIG = [
+    {
+      icon: KR,
+      value: 'kr',
+    },
+    {
+      icon: US,
+      value: 'en',
+    },
+  ];
 
-  const optionCONFIG = ['en', 'kr'];
+  const redirectPathName = (location: string) => {
+    if (!pathname) redirect('/');
+
+    const segemtns = pathname.split('/');
+
+    segemtns[1] = location;
+    return segemtns.join('/');
+  };
 
   return (
-    <div className={styles.footerCountry}>
-      <select>
-        {optionCONFIG.map((option: string, index: number) => {
+    <div className={styles.footerBottom}>
+      <ul style={{ width: '200px' }}>
+        {CONFIG.map(({ icon, value, index }) => {
           return (
-            <div key={index}>
-              <option value={option}>{option}</option>
-            </div>
+            <Link key={index} value={value} href={redirectPathName(value)}>
+              <li>
+                <Image src={icon} alt={'icon'} />
+              </li>
+            </Link>
           );
         })}
-      </select>
+      </ul>
     </div>
   );
 }
