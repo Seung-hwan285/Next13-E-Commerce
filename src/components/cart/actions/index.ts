@@ -24,13 +24,10 @@ export const deleteCartItem = async (cartId: string, lineId: string) => {
 
   try {
     await CartAPI.deleteCartItem(cartId, lineId);
-    redirect('/cart');
   } catch (err) {
     return 'error';
   }
 };
-
-// cartId , lineId , quantity
 
 export const putLikeButton = async (data) => {
   const { cartId, lineId, quantity } = data;

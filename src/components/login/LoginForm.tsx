@@ -2,12 +2,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useForm } from 'react-hook-form';
-
 import { signIn } from 'next-auth/react';
-
 import GoogleIcon from '/public/icons/icons8-google.svg';
-
-import KR from '/public/icons/free-icon-south-korea-11699663.svg';
 
 import Image from 'next/image';
 import { themState } from '@/lib/jotail/themState';
@@ -28,8 +24,8 @@ function LoginForm() {
 
   const handleLoginClick = () => {
     signIn('google', {
-      callbackUrl: `${process.env.NEXT_PUBLIC_URL}`,
-      // callbackUrl: 'https://shop-seung-hwan285.vercel.app/',
+      // callbackUrl: `${process.env.NEXT_PUBLIC_HOST}`,
+      callbackUrl: 'https://shop-seung-hwan285.vercel.app/',
     });
   };
 
@@ -37,36 +33,7 @@ function LoginForm() {
     <>
       <LoginFormBox activeThem={activeThem} onSubmit={handleSubmit(onSubmit)}>
         <LoginContainer>
-          {/*<LoginUserNameWrapper>*/}
-          {/*  <Label for="username">Username</Label>*/}
-          {/*  <Input*/}
-          {/*    {...register('username', {*/}
-          {/*      validate: (value) => validateKorenOnEnglish(value),*/}
-          {/*    })}*/}
-          {/*    name="username"*/}
-          {/*    placeholder="username"*/}
-          {/*  />*/}
-          {/*  {errors?.username?.message ? (*/}
-          {/*    <div>{errors?.username?.message}</div>*/}
-          {/*  ) : null}*/}
-          {/*</LoginUserNameWrapper>*/}
-          {/*<PasswordWrapper>*/}
-          {/*  <Label for="password">Password</Label>*/}
-          {/*  <Input*/}
-          {/*    {...register('password', {*/}
-          {/*      validate: (value) => validatePassword(value),*/}
-          {/*    })}*/}
-          {/*    name="password"*/}
-          {/*    placeholder="password"*/}
-          {/*  />*/}
-          {/*  {errors?.password?.message ? (*/}
-          {/*    <div>{errors?.password?.message}</div>*/}
-          {/*  ) : null}*/}
-          {/*</PasswordWrapper>*/}
-
           <ButtonWrapper>
-            {/*<Button variant="login">Login</Button>*/}
-            {/*<Button variant="register">Register</Button>*/}
             <ButtonGoogle type="button" onClick={handleLoginClick}>
               <Image src={GoogleIcon} height={32} width={22} alt="image" />
               Google Login

@@ -17,6 +17,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import HomeIcon from '@mui/icons-material/Home';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import CollectionsIcon from '@mui/icons-material/Collections';
+import NavbarAuthIcon from '@/components/layout/NavbarAuthIcon';
+import PersonOffIcon from '@mui/icons-material/PersonOff';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -102,7 +104,11 @@ function NavBarItems({ totalItems }: number) {
                       <AssignmentIndIcon color="primary" />
                     </Link>
                   ) : (
-                    <button onClick={handleLogoutClick}>Logout</button>
+                    <PersonOffIcon
+                      color="primary"
+                      onClick={handleLogoutClick}
+                    />
+                    // <button onClick={handleLogoutClick}>Logout</button>
                   )}
                 </li>
                 <li className={styles.list}>
@@ -137,7 +143,9 @@ function NavBarItems({ totalItems }: number) {
             </nav>
           </div>
 
-          <div className={styles.sidebarFoot}></div>
+          <div className={styles.sidebarFooter}>
+            {!!session && <NavbarAuthIcon />}
+          </div>
         </div>
       </aside>
     </>

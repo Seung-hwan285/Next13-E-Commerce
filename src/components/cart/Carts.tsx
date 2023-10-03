@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '@/components/cart/cart.module.css';
 import CartDeleteButton from '@/components/cart/CartDeleteButton';
 import CartcCountButton from '@/components/cart/CartcCountButton';

@@ -24,7 +24,7 @@ function CartButton() {
     const size =
       (queryString.length === 2 && queryString[1].split('=')[1]) || '';
 
-    const id = pathname.split('/')[2];
+    const id = pathname.split('/')[3];
 
     const data = {
       product_id: id,

@@ -24,10 +24,12 @@ function FooterOptions() {
 
   const CONFIG = [
     {
+      index: 1,
       icon: KR,
       value: 'kr',
     },
     {
+      index: 2,
       icon: US,
       value: 'en',
     },
@@ -47,11 +49,11 @@ function FooterOptions() {
       <ul style={{ width: '200px' }}>
         {CONFIG.map(({ icon, value, index }) => {
           return (
-            <Link key={index} value={value} href={redirectPathName(value)}>
-              <li>
+            <li key={index}>
+              <Link value={value} href={redirectPathName(value)}>
                 <Image src={icon} alt={'icon'} />
-              </li>
-            </Link>
+              </Link>
+            </li>
           );
         })}
       </ul>

@@ -40,13 +40,22 @@ function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
   const handlePlusClick = async (amount: number) => {
     addOptimisticCount(optimistickCount.count + amount);
 
-    const data = {
+    const objData = {
       quantity: optimistickCount.count + amount,
       cartId: cartId,
       lineId: lineId,
     };
 
-    startTransition(() => {
+    startTransition(async () => {
+      const response = await fetch(
+        `/api/carts?cartId=${objData.cartId}&lineId=${objData.lineId}&quantity=${objData.quantity}`,
+        {
+          method: 'PUT',
+        }
+      );
+
+      const data = await response.json();
+
       putLikeButton(data);
       router.refresh();
     });
@@ -55,13 +64,22 @@ function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
   const handleMinusClick = async (amount: number) => {
     addOptimisticCount(optimistickCount.count - amount);
 
-    const data = {
+    const objData = {
       quantity: optimistickCount.count - amount,
       cartId: cartId,
       lineId: lineId,
     };
 
-    startTransition(() => {
+    startTransition(async () => {
+      const response = await fetch(
+        `/api/carts?cartId=${objData.cartId}&lineId=${objData.lineId}&quantity=${objData.quantity}`,
+        {
+          method: 'PUT',
+        }
+      );
+
+      const data = await response.json();
+
       putLikeButton(data);
       router.refresh();
     });

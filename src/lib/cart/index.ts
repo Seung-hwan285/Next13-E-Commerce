@@ -11,6 +11,7 @@ const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
 const createRequestOptions = (method, body): optionType => {
   const bodyObjects = body ? JSON.stringify(body) : body;
 
+  console.log(method);
   const requestOptions = {
     method,
     headers: {
@@ -46,7 +47,6 @@ export const CartAPI = {
   deleteCartItem: async (cartId, lineId) => {
     const url = `${baseUrl}/v1/carts/${cartId}/items/${lineId}`;
     const options = createRequestOptions('DELETE', '');
-
     return await sendRequest(url, options);
   },
 
