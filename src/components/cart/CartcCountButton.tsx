@@ -55,8 +55,11 @@ function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
       );
 
       const data = await response.json();
+      if (data.error) {
+        alert('error');
+        return;
+      }
 
-      putLikeButton(data);
       router.refresh();
     });
   };
@@ -80,7 +83,11 @@ function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
 
       const data = await response.json();
 
-      putLikeButton(data);
+      if (data.error) {
+        alert('error');
+        return;
+      }
+
       router.refresh();
     });
   };
