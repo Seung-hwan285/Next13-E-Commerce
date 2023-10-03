@@ -21,17 +21,12 @@ async function Footer({ lang }: { lang: Locale }) {
               <Image src={Icon} height={52} width={100} alt="shop" />
             </div>
 
-            <p>
-              Ipsum is simply dummy text of the printing and typesetting
-              {/* eslint-disable-next-line react/no-unescaped-entities */}
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever.Since the 1500s, when an unknown printer.
-            </p>
+            <p>{page.footer.description}</p>
           </div>
 
           <div className={styles.footerContainer}>
             <h1 className={styles.footerWrapper}>
-              {page.footer.footerAbout.title}
+              {page.footer.footerAbout.Title}
             </h1>
             <ul className={styles.footerUl}>
               <li>
@@ -55,92 +50,80 @@ async function Footer({ lang }: { lang: Locale }) {
           </div>
 
           <div className={styles.footerContainer}>
-            <h1 className={styles.footerWrapper}>Contact Us</h1>
+            <h1 className={styles.footerWrapper}>
+              {page.footer.contact.Title}
+            </h1>
             <ul className={styles.footerUl}>
               <li>
-                <span>email</span>
+                <span>{page.footer.contact.Email}</span>
               </li>
             </ul>
           </div>
 
           <div className={styles.footerContainer}>
-            <h1 className={styles.footerWrapper}>Our Offers</h1>
+            <h1 className={styles.footerWrapper}>{page.footer.offers.Title}</h1>
             <ul className={styles.footerUl}>
               <li>
-                <span>About Us</span>
+                <span>{page.footer.offers.Information}</span>
               </li>
 
               <li>
-                <span>Information</span>
+                <span>{page.footer.offers.Policy}</span>
               </li>
 
               <li>
-                <span>Privacy Policy</span>
-              </li>
-
-              <li>
-                <span>Terms & Conditions</span>
+                <span>{page.footer.offers.Terms}</span>
               </li>
             </ul>
           </div>
 
           <div className={styles.footerContainer}>
-            <h1 className={styles.footerWrapper}>Our Offers</h1>
+            <h1 className={styles.footerWrapper}>{page.footer.offers.Title}</h1>
             <ul className={styles.footerUl}>
               <li>
-                <span>About Us</span>
+                <span>{page.footer.offers.Information}</span>
               </li>
 
               <li>
-                <span>Information</span>
+                <span>{page.footer.offers.Policy}</span>
               </li>
 
               <li>
-                <span>Privacy Policy</span>
-              </li>
-
-              <li>
-                <span>Terms & Conditions</span>
+                <span>{page.footer.offers.Terms}</span>
               </li>
             </ul>
           </div>
           <div className={styles.footerContainer}>
-            <h1 className={styles.footerWrapper}>Our Offers</h1>
+            <h1 className={styles.footerWrapper}>{page.footer.offers.Title}</h1>
             <ul className={styles.footerUl}>
               <li>
-                <span>About Us</span>
+                <span>{page.footer.offers.Information}</span>
               </li>
 
               <li>
-                <span>Information</span>
+                <span>{page.footer.offers.Policy}</span>
               </li>
 
               <li>
-                <span>Privacy Policy</span>
-              </li>
-
-              <li>
-                <span>Terms & Conditions</span>
+                <span>{page.footer.offers.Terms}</span>
               </li>
             </ul>
           </div>
           <div className={styles.footerContainer}>
-            <h1 className={styles.footerWrapper}>Service</h1>
+            <h1 className={styles.footerWrapper}>
+              {page.footer.service.Title}
+            </h1>
             <ul className={styles.footerUl}>
               <li>
-                <span>About Us</span>
+                <span>{page.footer.offers.Information}</span>
               </li>
 
               <li>
-                <span>Information</span>
+                <span>{page.footer.offers.Policy}</span>
               </li>
 
               <li>
-                <span>Privacy Policy</span>
-              </li>
-
-              <li>
-                <span>Terms & Conditions</span>
+                <span>{page.footer.offers.Terms}</span>
               </li>
             </ul>
           </div>

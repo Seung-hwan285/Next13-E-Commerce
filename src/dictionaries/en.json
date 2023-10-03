@@ -10,12 +10,26 @@
     },
     "footer" : {
       "title": "Shop",
+      "description" : "Ipsum is simply dummy text of the printing and typesetting\n  industry. Lorem Ipsum has been the industry's standard dummy text\n              ever.Since the 1500s, when an unknown printer.",
       "footerAbout" : {
-        "title" : "About",
+        "Title" : "About",
         "Home" : "Home",
         "Cat" : "Cat",
         "Tshirt" : "T-shirt",
         "Cart" : "Cart"
+      },
+      "contact" : {
+        "Title"  : "Contact Us",
+        "Email" : "E-mail"
+      },
+      "offers" : {
+        "Title" : "Our Offers",
+        "Information" : "Information",
+        "Policy" : "Privacy Policy",
+        "Terms" : "Terms & Conditions"
+      },
+      "service" : {
+        "Title" : "Service"
       }
     }
   }

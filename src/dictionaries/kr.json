@@ -10,12 +10,26 @@
     },
     "footer" : {
       "title" : "매장",
+      "description" : "Ipsum은 인쇄 및 조판 산업의 단순한 더미 텍스트입니다. Lorem Ipsum은 업계 표준 더미 텍스트였습니다. 1500년대부터 알려지지 않은 프린터였습니다.",
       "footerAbout" : {
-        "title" : "메뉴",
+        "Title" : "메뉴",
         "Home" : "홈",
         "Cat" : "고양이",
         "Tshirt" : "티셔츠",
         "Cart" : "장바구니"
+      },
+      "contact" : {
+        "Title"  : "연결",
+        "Email" : "이메일"
+      },
+      "offers" : {
+        "Title" : "제공",
+        "Information" : "정보",
+        "Policy" : "개인정보보호정책",
+        "Terms" : "이용약관"
+      },
+      "service" : {
+        "Title" : "서비스"
       }
     }
   }
