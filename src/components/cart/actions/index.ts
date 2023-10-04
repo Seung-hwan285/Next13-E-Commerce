@@ -1,7 +1,5 @@
 'use server';
 import { CartAPI } from '@/lib/cart';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 
 export const addCartItem = async (formData: any): Promise<string> => {
   const id = formData.get('product_id');

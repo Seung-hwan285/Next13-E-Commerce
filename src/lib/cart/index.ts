@@ -11,7 +11,6 @@ const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
 const createRequestOptions = (method, body): optionType => {
   const bodyObjects = body ? JSON.stringify(body) : body;
 
-  console.log(method);
   const requestOptions = {
     method,
     headers: {
@@ -58,8 +57,9 @@ export const CartAPI = {
     };
 
     const options = createRequestOptions('PUT', body);
+    const res = await sendRequest(url, options);
 
-    return await sendRequest(url, options);
+    return res;
   },
 
   addCartItem: async (id?: string) => {
