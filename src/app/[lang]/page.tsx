@@ -13,9 +13,7 @@ export default async function Home({
 }) {
   const { page } = await getDictionary(lang);
 
-  return (
-    <Suspense>
-      <Product page={page} />
-    </Suspense>
-  );
+  console.log(page.about);
+
+  return <></>;
 }

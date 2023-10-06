@@ -3,7 +3,90 @@
     "home": {
       "title": "Welcome to NextJs i18n",
       "description": "Internationalization in NextJs 13 App router"
+
     },
+
+
+    "kr_products": [
+      {
+        "id" : "prod_VKXmwD4V0qwrgD",
+        "title" : "티셔츠1"
+      },
+      {
+        "id" : "prod_DWy4oGEG3ql6Jx",
+        "title" : "티셔츠1"
+      },
+      {
+        "id" : "prod_9BAmwJnMvVweXd",
+        "title" : "티셔츠1"
+      },
+      {
+        "id" : "prod_p6dP5gM2gKwn7k",
+        "title" : "티셔츠3"
+      },
+      {
+        "id" : "prod_7ZAMo10GGEwNJ4",
+        "title" : "고양이"
+      },
+      {
+        "id" : "prod_O3bR5XDZz85nzd",
+        "title" : "티셔츠5"
+      },
+    {
+        "id" : "prod_RyWOwmGpqW5nEa",
+        "title" : "티셔츠6"
+      },
+  {
+        "id" : "prod_ypbroEypxVo8n4",
+        "title" : "티셔츠9"
+      },
+     {
+        "id" : "prod_Kvg9l68Nvdo1bB",
+        "title" : "티셔츠2"
+      },
+      {
+        "id" :"prod_NqKE506ZOjwdgB",
+        "title" : "티셔츠123"
+      },
+  {
+        "id" : "prod_0YnEoqjKzW5e7P",
+        "title" : "스마일 티셔츠"
+      },
+  {
+        "id" : "prod_O3bR5XDZRM5nzd",
+        "title" : "티셔츠5"
+      },
+ {
+        "id" : "prod_RyWOwmGpnA5nEa",
+        "title" : "티셔츠6"
+      },
+  {
+        "id" : "prod_0egY5eeydp53Qn",
+        "title" : "고양이"
+      },
+  {
+        "id" : "prod_RqEv5xpBO15Zz4",
+        "title" : "고양이3"
+      },
+ {
+        "id" : "prod_8XxzoBK6Mg5PQA",
+        "title" : "고양이4"
+      },
+    {
+        "id" : "prod_LvJjoPKBrpwe0n",
+        "title"  : "티셔츠"
+      },
+      {
+        "id" : "prod_eN1ql93nBpoz3y",
+        "title" : "티셔츠2"
+      },
+       {
+        "id" : "prod_gnZO5kY0D6w7MN",
+        "title" : "고양이6"
+      }
+    ],
+
+
     "about": {
       "title": "About Us",
       "description": "This is the about page"

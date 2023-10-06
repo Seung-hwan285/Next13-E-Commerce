@@ -4,6 +4,87 @@
       "title": "Welcome to NextJs i18n",
       "description": "Internationalization in NextJs 13 App router"
     },
+
+    "en_products": [
+      {
+        "id" : "prod_VKXmwD4V0qwrgD",
+        "title" : "T-shirt1"
+      },
+      {
+        "id" : "prod_DWy4oGEG3ql6Jx",
+        "title" : "T-shirt1"
+      },
+      {
+        "id" : "prod_9BAmwJnMvVweXd",
+        "title" : "T-shirt1"
+      },
+      {
+        "id" : "prod_p6dP5gM2gKwn7k",
+        "title" : "T-shirt3"
+      },
+      {
+        "id" : "prod_7ZAMo10GGEwNJ4",
+        "title" : "Cat"
+      },
+      {
+        "id" : "prod_O3bR5XDZz85nzd",
+        "title" : "T-shirt5"
+      },
+      {
+        "id" : "prod_RyWOwmGpqW5nEa",
+        "title" : "T-shirt6"
+      },
+      {
+        "id" : "prod_ypbroEypxVo8n4",
+        "title" : "T-shirt9"
+      },
+      {
+        "id" : "prod_Kvg9l68Nvdo1bB",
+        "title" : "T-shirt2"
+      },
+      {
+        "id" :"prod_NqKE506ZOjwdgB",
+        "title" : "T-shirt123"
+      },
+      {
+        "id" : "prod_0YnEoqjKzW5e7P",
+        "title" : "smile T-shirt"
+      },
+      {
+        "id" : "prod_O3bR5XDZRM5nzd",
+        "title" : "T-shirt5"
+      },
+      {
+        "id" : "prod_RyWOwmGpnA5nEa",
+        "title" : "T-shirt6"
+      },
+      {
+        "id" : "prod_0egY5eeydp53Qn",
+        "title" : "Cat"
+      },
+      {
+        "id" : "prod_RqEv5xpBO15Zz4",
+        "title" : "T-shirt3"
+      },
+      {
+        "id" : "prod_8XxzoBK6Mg5PQA",
+        "title" : "T-shirt4"
+      },
+      {
+        "id" : "prod_LvJjoPKBrpwe0n",
+        "title"  : "T-shirt"
+      },
+      {
+        "id" : "prod_eN1ql93nBpoz3y",
+        "title" : "T-shirt2"
+      },
+      {
+        "id" : "prod_gnZO5kY0D6w7MN",
+        "title" : "T-shirt6"
+      }
+    ],
+
+
     "about": {
       "title": "About Us",
       "description": "This is the about page"

@@ -25,9 +25,11 @@ export default async function Page({
 
   const { result, total, per_page } = await ProductAPI.getNextPage(obj);
 
+  console.log(params);
+
   return (
     <>
-      <ProductItems items={result?.data} />
+      <ProductItems lang={params.lang} items={result?.data} />
       <ProductPagination lang={lang} pages={Math.ceil(total / per_page)} />
       <ProductOptions />
     </>

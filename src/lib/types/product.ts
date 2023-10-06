@@ -203,6 +203,7 @@ interface Image {
 }
 
 export type Product = {
+  lang?: string;
   id: string;
   created: number;
   updated: number;

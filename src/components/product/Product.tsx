@@ -5,7 +5,7 @@ import ProductPagination from '@/components/product/ProductPagination';
 import ProductOptions from '@/components/product/ProductOptions';
 import { Locale } from '@/i18n.config';
 
-async function Product({ page: { lang } }: { params: { lang: Locale } }) {
+async function Product({ page: { lang } }: { lang: Locale }) {
   const { result, total, per_page } = await ProductAPI.getAllProducts(5);
 
   return (
