@@ -11,9 +11,8 @@ export default async function Home({
 }: {
   params: { lang: Locale };
 }) {
-  const { page } = await getDictionary(lang);
-
-  console.log(page.about);
+  // const { page } = await getDictionary(lang);
+  // console.log(page.about);
 
   return <></>;
 }

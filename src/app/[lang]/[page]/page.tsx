@@ -25,8 +25,6 @@ export default async function Page({
 
   const { result, total, per_page } = await ProductAPI.getNextPage(obj);
 
-  console.log(params);
-
   return (
     <>
       <ProductItems lang={params.lang} items={result?.data} />

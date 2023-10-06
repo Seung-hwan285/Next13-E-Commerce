@@ -12,7 +12,6 @@ async function ProductItems({ lang, items }: Product[]) {
     notFound();
   }
 
-  // locale === 'kr
   const data = await get18n(lang);
 
   const f18nData1 = items.map((item) => ({
@@ -24,16 +23,27 @@ async function ProductItems({ lang, items }: Product[]) {
     },
   }));
 
-  const f18nData2 = data.map((f) => ({
-    name: f,
-  }));
-
-  const f18nData3 = f18nData1.map((s, idx) => {
-    return Object.assign({}, s, f18nData2[idx]);
+  const keys = data.map((d) => {
+    return d.id;
   });
 
-  // console.log(f18nData1);
-  // console.log(f18nData2);
+  const f18nData3 = f18nData1.map((s) =>
+    keys
+      .map((k) => {
+        if (s.id === k) {
+          const findInex = data.findIndex((d) => d.id === k);
+
+          const { name } = data[findInex];
+
+          return Object.assign({}, s, data[findInex]);
+        }
+      })
+      .find((f) => {
+        if (f) {
+          return f;
+        }
+      })
+  );
 
   return (
     <>

@@ -25,7 +25,7 @@ export const getI18n = async () => {
 
       filterId.forEach((f_id) => {
         if (f_id === id) {
-          arr2.push(title);
+          arr2.push({ id: id, name: title });
         }
       });
     });
@@ -56,7 +56,7 @@ export const getI18n2 = async () => {
 
       filterId.forEach((f_id) => {
         if (f_id === id) {
-          arr2.push(title);
+          arr2.push({ id: id, name: title });
         }
       });
     });
