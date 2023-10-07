@@ -3,116 +3,170 @@
     "home": {
       "title": "Welcome to NextJs i18n",
       "description": "Internationalization in NextJs 13 App router"
-
     },
-
 
     "kr_products": [
       {
-        "id" : "prod_VKXmwD4V0qwrgD",
-        "title" : "티셔츠1"
+        "id": "prod_VKXmwD4V0qwrgD",
+        "name": "티셔츠1",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
       },
       {
-        "id" : "prod_DWy4oGEG3ql6Jx",
-        "title" : "티셔츠1"
+        "id": "prod_DWy4oGEG3ql6Jx",
+        "name": "티셔츠1",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
       },
       {
-        "id" : "prod_9BAmwJnMvVweXd",
-        "title" : "티셔츠1"
+        "id": "prod_9BAmwJnMvVweXd",
+        "name": "티셔츠1",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
       },
       {
-        "id" : "prod_p6dP5gM2gKwn7k",
-        "title" : "티셔츠3"
+        "id": "prod_p6dP5gM2gKwn7k",
+        "name": "티셔츠3",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
       },
       {
-        "id" : "prod_7ZAMo10GGEwNJ4",
-        "title" : "고양이"
+        "id": "prod_7ZAMo10GGEwNJ4",
+        "name": "고양이",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
       },
       {
-        "id" : "prod_O3bR5XDZz85nzd",
-        "title" : "티셔츠5"
-      },
-    {
-        "id" : "prod_RyWOwmGpqW5nEa",
-        "title" : "티셔츠6"
-      },
-  {
-        "id" : "prod_ypbroEypxVo8n4",
-        "title" : "티셔츠9"
-      },
-     {
-        "id" : "prod_Kvg9l68Nvdo1bB",
-        "title" : "티셔츠2"
+        "id": "prod_O3bR5XDZz85nzd",
+        "name": "티셔츠5",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
       },
       {
-        "id" :"prod_NqKE506ZOjwdgB",
-        "title" : "티셔츠123"
-      },
-  {
-        "id" : "prod_0YnEoqjKzW5e7P",
-        "title" : "스마일 티셔츠"
-      },
-  {
-        "id" : "prod_O3bR5XDZRM5nzd",
-        "title" : "티셔츠5"
-      },
- {
-        "id" : "prod_RyWOwmGpnA5nEa",
-        "title" : "티셔츠6"
-      },
-  {
-        "id" : "prod_0egY5eeydp53Qn",
-        "title" : "고양이"
-      },
-  {
-        "id" : "prod_RqEv5xpBO15Zz4",
-        "title" : "고양이3"
-      },
- {
-        "id" : "prod_8XxzoBK6Mg5PQA",
-        "title" : "고양이4"
-      },
-    {
-        "id" : "prod_LvJjoPKBrpwe0n",
-        "title"  : "티셔츠"
+        "id": "prod_RyWOwmGpqW5nEa",
+        "name": "티셔츠6",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
       },
       {
-        "id" : "prod_eN1ql93nBpoz3y",
-        "title" : "티셔츠2"
+        "id": "prod_ypbroEypxVo8n4",
+        "name": "티셔츠9",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
       },
-       {
-        "id" : "prod_gnZO5kY0D6w7MN",
-        "title" : "고양이6"
+      {
+        "id": "prod_Kvg9l68Nvdo1bB",
+        "name": "티셔츠2",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+      },
+      {
+        "id": "prod_NqKE506ZOjwdgB",
+        "name": "티셔츠123",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+      },
+      {
+        "id": "prod_0YnEoqjKzW5e7P",
+        "name": "스마일 티셔츠",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+      },
+      {
+        "id": "prod_O3bR5XDZRM5nzd",
+        "name": "티셔츠5",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+      },
+      {
+        "id": "prod_RyWOwmGpnA5nEa",
+        "name": "티셔츠6",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+      },
+      {
+        "id": "prod_0egY5eeydp53Qn",
+        "name": "고양이",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+      },
+      {
+        "id": "prod_RqEv5xpBO15Zz4",
+        "name": "고양이3",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+      },
+      {
+        "id": "prod_8XxzoBK6Mg5PQA",
+        "name": "고양이4",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+      },
+      {
+        "id": "prod_LvJjoPKBrpwe0n",
+        "name": "티셔츠",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+      },
+      {
+        "id": "prod_eN1ql93nBpoz3y",
+        "name": "티셔츠2",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+      },
+      {
+        "id": "prod_gnZO5kY0D6w7MN",
+        "name": "고양이6",
+        "size": "사이즈",
+        "color": "색상",
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
       }
     ],
-
 
     "about": {
       "title": "About Us",
       "description": "This is the about page"
     },
-    "footer" : {
-      "title" : "매장",
-      "description" : "Ipsum은 인쇄 및 조판 산업의 단순한 더미 텍스트입니다. Lorem Ipsum은 업계 표준 더미 텍스트였습니다. 1500년대부터 알려지지 않은 프린터였습니다.",
-      "footerAbout" : {
-        "Title" : "메뉴",
-        "Home" : "홈",
-        "Cat" : "고양이",
-        "Tshirt" : "티셔츠",
-        "Cart" : "장바구니"
+    "footer": {
+      "title": "매장",
+      "description": "Ipsum은 인쇄 및 조판 산업의 단순한 더미 텍스트입니다. Lorem Ipsum은 업계 표준 더미 텍스트였습니다. 1500년대부터 알려지지 않은 프린터였습니다.",
+      "footerAbout": {
+        "Title": "메뉴",
+        "Home": "홈",
+        "Cat": "고양이",
+        "Tshirt": "티셔츠",
+        "Cart": "장바구니"
       },
-      "contact" : {
-        "Title"  : "연결",
-        "Email" : "이메일"
+      "contact": {
+        "Title": "연결",
+        "Email": "이메일"
       },
-      "offers" : {
-        "Title" : "제공",
-        "Information" : "정보",
-        "Policy" : "개인정보보호정책",
-        "Terms" : "이용약관"
+      "offers": {
+        "Title": "제공",
+        "Information": "정보",
+        "Policy": "개인정보보호정책",
+        "Terms": "이용약관"
       },
-      "service" : {
-        "Title" : "서비스"
+      "service": {
+        "Title": "서비스"
       }
     }
   }

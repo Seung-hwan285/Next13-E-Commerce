@@ -104,6 +104,12 @@ export type Pagination = {
 export type Variant = {
   description?: string;
   variantItems: VaruantData[];
+
+  f18nSizeAndColor: {
+    Size: string;
+    Color: string;
+  };
+
   meta: {
     pagination: Pagination;
   };
@@ -240,7 +246,7 @@ export type Props = {
 export type VariantItems = {
   title: string;
   data: VaruantData;
-
+  f18nOption: any;
   sliceDescription?: string;
 };
 

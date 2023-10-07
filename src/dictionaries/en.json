@@ -7,110 +7,163 @@
 
     "en_products": [
       {
-        "id" : "prod_VKXmwD4V0qwrgD",
-        "title" : "T-shirt1"
+        "id": "prod_VKXmwD4V0qwrgD",
+        "name": "T-shirt1",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_DWy4oGEG3ql6Jx",
-        "title" : "T-shirt1"
+        "id": "prod_DWy4oGEG3ql6Jx",
+        "name": "T-shirt1",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_9BAmwJnMvVweXd",
-        "title" : "T-shirt1"
+        "id": "prod_9BAmwJnMvVweXd",
+        "name": "T-shirt1",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_p6dP5gM2gKwn7k",
-        "title" : "T-shirt3"
+        "id": "prod_p6dP5gM2gKwn7k",
+        "name": "T-shirt3",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_7ZAMo10GGEwNJ4",
-        "title" : "Cat"
+        "id": "prod_7ZAMo10GGEwNJ4",
+        "name": "Cat",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_O3bR5XDZz85nzd",
-        "title" : "T-shirt5"
+        "id": "prod_O3bR5XDZz85nzd",
+        "name": "T-shirt5",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_RyWOwmGpqW5nEa",
-        "title" : "T-shirt6"
+        "id": "prod_RyWOwmGpqW5nEa",
+        "name": "T-shirt6",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_ypbroEypxVo8n4",
-        "title" : "T-shirt9"
+        "id": "prod_ypbroEypxVo8n4",
+        "title": "T-shirt9"
       },
       {
-        "id" : "prod_Kvg9l68Nvdo1bB",
-        "title" : "T-shirt2"
+        "id": "prod_Kvg9l68Nvdo1bB",
+        "name": "T-shirt2",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" :"prod_NqKE506ZOjwdgB",
-        "title" : "T-shirt123"
+        "id": "prod_NqKE506ZOjwdgB",
+        "name": "T-shirt3",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_0YnEoqjKzW5e7P",
-        "title" : "smile T-shirt"
+        "id": "prod_0YnEoqjKzW5e7P",
+        "name": "smile T-shirt",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_O3bR5XDZRM5nzd",
-        "title" : "T-shirt5"
+        "id": "prod_O3bR5XDZRM5nzd",
+        "name": "T-shirt5",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_RyWOwmGpnA5nEa",
-        "title" : "T-shirt6"
+        "id": "prod_RyWOwmGpnA5nEa",
+        "name": "T-shirt6",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_0egY5eeydp53Qn",
-        "title" : "Cat"
+        "id": "prod_0egY5eeydp53Qn",
+        "name": "Cat",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_RqEv5xpBO15Zz4",
-        "title" : "T-shirt3"
+        "id": "prod_RqEv5xpBO15Zz4",
+        "name": "T-shirt3",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_8XxzoBK6Mg5PQA",
-        "title" : "T-shirt4"
+        "id": "prod_8XxzoBK6Mg5PQA",
+        "name": "T-shirt4",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_LvJjoPKBrpwe0n",
-        "title"  : "T-shirt"
+        "id": "prod_LvJjoPKBrpwe0n",
+        "name": "T-shirt1",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_eN1ql93nBpoz3y",
-        "title" : "T-shirt2"
+        "id": "prod_eN1ql93nBpoz3y",
+        "name": "T-shirt2",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       },
       {
-        "id" : "prod_gnZO5kY0D6w7MN",
-        "title" : "T-shirt6"
+        "id": "prod_gnZO5kY0D6w7MN",
+        "name": "T-shirt6",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test"
       }
     ],
-
 
     "about": {
       "title": "About Us",
       "description": "This is the about page"
     },
-    "footer" : {
+    "footer": {
       "title": "Shop",
-      "description" : "Ipsum is simply dummy text of the printing and typesetting\n  industry. Lorem Ipsum has been the industry's standard dummy text\n              ever.Since the 1500s, when an unknown printer.",
-      "footerAbout" : {
-        "Title" : "About",
-        "Home" : "Home",
-        "Cat" : "Cat",
-        "Tshirt" : "T-shirt",
-        "Cart" : "Cart"
+      "description": "Ipsum is simply dummy text of the printing and typesetting\n  industry. Lorem Ipsum has been the industry's standard dummy text\n              ever.Since the 1500s, when an unknown printer.",
+      "footerAbout": {
+        "Title": "About",
+        "Home": "Home",
+        "Cat": "Cat",
+        "Tshirt": "T-shirt",
+        "Cart": "Cart"
       },
-      "contact" : {
-        "Title"  : "Contact Us",
-        "Email" : "E-mail"
+      "contact": {
+        "Title": "Contact Us",
+        "Email": "E-mail"
       },
-      "offers" : {
-        "Title" : "Our Offers",
-        "Information" : "Information",
-        "Policy" : "Privacy Policy",
-        "Terms" : "Terms & Conditions"
+      "offers": {
+        "Title": "Our Offers",
+        "Information": "Information",
+        "Policy": "Privacy Policy",
+        "Terms": "Terms & Conditions"
       },
-      "service" : {
-        "Title" : "Service"
+      "service": {
+        "Title": "Service"
       }
     }
   }

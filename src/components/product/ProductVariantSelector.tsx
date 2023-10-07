@@ -58,12 +58,17 @@ function ProductOptions({ id, options }: OptionsVariant[]) {
   );
 }
 
-function ProductItems({ title, data }: VariantItems) {
-  const dtElement = title === 'Size' ? 'Choose Size' : 'Select Color';
+function ProductItems({ f18nOption, title, data }: VariantItems) {
+  const enTitle = f18nOption === '사이즈' ? '사이즈' : '색상';
+  const krTitle = f18nOption === 'Size' ? 'Choose Size' : 'Select Color';
+
+  const regex = /^[가-힣ㄱ-ㅎㅏ]*$/;
 
   return (
     <>
-      <dt className={styles.productOptionTitle}>{dtElement}</dt>
+      <dt className={styles.productOptionTitle}>
+        {!regex.test(f18nOption) ? krTitle : enTitle}
+      </dt>
       <dd className={styles.productOption}>
         {data &&
           data.map(({ id, options, index }) => {
@@ -78,7 +83,11 @@ function ProductItems({ title, data }: VariantItems) {
   );
 }
 
-function ProductVariantSelector({ description, variantItems }: Variant) {
+function ProductVariantSelector({
+  description,
+  f18nSizeAndColor,
+  variantItems,
+}: Variant) {
   if (!variantItems.data) {
     return <></>;
   }
@@ -103,8 +112,16 @@ function ProductVariantSelector({ description, variantItems }: Variant) {
             {sliceDescription}
           </textarea>
 
-          <ProductItems title={'Size'} data={sizeData} />
-          <ProductItems title={'Color'} data={colorData} />
+          <ProductItems
+            f18nOption={f18nSizeAndColor.Size}
+            title={'Size'}
+            data={sizeData}
+          />
+          <ProductItems
+            f18nOption={f18nSizeAndColor.Color}
+            title={'Color'}
+            data={colorData}
+          />
 
           <CartButton />
         </dl>

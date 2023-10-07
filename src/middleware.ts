@@ -47,8 +47,23 @@ export function middleware(request: NextRequest) {
     );
   }
 }
+//
+// // export const config = {
+// //   // Matcher ignoring `/_next/` and `/api/`
+// //   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+// // };
+
+// export default createMiddleware({
+//   // A list of all locales that are supported
+//   locales: ['en', 'kr'],
+//
+//   // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
+//   defaultLocale: 'en',
+//   localePrefix: 'always',
+// });
 
 export const config = {
-  // Matcher ignoring `/_next/` and `/api/`
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  // Skip all paths that should not be internationalized. This example skips
+  // certain folders and all pathnames with a dot (e.g. favicon.ico)
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 };

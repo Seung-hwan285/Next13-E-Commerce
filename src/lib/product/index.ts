@@ -45,7 +45,9 @@ const sendRequest = async (url, options) => {
 export const ProductAPI = {
   getAllProducts: async (number?: number) => {
     const options = createRequestOptions('GET');
-    const url = `${baseUrl}/v1/products?limit=${number}`;
+    const url = number
+      ? `${baseUrl}/v1/products?limit=${number}`
+      : `${baseUrl}/v1/products`;
 
     const result = await sendRequest(url, options);
 

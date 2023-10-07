@@ -1,3 +1,5 @@
+'use server';
+
 import React from 'react';
 import { ProductAPI } from '@/lib/product';
 import { RelatedImage } from '@/lib/types/cart';
@@ -8,6 +10,7 @@ import { Metadata } from 'next';
 import { Props } from '@/lib/types/product';
 import { DiscountAPI } from '@/lib/discount';
 import ProductRelated from '@/components/product/ProductRelated';
+import { get18n } from '@/lib/utils/i18n';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;
@@ -22,21 +25,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-async function Page({ params }: { params: { id: string } }) {
-  const { id } = params;
+async function Page({
+  params,
+}: {
+  params: { id: string; page: { locale: string } };
+}) {
+  const { id, lang } = params;
 
-  const asyncRelatedItem = ProductAPI.getDetail(id);
-  const asyncVariantsItems = ProductAPI.getVariantItems(id);
+  const { filter18nObj, relatedItems } = await get18n(lang, id);
+
   const asyncDiscountItems = DiscountAPI.getDisCount();
   const asyncAllProducts = ProductAPI.getAllProducts();
+  const asyncVariantsItems = ProductAPI.getVariantItems(id);
 
-  const [relatedItems, variantItems, discountItems, productItems] =
-    await Promise.all([
-      asyncRelatedItem,
-      asyncVariantsItems,
-      asyncDiscountItems,
-      asyncAllProducts,
-    ]);
+  const [discountItems, productItems, variantItems] = await Promise.all([
+    asyncDiscountItems,
+    asyncAllProducts,
+    asyncVariantsItems,
+  ]);
 
   const prices = productItems.result.data
     .map((d) => ({
@@ -52,8 +58,13 @@ async function Page({ params }: { params: { id: string } }) {
     .filter((f) => prices.includes(f.price.raw))
     .sort((a, b) => a.price.raw - b.price.raw);
 
+  //
+  // const related = relatedItems.map((rel)=>({
+  // }))
+
   return (
     <ProductDetail
+      filter18nObj={filter18nObj}
       relatedItems={relatedItems}
       variantItems={variantItems}
       discountItems={discountItems}
@@ -65,12 +76,13 @@ async function Page({ params }: { params: { id: string } }) {
 export default Page;
 
 function ProductDetail({
+  filter18nObj,
   relatedItems,
   variantItems,
   discountItems,
   productItems,
 }: any) {
-  if (!relatedItems) notFound();
+  // if (!relatedItems) notFound();
   if (!variantItems) notFound();
 
   const relatedImages = relatedItems?.related_products?.map(
@@ -92,23 +104,29 @@ function ProductDetail({
     formatted_with_symbol: relatedItems.price.formatted_with_symbol,
   };
 
+  const f18nSizeAndColor = {
+    Size: filter18nObj.size,
+    Color: filter18nObj.color,
+  };
+
   return (
     <>
       <div style={{ position: 'relative' }}>
         {/*Client */}
         <ProductGallery
-          name={relatedItems.name}
+          name={filter18nObj.name}
           price={prices}
           title={relatedItems.image.url}
-          id={relatedItems.id}
-          description={relatedItems.description}
+          id={filter18nObj.id}
+          description={filter18nObj.description}
           images={relatedImages}
           discountItems={discounts}
         />
 
         {/*Client */}
         <ProductVariantSelector
-          description={relatedItems.description}
+          description={filter18nObj.description}
+          f18nSizeAndColor={f18nSizeAndColor}
           variantItems={variantItems}
         />
         {/*Client */}
