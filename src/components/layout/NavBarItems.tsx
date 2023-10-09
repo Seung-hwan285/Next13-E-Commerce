@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { startTransition, useEffect } from 'react';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import styles from './layout.module.css';
@@ -43,11 +43,20 @@ function NavBarItems({ totalItems }: number) {
     });
   };
 
-  // server action
-  async function handleClick() {
-    const res = await getCollection();
-    setData(res.data);
-  }
+  const handleClick = async () => {
+    // const res = await getCollection();
+
+    startTransition(async () => {
+      const fetchData = await fetch(`/api/collection`, {
+        method: 'GET',
+      });
+
+      const res = await fetchData.json();
+
+      console.log(res);
+      setData(res.data.data);
+    });
+  };
 
   const [show, setIsShow] = useAtom(showState);
   const wrapperRef = React.useRef<HTMLInputElement>(null as HTMLInputElement);
@@ -94,13 +103,13 @@ function NavBarItems({ totalItems }: number) {
             <nav>
               <div className={styles.menu}>
                 <li className={styles.list}>
-                  <Link href="/">
+                  <Link data-testid="home" href="/">
                     <HomeIcon color="primary" />
                   </Link>
                 </li>
                 <li className={styles.list}>
                   {!session ? (
-                    <Link href="/login">
+                    <Link data-testid="login" href="/login">
                       <AssignmentIndIcon color="primary" />
                     </Link>
                   ) : (
@@ -111,8 +120,9 @@ function NavBarItems({ totalItems }: number) {
                     // <button onClick={handleLogoutClick}>Logout</button>
                   )}
                 </li>
+
                 <li className={styles.list}>
-                  <Link href="/cart">
+                  <Link data-testid="cart" href="/cart">
                     <IconButton color="primary" aria-label="cart">
                       {totalItems > 0 ? (
                         <StyledBadge
@@ -132,7 +142,7 @@ function NavBarItems({ totalItems }: number) {
 
                 <form action={handleClick}>
                   <li onClick={handleClick} className={styles.listCollection}>
-                    <CollectionsIcon color="primary" />
+                    <CollectionsIcon data-testid="collection" color="primary" />
 
                     <div className={styles.dropDown}>
                       <ClientColletions />

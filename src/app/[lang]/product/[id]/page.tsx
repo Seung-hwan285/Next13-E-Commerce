@@ -34,8 +34,6 @@ async function Page({
 
   const { filter18nObj, relatedItems, arr2 } = await get18n(lang, id);
 
-  console.log(arr2);
-
   const asyncDiscountItems = DiscountAPI.getDisCount();
   const asyncAllProducts = ProductAPI.getAllProducts();
   const asyncVariantsItems = ProductAPI.getVariantItems(id);

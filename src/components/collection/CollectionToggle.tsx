@@ -15,7 +15,11 @@ function CollectionToggle({ totalItems }: Toggle) {
   return (
     <>
       <div className={styles.toogleBox}>
-        <div onClick={() => setIsShow(!show)} className={styles.toggle}>
+        <div
+          data-testid="navbar-ham"
+          onClick={() => setIsShow(!show)}
+          className={styles.toggle}
+        >
           <span></span>
           <span></span>
           <span></span>
