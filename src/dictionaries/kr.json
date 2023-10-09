@@ -11,135 +11,158 @@
         "name": "티셔츠1",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_DWy4oGEG3ql6Jx",
         "name": "티셔츠1",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_9BAmwJnMvVweXd",
         "name": "티셔츠1",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_p6dP5gM2gKwn7k",
         "name": "티셔츠3",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_7ZAMo10GGEwNJ4",
         "name": "고양이",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_O3bR5XDZz85nzd",
         "name": "티셔츠5",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_RyWOwmGpqW5nEa",
         "name": "티셔츠6",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_ypbroEypxVo8n4",
         "name": "티셔츠9",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_Kvg9l68Nvdo1bB",
         "name": "티셔츠2",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_NqKE506ZOjwdgB",
         "name": "티셔츠123",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_0YnEoqjKzW5e7P",
         "name": "스마일 티셔츠",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_O3bR5XDZRM5nzd",
         "name": "티셔츠5",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_RyWOwmGpnA5nEa",
         "name": "티셔츠6",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_0egY5eeydp53Qn",
         "name": "고양이",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_RqEv5xpBO15Zz4",
         "name": "고양이3",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_8XxzoBK6Mg5PQA",
         "name": "고양이4",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_LvJjoPKBrpwe0n",
         "name": "티셔츠",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_eN1ql93nBpoz3y",
         "name": "티셔츠2",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       },
       {
         "id": "prod_gnZO5kY0D6w7MN",
         "name": "고양이6",
         "size": "사이즈",
         "color": "색상",
-        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트"
+        "description": "테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트",
+        "button": "추가하기"
       }
     ],
+
+    "cart_button": {
+      "add": "추가하기"
+    },
 
     "about": {
       "title": "About Us",

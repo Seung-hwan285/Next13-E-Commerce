@@ -31,6 +31,21 @@ export const getKR = async (id?: string) => {
       return arr2;
     } else {
       const relatedItems = await ProductAPI.getDetail(id);
+      const productItems = await ProductAPI.getAllProducts();
+
+      const prices = productItems.result.data
+        .map((d) => ({
+          price: d.price.raw,
+        }))
+        .sort((a, b) => a.price - b.price)
+        .slice(0, 5)
+        .map((p) => {
+          return p.price;
+        });
+
+      const findItems = productItems.result.data
+        .filter((f) => prices.includes(f.price.raw))
+        .sort((a, b) => a.price.raw - b.price.raw);
 
       // 1. name , decription
       const relatedObj = {
@@ -52,9 +67,30 @@ export const getKR = async (id?: string) => {
           if (f) return f;
         });
 
+      const arr2 = [];
+
+      // const temp = productItems.map(())
+      kr_products.forEach((kr) => {
+        findItems.forEach((p_id) => {
+          if (kr.id === p_id.id) {
+            arr2.push({
+              id: p_id.id,
+              name: kr.name,
+              image: {
+                url: p_id.image.url,
+              },
+              price: {
+                formatted_with_symbol: p_id.price.formatted_with_symbol,
+              },
+            });
+          }
+        });
+      });
+
       return {
         filter18nObj,
         relatedItems,
+        arr2,
       };
     }
 
@@ -102,6 +138,40 @@ export const getEN = async (id?: string) => {
       return arr2;
     } else {
       const relatedItems = await ProductAPI.getDetail(id);
+      const productItems = await ProductAPI.getAllProducts();
+
+      const prices = productItems.result.data
+        .map((d) => ({
+          price: d.price.raw,
+        }))
+        .sort((a, b) => a.price - b.price)
+        .slice(0, 5)
+        .map((p) => {
+          return p.price;
+        });
+
+      const findItems = productItems.result.data
+        .filter((f) => prices.includes(f.price.raw))
+        .sort((a, b) => a.price.raw - b.price.raw);
+
+      const arr2 = [];
+
+      en_products.forEach((en) => {
+        findItems.forEach((p_id) => {
+          if (en.id === p_id.id) {
+            arr2.push({
+              id: p_id.id,
+              name: p_id.name,
+              image: {
+                url: p_id.image.url,
+              },
+              price: {
+                formatted_with_symbol: p_id.price.formatted_with_symbol,
+              },
+            });
+          }
+        });
+      });
 
       // 1. name , decription
       const relatedObj = {
@@ -126,6 +196,7 @@ export const getEN = async (id?: string) => {
       return {
         filter18nObj,
         relatedItems,
+        arr2,
       };
     }
   } catch (err) {

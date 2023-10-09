@@ -58,7 +58,7 @@ function ProductOptions({ id, options }: OptionsVariant[]) {
   );
 }
 
-function ProductItems({ f18nOption, title, data }: VariantItems) {
+function ProductItems({ f18nOption, title, data, cartButton }: VariantItems) {
   const enTitle = f18nOption === '사이즈' ? '사이즈' : '색상';
   const krTitle = f18nOption === 'Size' ? 'Choose Size' : 'Select Color';
 
@@ -87,7 +87,9 @@ function ProductVariantSelector({
   description,
   f18nSizeAndColor,
   variantItems,
-}: Variant) {
+  cartButton,
+}: // cartButton,
+Variant) {
   if (!variantItems.data) {
     return <></>;
   }
@@ -123,7 +125,7 @@ function ProductVariantSelector({
             data={colorData}
           />
 
-          <CartButton />
+          <CartButton cartButton={cartButton} />
         </dl>
       )}
     </>

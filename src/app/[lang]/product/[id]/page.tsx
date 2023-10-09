@@ -32,7 +32,9 @@ async function Page({
 }) {
   const { id, lang } = params;
 
-  const { filter18nObj, relatedItems } = await get18n(lang, id);
+  const { filter18nObj, relatedItems, arr2 } = await get18n(lang, id);
+
+  console.log(arr2);
 
   const asyncDiscountItems = DiscountAPI.getDisCount();
   const asyncAllProducts = ProductAPI.getAllProducts();
@@ -58,17 +60,13 @@ async function Page({
     .filter((f) => prices.includes(f.price.raw))
     .sort((a, b) => a.price.raw - b.price.raw);
 
-  //
-  // const related = relatedItems.map((rel)=>({
-  // }))
-
   return (
     <ProductDetail
       filter18nObj={filter18nObj}
       relatedItems={relatedItems}
       variantItems={variantItems}
       discountItems={discountItems}
-      productItems={findItems}
+      productItems={arr2}
     />
   );
 }
@@ -128,6 +126,7 @@ function ProductDetail({
           description={filter18nObj.description}
           f18nSizeAndColor={f18nSizeAndColor}
           variantItems={variantItems}
+          cartButton={filter18nObj.button}
         />
         {/*Client */}
         <ProductRelated productItems={productItems} />
