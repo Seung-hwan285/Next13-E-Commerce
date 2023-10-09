@@ -1,4 +1,3 @@
-import { checkUrl } from '@/lib/utils/checkUrl';
 import { getCookie } from '@/lib/utils/cookies';
 import { getProperError } from 'next/dist/lib/is-error';
 
@@ -6,7 +5,7 @@ type optionType = {
   method: string;
   body?: string;
 };
-const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
+const baseUrl = process.env.NEXT_PUBLIC_URL;
 
 const createRequestOptions = (method, body): optionType => {
   const bodyObjects = body ? JSON.stringify(body) : body;
@@ -46,7 +45,6 @@ export const CartAPI = {
   deleteCartItem: async (cartId, lineId) => {
     const url = `${baseUrl}/v1/carts/${cartId}/items/${lineId}`;
     const options = createRequestOptions('DELETE', '');
-
     return await sendRequest(url, options);
   },
 
@@ -58,8 +56,9 @@ export const CartAPI = {
     };
 
     const options = createRequestOptions('PUT', body);
+    const res = await sendRequest(url, options);
 
-    return await sendRequest(url, options);
+    return res;
   },
 
   addCartItem: async (id?: string) => {

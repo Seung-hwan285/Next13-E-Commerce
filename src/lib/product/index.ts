@@ -1,8 +1,7 @@
-import { checkUrl } from '@/lib/utils/checkUrl';
 import { getProperError } from 'next/dist/lib/is-error';
 import { Obj, Option } from '@/lib/types/product';
 
-const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
+const baseUrl = process.env.NEXT_PUBLIC_URL;
 
 const createRequestOptions = (method, obj?, body?): Option => {
   const bodyObjects = body ? JSON.stringify(body) : body;
@@ -46,7 +45,9 @@ const sendRequest = async (url, options) => {
 export const ProductAPI = {
   getAllProducts: async (number?: number) => {
     const options = createRequestOptions('GET');
-    const url = `${baseUrl}/v1/products?limit=${number}`;
+    const url = number
+      ? `${baseUrl}/v1/products?limit=${number}`
+      : `${baseUrl}/v1/products`;
 
     const result = await sendRequest(url, options);
 

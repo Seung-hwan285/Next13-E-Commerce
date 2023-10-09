@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const data = await ProductAPI.getCategories(id);
 
-  if (!data) return notFound();
+  if (!data) notFound();
 
   return {
     title: data.name,
@@ -40,7 +40,7 @@ function Categories({ products }: Product) {
                   <p>{name}</p>
                   <p>{description}</p>
 
-                  {assets.map(({ url, id, description }) => {
+                  {assets.map(({ url, id }) => {
                     return (
                       <li key={id}>
                         <img

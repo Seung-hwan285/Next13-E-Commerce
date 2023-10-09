@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './collection.module.css';
 import { useAtom } from 'jotai';
 import { showState } from '@/lib/jotail/themState';

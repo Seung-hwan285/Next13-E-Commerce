@@ -34,13 +34,6 @@ function ThemeToggle() {
         <ToggleThumb activeTheme={activeThem} />
         <span>🌙</span>
         <span>☀️</span>
-
-        {image && (
-          <div className={styles.imageWrapper}>
-            <p>{name}</p>
-            <Image src={image} width="50" height="10" alt="image" />
-          </div>
-        )}
       </ToggleButton>
     </>
   );

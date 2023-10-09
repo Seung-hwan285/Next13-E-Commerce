@@ -52,9 +52,21 @@ export async function DELETE(req: NextRequest): Promise<Response> {
 }
 
 export async function PUT(req: NextRequest): Promise<Response> {
-  try {
-    const { cartId, lineId, quantity } = await req.json();
+  const searchParms = req.url;
 
+  const queryString = searchParms.split('?');
+
+  const subdomain = queryString[1].split('&');
+
+  const parmsValue = subdomain.map((val) => val.split('=')[1]);
+
+  const [cartId, lineId, quantity] = parmsValue;
+
+  if (!cartId || !lineId) {
+    return NextResponse.json({ error: '에러입니다.' }, { status: 400 });
+  }
+
+  try {
     await CartAPI.updateCartItem(cartId, lineId, quantity);
 
     return NextResponse.json({ status: 204 });

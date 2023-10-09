@@ -22,7 +22,6 @@ export const authOptions: unknown = {
     },
 
     async jwt({ token }) {
-      // window.localStorage.setItem('token', JSON.stringify(token));
       return token;
     },
   },

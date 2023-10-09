@@ -1,16 +1,11 @@
 import React from 'react';
 import { ProductAPI } from '@/lib/product';
-import { Props } from '@/lib/types/product';
-import { Metadata } from 'next';
 import ProductItems from '@/components/product/ProductItems';
 import ProductPagination from '@/components/product/ProductPagination';
 import ProductOptions from '@/components/product/ProductOptions';
+import { Locale } from '@/i18n.config';
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return {};
-}
-
-async function Product() {
+async function Product({ page: { lang } }: { lang: Locale }) {
   const { result, total, per_page } = await ProductAPI.getAllProducts(5);
 
   return (

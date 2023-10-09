@@ -1,0 +1,196 @@
+{
+  "page": {
+    "home": {
+      "title": "Welcome to NextJs i18n",
+      "description": "Internationalization in NextJs 13 App router"
+    },
+
+    "en_products": [
+      {
+        "id": "prod_VKXmwD4V0qwrgD",
+        "name": "T-shirt1",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_DWy4oGEG3ql6Jx",
+        "name": "T-shirt1",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_9BAmwJnMvVweXd",
+        "name": "T-shirt1",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_p6dP5gM2gKwn7k",
+        "name": "T-shirt3",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_7ZAMo10GGEwNJ4",
+        "name": "Cat",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_O3bR5XDZz85nzd",
+        "name": "T-shirt5",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_RyWOwmGpqW5nEa",
+        "name": "T-shirt6",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_ypbroEypxVo8n4",
+        "name": "T-shirt9",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_Kvg9l68Nvdo1bB",
+        "name": "T-shirt2",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_NqKE506ZOjwdgB",
+        "name": "T-shirt3",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_0YnEoqjKzW5e7P",
+        "name": "smile T-shirt",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_O3bR5XDZRM5nzd",
+        "name": "T-shirt5",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_RyWOwmGpnA5nEa",
+        "name": "T-shirt6",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_0egY5eeydp53Qn",
+        "name": "Cat",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_RqEv5xpBO15Zz4",
+        "name": "T-shirt3",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_8XxzoBK6Mg5PQA",
+        "name": "T-shirt4",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_LvJjoPKBrpwe0n",
+        "name": "T-shirt1",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_eN1ql93nBpoz3y",
+        "name": "T-shirt2",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      },
+      {
+        "id": "prod_gnZO5kY0D6w7MN",
+        "name": "T-shirt6",
+        "size": "Size",
+        "color": "Color",
+        "description": "test test test test test test test test test test test test",
+        "button": "Add to cart"
+      }
+    ],
+
+    "cart_button": {
+      "add": "Add to cart"
+    },
+
+    "about": {
+      "title": "About Us",
+      "description": "This is the about page"
+    },
+    "footer": {
+      "title": "Shop",
+      "description": "Ipsum is simply dummy text of the printing and typesetting\n  industry. Lorem Ipsum has been the industry's standard dummy text\n              ever.Since the 1500s, when an unknown printer.",
+      "footerAbout": {
+        "Title": "About",
+        "Home": "Home",
+        "Cat": "Cat",
+        "Tshirt": "T-shirt",
+        "Cart": "Cart"
+      },
+      "contact": {
+        "Title": "Contact Us",
+        "Email": "E-mail"
+      },
+      "offers": {
+        "Title": "Our Offers",
+        "Information": "Information",
+        "Policy": "Privacy Policy",
+        "Terms": "Terms & Conditions"
+      },
+      "service": {
+        "Title": "Service"
+      }
+    }
+  }
+}

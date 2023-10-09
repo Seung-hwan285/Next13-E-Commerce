@@ -1,3 +1,5 @@
+'use server';
+
 import React from 'react';
 import { ProductAPI } from '@/lib/product';
 import { RelatedImage } from '@/lib/types/cart';
@@ -8,13 +10,14 @@ import { Metadata } from 'next';
 import { Props } from '@/lib/types/product';
 import { DiscountAPI } from '@/lib/discount';
 import ProductRelated from '@/components/product/ProductRelated';
+import { get18n } from '@/lib/utils/i18n';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;
 
   const data = await ProductAPI.getDetail(id);
 
-  if (!data) return notFound();
+  if (!data) notFound();
 
   return {
     title: data.name,
@@ -22,21 +25,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-async function Page({ params }: { params: { id: string } }) {
-  const { id } = params;
+async function Page({
+  params,
+}: {
+  params: { id: string; page: { locale: string } };
+}) {
+  const { id, lang } = params;
 
-  const asyncRelatedItem = ProductAPI.getDetail(id);
-  const asyncVariantsItems = ProductAPI.getVariantItems(id);
+  const { filter18nObj, relatedItems, arr2 } = await get18n(lang, id);
+
+  console.log(arr2);
+
   const asyncDiscountItems = DiscountAPI.getDisCount();
   const asyncAllProducts = ProductAPI.getAllProducts();
+  const asyncVariantsItems = ProductAPI.getVariantItems(id);
 
-  const [relatedItem, variantItems, discountItems, productItems] =
-    await Promise.all([
-      asyncRelatedItem,
-      asyncVariantsItems,
-      asyncDiscountItems,
-      asyncAllProducts,
-    ]);
+  const [discountItems, productItems, variantItems] = await Promise.all([
+    asyncDiscountItems,
+    asyncAllProducts,
+    asyncVariantsItems,
+  ]);
 
   const prices = productItems.result.data
     .map((d) => ({
@@ -54,10 +62,11 @@ async function Page({ params }: { params: { id: string } }) {
 
   return (
     <ProductDetail
-      relatedItem={relatedItem}
+      filter18nObj={filter18nObj}
+      relatedItems={relatedItems}
       variantItems={variantItems}
       discountItems={discountItems}
-      productItems={findItems}
+      productItems={arr2}
     />
   );
 }
@@ -65,15 +74,16 @@ async function Page({ params }: { params: { id: string } }) {
 export default Page;
 
 function ProductDetail({
-  relatedItem,
+  filter18nObj,
+  relatedItems,
   variantItems,
   discountItems,
   productItems,
 }: any) {
-  if (!relatedItem) return notFound();
-  if (!variantItems) return notFound();
+  // if (!relatedItems) notFound();
+  if (!variantItems) notFound();
 
-  const relatedImages = relatedItem?.related_products?.map(
+  const relatedImages = relatedItems?.related_products?.map(
     (rel: RelatedImage) => ({
       id: rel.id,
       images: rel.image.url,
@@ -88,8 +98,13 @@ function ProductDetail({
   }));
 
   const prices = {
-    raw: relatedItem.price.raw,
-    formatted_with_symbol: relatedItem.price.formatted_with_symbol,
+    raw: relatedItems.price.raw,
+    formatted_with_symbol: relatedItems.price.formatted_with_symbol,
+  };
+
+  const f18nSizeAndColor = {
+    Size: filter18nObj.size,
+    Color: filter18nObj.color,
   };
 
   return (
@@ -97,19 +112,21 @@ function ProductDetail({
       <div style={{ position: 'relative' }}>
         {/*Client */}
         <ProductGallery
-          name={relatedItem.name}
+          name={filter18nObj.name}
           price={prices}
-          title={relatedItem.image.url}
-          id={relatedItem.id}
-          description={relatedItem.description}
+          title={relatedItems.image.url}
+          id={filter18nObj.id}
+          description={filter18nObj.description}
           images={relatedImages}
           discountItems={discounts}
         />
 
         {/*Client */}
         <ProductVariantSelector
-          description={relatedItem.description}
+          description={filter18nObj.description}
+          f18nSizeAndColor={f18nSizeAndColor}
           variantItems={variantItems}
+          cartButton={filter18nObj.button}
         />
         {/*Client */}
         <ProductRelated productItems={productItems} />

@@ -11,7 +11,7 @@ export default async function Page({
   params: { page: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const { page } = params;
+  const { page, lang } = params;
 
   const p = page === 'globals.css' ? 1 : page;
 
@@ -27,8 +27,8 @@ export default async function Page({
 
   return (
     <>
-      <ProductItems items={result?.data} />
-      <ProductPagination pages={Math.ceil(total / per_page)} />
+      <ProductItems lang={params.lang} items={result?.data} />
+      <ProductPagination lang={lang} pages={Math.ceil(total / per_page)} />
       <ProductOptions />
     </>
   );

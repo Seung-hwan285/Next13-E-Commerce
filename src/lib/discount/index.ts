@@ -1,8 +1,7 @@
-import { checkUrl } from '@/lib/utils/checkUrl';
 import { Option } from '@/lib/types/product';
 import { getProperError } from 'next/dist/lib/is-error';
 
-const baseUrl = checkUrl(process.env.NEXT_PUBLIC_URL);
+const baseUrl = process.env.NEXT_PUBLIC_URL;
 
 const createRequestOptions = (method, obj?, body?): Option => {
   const bodyObjects = body ? JSON.stringify(body) : body;

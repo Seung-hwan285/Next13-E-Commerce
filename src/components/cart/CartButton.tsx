@@ -7,7 +7,7 @@ import { useAtom } from 'jotai';
 import { sessionState } from '@/lib/jotail/themState';
 import { setSessionStroage } from '@/lib/utils/session';
 
-function CartButton() {
+function CartButton({ cartButton }: string) {
   const router = useRouter();
 
   const [optionAtom, setOptionAtom] = useAtom<any>(sessionState);
@@ -24,7 +24,7 @@ function CartButton() {
     const size =
       (queryString.length === 2 && queryString[1].split('=')[1]) || '';
 
-    const id = pathname.split('/')[2];
+    const id = pathname.split('/')[3];
 
     const data = {
       product_id: id,
@@ -72,7 +72,7 @@ function CartButton() {
   return (
     <>
       <button className={styles.cartButton} onClick={handleClick}>
-        Add to cart
+        {cartButton}
       </button>
     </>
   );

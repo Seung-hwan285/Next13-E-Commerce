@@ -34,6 +34,7 @@ export type Gallery = {
     value: number;
     product_ids: string[] | string | unknown;
   };
+  lang: string;
 };
 
 export type RelatedImage = {
