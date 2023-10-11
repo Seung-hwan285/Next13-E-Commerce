@@ -42,8 +42,10 @@ function SearchBar() {
     <>
       <div className={styles.searchContainer}>
         <input
+          data-testid="search-bar"
           className={styles.searchInput}
           type="text"
+          name="search"
           onChange={handleChange}
           value={name}
         />
