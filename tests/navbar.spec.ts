@@ -1,7 +1,5 @@
 import { expect, test } from '@playwright/test';
 
-let apicontext;
-
 test.beforeEach(async ({ page }) => {
   await page.goto('http://localhost:3000/en/1');
 });

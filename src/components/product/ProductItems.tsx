@@ -47,9 +47,10 @@ async function ProductItems({ lang, items }: Product[]) {
       <ul className={styles.productContainer}>
         {f18nData3.length &&
           f18nData3.map(({ id, name, image, price }: Product) => {
+            console.log(id);
             return (
               <div key={id}>
-                <Link href={`/product/${id}`} key={id}>
+                <Link data-testid="link" href={`/product/${id}`} key={id}>
                   <h1 className={styles.title}>{name}</h1>
 
                   <div className={styles.imageWrapper}>

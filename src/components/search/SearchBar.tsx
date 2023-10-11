@@ -21,13 +21,9 @@ function SearchBar() {
     setName(value);
     setIsShow(true);
     if (value.length > 0) {
-      startTransition(() => {
-        const fetch = async () => {
-          const { data } = await ProductAPI.getSearchProducts(value);
-          setProduct(data);
-        };
-
-        fetch();
+      startTransition(async () => {
+        const { data } = await ProductAPI.getSearchProducts(value);
+        setProduct(data);
       });
     }
   };

@@ -81,7 +81,9 @@ function ProductGallery({
 
         <div className={styles.productDetails}>
           <div className={styles.productInfo}>
-            <h1 className={styles.productTitle}>{name}</h1>
+            <h1 data-testid="detail-title" className={styles.productTitle}>
+              {name}
+            </h1>
 
             {saleValue ? (
               <div>
