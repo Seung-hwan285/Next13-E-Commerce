@@ -12,8 +12,16 @@ function CollectionList({ products }: Product) {
         <ul className={styles.container}>
           {products.map(({ name, id }) => {
             return (
-              <div key={id} className={styles.wrapper}>
-                <Link href={`/search/${name}`} className={styles.item}>
+              <div
+                // data-testid={}
+                key={id}
+                className={styles.wrapper}
+              >
+                <Link
+                  data-testid="li"
+                  href={`/search/${name}`}
+                  className={styles.item}
+                >
                   {name}
                 </Link>
               </div>

@@ -6,7 +6,6 @@ import { signOut, useSession } from 'next-auth/react';
 import styles from './layout.module.css';
 import { useAtom, useSetAtom } from 'jotai';
 import { productSSRState, showState } from '@/lib/jotail/themState';
-import { getCollection } from '@/components/collection/action';
 import ClientColletions from '@/components/collection/ClientColletions';
 import Image from 'next/image';
 import Icon from '../../../public/free-icon-font-cart-minus-9795335.svg';
@@ -86,7 +85,11 @@ function NavBarItems({ totalItems }: number) {
         className={`${show ? styles.open : styles.close}`}
         onMouseDown={handleOutsideClick}
       >
-        <div onClick={() => setIsShow(!show)} className={styles.closeToggle}>
+        <div
+          data-testid="directions"
+          onClick={() => setIsShow(!show)}
+          className={styles.closeToggle}
+        >
           <span></span>
           <span></span>
           <span></span>
