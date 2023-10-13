@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import React from 'react';
-import styles from '@/components/product/product.module.css';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { createUrl } from '@/lib/utils/queryString';
+import React from "react";
+import styles from "@/components/product/product.module.css";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { createUrl } from "@/lib/utils/queryString";
 
 function ProductSort() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
 
-  const CONFIG = ['desc', 'asc'];
+  const CONFIG = ["desc", "asc"];
 
   const optionSearchParams = new URLSearchParams(searchParams.toString());
 
@@ -18,9 +18,9 @@ function ProductSort() {
     const { value } = e.target;
 
     if (CONFIG.includes(value)) {
-      optionSearchParams.set('sortDirection', value);
+      optionSearchParams.set("sortDirection", value);
     } else {
-      optionSearchParams.set('sortBy', value);
+      optionSearchParams.set("sortBy", value);
     }
 
     const optionUrl = createUrl(pathname, optionSearchParams);
@@ -30,7 +30,7 @@ function ProductSort() {
 
   return (
     <div className={styles.columnOptions}>
-      <select onChange={handleClick}>
+      <select data-testid="column" onChange={handleClick}>
         <option value="name">Name</option>
         <option value="updated_at">Updated</option>
         <option value="price">Price</option>

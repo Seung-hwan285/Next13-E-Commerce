@@ -1,20 +1,20 @@
-'use client';
-import React from 'react';
-import styles from './product.module.css';
+"use client";
+import React from "react";
+import styles from "./product.module.css";
 
-import { OptionsVariant, Variant, VariantItems } from '@/lib/types/product';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { createUrl } from '@/lib/utils/queryString';
-import { variantIdState } from '@/lib/jotail/themState';
-import { useAtom } from 'jotai';
-import CartButton from '@/components/cart/CartButton';
+import { OptionsVariant, Variant, VariantItems } from "@/lib/types/product";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { createUrl } from "@/lib/utils/queryString";
+import { variantIdState } from "@/lib/jotail/themState";
+import { useAtom } from "jotai";
+import CartButton from "@/components/cart/CartButton";
 
 function ProductOptions({ id, options }: OptionsVariant[]) {
-  const CONFIG = ['X', 'XL', 'XXL', 'M', 'S'];
-  const keys = ['Color', 'Size'];
-  const [variantAtom, setVariantIdAtom] = useAtom(variantIdState);
+  const CONFIG = ["X", "XL", "XXL", "M", "S"];
+  const keys = ["Color", "Size"];
+  const [, setVariantIdAtom] = useAtom(variantIdState);
 
-  const router: any = useRouter();
+  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -58,9 +58,9 @@ function ProductOptions({ id, options }: OptionsVariant[]) {
   );
 }
 
-function ProductItems({ f18nOption, title, data, cartButton }: VariantItems) {
-  const enTitle = f18nOption === '사이즈' ? '사이즈' : '색상';
-  const krTitle = f18nOption === 'Size' ? 'Choose Size' : 'Select Color';
+function ProductItems({ f18nOption, data }: VariantItems) {
+  const enTitle = f18nOption === "사이즈" ? "사이즈" : "색상";
+  const krTitle = f18nOption === "Size" ? "Choose Size" : "Select Color";
 
   const regex = /^[가-힣ㄱ-ㅎㅏ]*$/;
 
@@ -71,9 +71,9 @@ function ProductItems({ f18nOption, title, data, cartButton }: VariantItems) {
       </dt>
       <dd className={styles.productOption}>
         {data &&
-          data.map(({ id, options, index }) => {
+          data.map(({ id, options }) => {
             return (
-              <div key={index}>
+              <div key={id}>
                 <ProductOptions id={id} options={options} />
               </div>
             );
@@ -98,8 +98,8 @@ Variant) {
     ?.slice(3, description?.length - 4)
     .trim();
 
-  const sizeData = variantItems.data.filter((d) => d.name === 'Size');
-  const colorData = variantItems.data.filter((d) => d.name === 'Color');
+  const sizeData = variantItems.data.filter((d) => d.name === "Size");
+  const colorData = variantItems.data.filter((d) => d.name === "Color");
 
   return (
     <>
@@ -109,6 +109,7 @@ Variant) {
             cols={3}
             rows={3}
             readOnly={true}
+            value={""}
             className={styles.productDescription}
           >
             {sliceDescription}
@@ -116,12 +117,13 @@ Variant) {
 
           <ProductItems
             f18nOption={f18nSizeAndColor.Size}
-            title={'Size'}
+            title={"Size"}
             data={sizeData}
           />
+
           <ProductItems
             f18nOption={f18nSizeAndColor.Color}
-            title={'Color'}
+            title={"Color"}
             data={colorData}
           />
 
