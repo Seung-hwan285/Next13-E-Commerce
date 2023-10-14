@@ -1,11 +1,11 @@
-'use server';
+"use server";
 
-import { notFound } from 'next/navigation';
-import styles from '@/components/product/product.module.css';
-import Link from 'next/link';
-import React from 'react';
-import { Product } from '@/lib/types/product';
-import { get18n } from '@/lib/utils/i18n';
+import { notFound } from "next/navigation";
+import styles from "@/components/product/product.module.css";
+import Link from "next/link";
+import React from "react";
+import { Product } from "@/lib/types/product";
+import { get18n } from "@/lib/utils/i18n";
 
 async function ProductItems({ lang, items }: Product[]) {
   if (!items) {
@@ -42,12 +42,13 @@ async function ProductItems({ lang, items }: Product[]) {
       })
   );
 
+  console.log(f18nData3);
+
   return (
     <>
       <ul className={styles.productContainer}>
         {f18nData3.length &&
           f18nData3.map(({ id, name, image, price }: Product) => {
-            console.log(id);
             return (
               <div key={id}>
                 <Link data-testid="link" href={`/product/${id}`} key={id}>
