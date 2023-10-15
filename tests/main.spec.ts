@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 
 test("사용자는 홈에서 상품을 클릭할 수 있다.", async ({ page, request }) => {
   await test.step("사용자는 홈에서 상품을 클릭할 수 있다.", async () => {
-    await page.locator(".product_imageWrapper__ga6oW").nth(1).click();
+    await page.getByTestId("link").nth(1).dblclick();
 
     const id = "prod_DWy4oGEG3ql6Jx";
 
@@ -175,11 +175,7 @@ test("사용자는 홈에서 옵션을 선택할 수 있다. (Name, updated , Pr
     const { data } = await fetchData.json();
     expect(fetchData.ok()).toBeTruthy();
 
-    console.log(data);
-
     await page.waitForTimeout(1000);
-
-    // expect(data[0]?.price?.raw).toEqual(22);
 
     expect(data[0].price.raw).toEqual(2222);
     expect(data[0].name).toEqual("Cat");
@@ -224,11 +220,7 @@ test("사용자는 홈에서 옵션을 선택할 수 있다. (Name, updated , Pr
     const { data } = await fetchData.json();
     expect(fetchData.ok()).toBeTruthy();
 
-    console.log(data);
-
     await page.waitForTimeout(1000);
-
-    // expect(data[0]?.price?.raw).toEqual(22);
 
     expect(data[0].price.raw).toEqual(3333);
     expect(data[0].name).toEqual("T-shirt-3");

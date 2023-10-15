@@ -1,11 +1,11 @@
-'use client';
-import React, { startTransition, useEffect } from 'react';
-import styles from '@/components/product/product.module.css';
-import { usePathname, useRouter } from 'next/navigation';
-import { CartAPI } from '@/lib/cart';
-import { useAtom } from 'jotai';
-import { sessionState } from '@/lib/jotail/themState';
-import { setSessionStroage } from '@/lib/utils/session';
+"use client";
+import React, { startTransition, useEffect } from "react";
+import styles from "@/components/product/product.module.css";
+import { usePathname, useRouter } from "next/navigation";
+import { CartAPI } from "@/lib/cart";
+import { useAtom } from "jotai";
+import { sessionState } from "@/lib/jotail/themState";
+import { setSessionStroage } from "@/lib/utils/session";
 
 function CartButton({ cartButton }: string) {
   const router = useRouter();
@@ -17,14 +17,14 @@ function CartButton({ cartButton }: string) {
   const handleClick = async () => {
     const { href } = window.location;
 
-    const queryString = href.split('?')[1]?.split('&') || '';
+    const queryString = href.split("?")[1]?.split("&") || "";
 
-    const color = queryString[0]?.split('=')[1] || '';
+    const color = queryString[0]?.split("=")[1] || "";
 
     const size =
-      (queryString.length === 2 && queryString[1].split('=')[1]) || '';
+      (queryString.length === 2 && queryString[1].split("=")[1]) || "";
 
-    const id = pathname.split('/')[3];
+    const id = pathname.split("/")[3];
 
     const data = {
       product_id: id,
@@ -45,7 +45,7 @@ function CartButton({ cartButton }: string) {
         const tempData = prev.map((p) =>
           p.product_id === id ? { ...p, values: data.values } : p
         );
-        setSessionStroage('product', tempData);
+        setSessionStroage("product", tempData);
         return tempData;
       });
     } else {
@@ -54,7 +54,7 @@ function CartButton({ cartButton }: string) {
           return null;
         }
         const tempData = [...prev, data];
-        setSessionStroage('product', tempData);
+        setSessionStroage("product", tempData);
         return tempData;
       });
     }
@@ -71,7 +71,11 @@ function CartButton({ cartButton }: string) {
 
   return (
     <>
-      <button className={styles.cartButton} onClick={handleClick}>
+      <button
+        data-testid="cart"
+        className={styles.cartButton}
+        onClick={handleClick}
+      >
         {cartButton}
       </button>
     </>
