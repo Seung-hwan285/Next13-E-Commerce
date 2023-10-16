@@ -7,7 +7,6 @@ import Image from "next/image";
 import { Locale } from "@/i18n.config";
 import FooterOptions from "@/components/layout/FooterOptions";
 import { getDictionary } from "@/lib/content/dictionary";
-import { get18n } from "@/lib/utils/i18n";
 
 async function Footer({ lang }: { lang: Locale }) {
   const { page } = await getDictionary(lang);

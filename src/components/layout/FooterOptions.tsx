@@ -25,7 +25,7 @@ function FooterOptions() {
     {
       index: 1,
       icon: KR,
-      value: "kr",
+      value: "ko",
     },
     {
       index: 2,

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import ProductColumn from "@/components/product/ProductColumn";
 import ProductSort from "@/components/product/ProductSort";
 

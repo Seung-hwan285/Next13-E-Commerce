@@ -1,26 +1,23 @@
-import './globals.css';
-import React from 'react';
-import { NextAuthProvider } from '@/lib/provider/NextAuthProvider';
-import Navbar from '@/components/layout/Navbar';
-import { Inter } from '@next/font/google';
-import Footer from '@/components/layout/Footer';
-import { Cookie } from '@/components/cart/Cookie';
-import { i18n, Locale } from '@/i18n.config';
-import { Metadata } from 'next';
-import { cookies } from 'next/headers';
+import "./globals.css";
+import React from "react";
+import { NextAuthProvider } from "@/lib/provider/NextAuthProvider";
+import Navbar from "@/components/layout/Navbar";
+import { Inter } from "@next/font/google";
+import Footer from "@/components/layout/Footer";
+import { Cookie } from "@/components/cart/Cookie";
+import { i18n, Locale } from "@/i18n.config";
+import { Metadata } from "next";
+import { cookies } from "next/headers";
 
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
-// Error: Invariant: Method expects to have requestAsyncStorage, none available
-// export const runtime = 'edge'; // 'nodejs' (default) | 'edge'
-
 export const metadata: Metadata = {
-  title: 'Shop',
-  description: 'E-Commerce',
+  title: "Shop",
+  description: "E-Commerce",
 };
 
 export async function generateStaticParams() {
@@ -34,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { lang: Locale };
 }) {
-  const cookie = cookies().get('cartId')?.value;
+  const cookie = cookies().get("cartId")?.value;
 
   return (
     <html lang={params.lang}>

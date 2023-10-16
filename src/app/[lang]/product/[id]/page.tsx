@@ -1,16 +1,16 @@
-'use server';
+"use server";
 
-import React from 'react';
-import { ProductAPI } from '@/lib/product';
-import { RelatedImage } from '@/lib/types/cart';
-import { notFound } from 'next/navigation';
-import ProductGallery from '@/components/product/ProductGallery';
-import ProductVariantSelector from '@/components/product/ProductVariantSelector';
-import { Metadata } from 'next';
-import { Props } from '@/lib/types/product';
-import { DiscountAPI } from '@/lib/discount';
-import ProductRelated from '@/components/product/ProductRelated';
-import { get18n } from '@/lib/utils/i18n';
+import React from "react";
+import { ProductAPI } from "@/lib/product";
+import { RelatedImage } from "@/lib/types/cart";
+import { notFound } from "next/navigation";
+import ProductGallery from "@/components/product/ProductGallery";
+import ProductVariantSelector from "@/components/product/ProductVariantSelector";
+import { Metadata } from "next";
+import { Props } from "@/lib/types/product";
+import { DiscountAPI } from "@/lib/discount";
+import ProductRelated from "@/components/product/ProductRelated";
+import { get18n } from "@/lib/utils/i18n";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: data.name,
-    description: data.description || '',
+    description: data.description || "",
   };
 }
 
@@ -35,28 +35,12 @@ async function Page({
   const { filter18nObj, relatedItems, arr2 } = await get18n(lang, id);
 
   const asyncDiscountItems = DiscountAPI.getDisCount();
-  const asyncAllProducts = ProductAPI.getAllProducts();
   const asyncVariantsItems = ProductAPI.getVariantItems(id);
 
-  const [discountItems, productItems, variantItems] = await Promise.all([
+  const [discountItems, variantItems] = await Promise.all([
     asyncDiscountItems,
-    asyncAllProducts,
     asyncVariantsItems,
   ]);
-
-  const prices = productItems.result.data
-    .map((d) => ({
-      price: d.price.raw,
-    }))
-    .sort((a, b) => a.price - b.price)
-    .slice(0, 5)
-    .map((p) => {
-      return p.price;
-    });
-
-  const findItems = productItems.result.data
-    .filter((f) => prices.includes(f.price.raw))
-    .sort((a, b) => a.price.raw - b.price.raw);
 
   return (
     <ProductDetail
@@ -107,7 +91,7 @@ function ProductDetail({
 
   return (
     <>
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: "relative" }}>
         {/*Client */}
         <ProductGallery
           name={filter18nObj.name}

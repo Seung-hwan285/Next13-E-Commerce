@@ -31,7 +31,7 @@ async function ProductItems({ lang, items }: Product[]) {
     keys
       .map((k) => {
         if (s.id === k) {
-          const findIndex = data.findIndex((d) => d.id === k);
+          const findIndex = data?.findIndex((d) => d.id === k);
           return Object.assign({}, s, data[findIndex]);
         }
       })
@@ -49,7 +49,7 @@ async function ProductItems({ lang, items }: Product[]) {
           f18nData3.map(({ id, name, image, price }: Product) => {
             return (
               <div key={id}>
-                <Link data-testid="link" href={`/product/${id}`} key={id}>
+                <Link data-testid="link" href={`/product/${id}`}>
                   <h1 className={styles.title}>{name}</h1>
 
                   <div className={styles.imageWrapper}>

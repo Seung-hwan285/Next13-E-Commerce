@@ -31,15 +31,12 @@ function ProductSort({ options }: ProductOptions) {
     router.replace(optionUrl, { scroll: false });
   };
 
-  console.log("tset@@@@@@@@@@@", options);
   return (
     <div className={styles.columnOptions}>
       <select data-testid="column" onChange={handleClick}>
         <option value="name">{name}</option>
         <option value="updated_at">{updated}</option>
         <option value="price">{price}</option>
-        {/*<option value="desc">High to low</option>*/}
-        {/*<option value="asc">Low to high</option>*/}
       </select>
     </div>
   );

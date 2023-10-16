@@ -1,6 +1,6 @@
 "use server";
 
-import KR from "/src/dictionaries/kr.json";
+import KR from "/src/dictionaries/ko.json";
 import EN from "/src/dictionaries/en.json";
 
 import { ProductAPI } from "@/lib/product";
@@ -47,7 +47,6 @@ export const getKR = async (id?: string) => {
         .filter((f) => prices.includes(f.price.raw))
         .sort((a, b) => a.price.raw - b.price.raw);
 
-      // 1. name , decription
       const relatedObj = {
         id: relatedItems.id,
         name: relatedItems.name,
@@ -69,7 +68,6 @@ export const getKR = async (id?: string) => {
 
       const arr2 = [];
 
-      // const temp = productItems.map(())
       kr_products.forEach((kr) => {
         findItems.forEach((p_id) => {
           if (kr.id === p_id.id) {
@@ -93,24 +91,13 @@ export const getKR = async (id?: string) => {
         arr2,
       };
     }
-
-    // const { data } = result;
   } catch (err) {
     console.error(err);
   }
 };
 
-// en
-
-// 1.name
-// 2.description
-// 3. size
-// 4. color => map
 export const getEN = async (id?: string) => {
-  // const { page } = await getDictionary(lang); => 바꿔보기
   const { en_products, options } = EN.page;
-
-  // id : prod_1
 
   try {
     if (!id) {
@@ -125,10 +112,10 @@ export const getEN = async (id?: string) => {
       const arr2 = [];
 
       en_products.forEach((d, idx) => {
-        const id = en_products[idx].id;
-        const title = en_products[idx].name;
-
         filterId.forEach((f_id) => {
+          const id = en_products[idx].id;
+          const title = en_products[idx].name;
+
           if (f_id === id) {
             arr2.push({ id: id, name: title, options: options });
           }
@@ -207,11 +194,9 @@ export const getEN = async (id?: string) => {
 export const get18n = async (locale, id) => {
   // id : prod_1
   switch (locale) {
-    case "kr":
+    case "ko":
       return await getKR(id);
     case "en":
-      // id : prod_1
-
       return await getEN(id);
   }
 };

@@ -1,10 +1,7 @@
-'use server';
-import React from 'react';
+"use server";
+import React from "react";
 
-import Product from '@/components/product/Product';
-import { Locale } from '@/i18n.config';
-import { getDictionary } from '@/lib/content/dictionary';
-import { Suspense } from 'react';
+import { Locale } from "@/i18n.config";
 
 export default async function Home({
   params: { lang },
