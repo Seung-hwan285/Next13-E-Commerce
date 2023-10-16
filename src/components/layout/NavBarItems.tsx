@@ -1,31 +1,31 @@
-'use client';
+"use client";
 
-import React, { startTransition, useEffect } from 'react';
-import Link from 'next/link';
-import { signOut, useSession } from 'next-auth/react';
-import styles from './layout.module.css';
-import { useAtom, useSetAtom } from 'jotai';
-import { productSSRState, showState } from '@/lib/jotail/themState';
-import ClientColletions from '@/components/collection/ClientColletions';
-import Image from 'next/image';
-import Icon from '../../../public/free-icon-font-cart-minus-9795335.svg';
-import { IconButton } from '@mui/material';
-import Badge from '@mui/material/Badge';
-import { styled } from '@mui/material/styles';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import HomeIcon from '@mui/icons-material/Home';
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-import CollectionsIcon from '@mui/icons-material/Collections';
-import NavbarAuthIcon from '@/components/layout/NavbarAuthIcon';
-import PersonOffIcon from '@mui/icons-material/PersonOff';
+import React, { startTransition, useEffect } from "react";
+import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
+import styles from "./layout.module.css";
+import { useAtom, useSetAtom } from "jotai";
+import { productSSRState, showState } from "@/lib/jotail/themState";
+import ClientColletions from "@/components/collection/ClientColletions";
+import Image from "next/image";
+import Icon from "../../../public/free-icon-font-cart-minus-9795335.svg";
+import { IconButton } from "@mui/material";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import HomeIcon from "@mui/icons-material/Home";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
+import CollectionsIcon from "@mui/icons-material/Collections";
+import NavbarAuthIcon from "@/components/layout/NavbarAuthIcon";
+import PersonOffIcon from "@mui/icons-material/PersonOff";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    position: 'absolute',
+  "& .MuiBadge-badge": {
+    position: "absolute",
     right: 32,
     top: 0,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 2px',
+    padding: "0 2px",
   },
 }));
 
@@ -38,7 +38,7 @@ function NavBarItems({ totalItems }: number) {
   const handleLogoutClick = () => {
     signOut({
       // callbackUrl: '/',
-      callbackUrl: 'https://shop-seung-hwan285.vercel.app/',
+      callbackUrl: "https://shop-seung-hwan285.vercel.app/",
     });
   };
 
@@ -47,12 +47,11 @@ function NavBarItems({ totalItems }: number) {
 
     startTransition(async () => {
       const fetchData = await fetch(`/api/collection`, {
-        method: 'GET',
+        method: "GET",
       });
 
       const res = await fetchData.json();
 
-      console.log(res);
       setData(res.data.data);
     });
   };
@@ -61,7 +60,7 @@ function NavBarItems({ totalItems }: number) {
   const wrapperRef = React.useRef<HTMLInputElement>(null as HTMLInputElement);
 
   const handleOutsideClick = (
-    e: DocumentEventMap['mousedown'] | React.MouseEvent
+    e: DocumentEventMap["mousedown"] | React.MouseEvent
   ) => {
     if (
       e.target instanceof HTMLElement &&
@@ -72,9 +71,9 @@ function NavBarItems({ totalItems }: number) {
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener("mousedown", handleOutsideClick);
     return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
 

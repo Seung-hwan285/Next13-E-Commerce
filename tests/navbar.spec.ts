@@ -8,7 +8,6 @@ test("초기 렌더링 title 테스트", async ({ page }) => {
   await page.goto("http://localhost:3000/en/1");
 
   const pathname = await page.evaluate(() => window.location.pathname);
-  console.log(pathname);
   await expect(page).toHaveTitle("Shop");
 });
 

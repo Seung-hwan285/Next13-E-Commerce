@@ -1,13 +1,21 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import ProductColumn from '@/components/product/ProductColumn';
-import ProductSort from '@/components/product/ProductSort';
+import React, { useEffect } from "react";
+import ProductColumn from "@/components/product/ProductColumn";
+import ProductSort from "@/components/product/ProductSort";
 
-function ProductOptions() {
+export type ProductOptions = {
+  options: {
+    name: string;
+    updated: string;
+    price: string;
+  };
+};
+
+function ProductOptions({ options }: ProductOptions) {
   return (
     <>
-      <ProductSort />
+      <ProductSort options={options} />
       <ProductColumn />;
     </>
   );

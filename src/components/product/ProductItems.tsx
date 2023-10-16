@@ -42,8 +42,6 @@ async function ProductItems({ lang, items }: Product[]) {
       })
   );
 
-  console.log(f18nData3);
-
   return (
     <>
       <ul className={styles.productContainer}>

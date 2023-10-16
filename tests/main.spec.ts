@@ -41,7 +41,6 @@ test("사용자는 홈에서 상품을 클릭할 수 있다.", async ({ page, re
 
     const title = page.getByTestId("detail-title");
 
-    console.log(title);
     await expect(title).toHaveClass("product_productTitle__R178h");
   });
 });
@@ -125,8 +124,6 @@ test("사용자는 홈에서 옵션을 선택할 수 있다. (Name, updated , Pr
 
     const { data } = await fetchData.json();
     expect(fetchData.ok()).toBeTruthy();
-
-    console.log(data);
 
     await page.waitForTimeout(1000);
 

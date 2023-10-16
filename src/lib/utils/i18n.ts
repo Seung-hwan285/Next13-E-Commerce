@@ -1,13 +1,13 @@
-'use server';
+"use server";
 
-import KR from '/src/dictionaries/kr.json';
-import EN from '/src/dictionaries/en.json';
+import KR from "/src/dictionaries/kr.json";
+import EN from "/src/dictionaries/en.json";
 
-import { ProductAPI } from '@/lib/product';
+import { ProductAPI } from "@/lib/product";
 
 // kr
 export const getKR = async (id?: string) => {
-  const { kr_products } = KR.page;
+  const { kr_products, options } = KR.page;
   const arr2 = [];
 
   try {
@@ -23,7 +23,7 @@ export const getKR = async (id?: string) => {
       kr_products.forEach((d) => {
         filterId.forEach((f_id) => {
           if (f_id === d.id) {
-            arr2.push({ id: d.id, name: d.name });
+            arr2.push({ id: d.id, name: d.name, options: options });
           }
         });
       });
@@ -108,7 +108,7 @@ export const getKR = async (id?: string) => {
 // 4. color => map
 export const getEN = async (id?: string) => {
   // const { page } = await getDictionary(lang); => 바꿔보기
-  const { en_products } = EN.page;
+  const { en_products, options } = EN.page;
 
   // id : prod_1
 
@@ -130,7 +130,7 @@ export const getEN = async (id?: string) => {
 
         filterId.forEach((f_id) => {
           if (f_id === id) {
-            arr2.push({ id: id, name: title });
+            arr2.push({ id: id, name: title, options: options });
           }
         });
       });
@@ -207,9 +207,9 @@ export const getEN = async (id?: string) => {
 export const get18n = async (locale, id) => {
   // id : prod_1
   switch (locale) {
-    case 'kr':
+    case "kr":
       return await getKR(id);
-    case 'en':
+    case "en":
       // id : prod_1
 
       return await getEN(id);

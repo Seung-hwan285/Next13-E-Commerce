@@ -1,12 +1,13 @@
-'use server';
-import React from 'react';
-import Link from 'next/link';
-import styles from '/src/app/[lang]/page.module.css';
-import Icon from '/public/free-icon-font-cart-minus-9795335.svg';
-import Image from 'next/image';
-import { Locale } from '@/i18n.config';
-import FooterOptions from '@/components/layout/FooterOptions';
-import { getDictionary } from '@/lib/content/dictionary';
+"use server";
+import React from "react";
+import Link from "next/link";
+import styles from "/src/app/[lang]/page.module.css";
+import Icon from "/public/free-icon-font-cart-minus-9795335.svg";
+import Image from "next/image";
+import { Locale } from "@/i18n.config";
+import FooterOptions from "@/components/layout/FooterOptions";
+import { getDictionary } from "@/lib/content/dictionary";
+import { get18n } from "@/lib/utils/i18n";
 
 async function Footer({ lang }: { lang: Locale }) {
   const { page } = await getDictionary(lang);
@@ -16,7 +17,7 @@ async function Footer({ lang }: { lang: Locale }) {
       <div className={styles.footerBox}>
         <div className={styles.container}>
           <div className={styles.iconContainer}>
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: "center" }}>
               <h1 className={styles.footerWrapper}>{page.footer.title}</h1>
               <Image src={Icon} height={52} width={100} alt="shop" />
             </div>
@@ -30,21 +31,21 @@ async function Footer({ lang }: { lang: Locale }) {
             </h1>
             <ul className={styles.footerUl}>
               <li>
-                <Link href={'/'}>{page.footer.footerAbout.Home}</Link>
+                <Link href={"/"}>{page.footer.footerAbout.Home}</Link>
               </li>
 
               <li>
-                <Link href={'/search/Cat'}>{page.footer.footerAbout.Cat}</Link>
+                <Link href={"/search/Cat"}>{page.footer.footerAbout.Cat}</Link>
               </li>
 
               <li>
-                <Link href={'/search/T-shirt'}>
+                <Link href={"/search/T-shirt"}>
                   {page.footer.footerAbout.Tshirt}
                 </Link>
               </li>
 
               <li>
-                <Link href={'/cart'}>{page.footer.footerAbout.Cart}</Link>
+                <Link href={"/cart"}>{page.footer.footerAbout.Cart}</Link>
               </li>
             </ul>
           </div>

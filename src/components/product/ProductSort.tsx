@@ -4,11 +4,14 @@ import React from "react";
 import styles from "@/components/product/product.module.css";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { createUrl } from "@/lib/utils/queryString";
+import ProductOptions from "@/components/product/ProductOptions";
 
-function ProductSort() {
+function ProductSort({ options }: ProductOptions) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+
+  const { name, updated, price } = options[0].options;
 
   const CONFIG = ["desc", "asc"];
 
@@ -28,12 +31,13 @@ function ProductSort() {
     router.replace(optionUrl, { scroll: false });
   };
 
+  console.log("tset@@@@@@@@@@@", options);
   return (
     <div className={styles.columnOptions}>
       <select data-testid="column" onChange={handleClick}>
-        <option value="name">Name</option>
-        <option value="updated_at">Updated</option>
-        <option value="price">Price</option>
+        <option value="name">{name}</option>
+        <option value="updated_at">{updated}</option>
+        <option value="price">{price}</option>
         {/*<option value="desc">High to low</option>*/}
         {/*<option value="asc">Low to high</option>*/}
       </select>

@@ -88,7 +88,6 @@ test("사용자는 추가하기 버튼을 누른다.", async ({ page, request, b
   // const cookies = "cart_gvRjwOdZLAo4mN";
   const cookies = await page.context().cookies();
 
-  console.log(cookies);
   const fetchData = await request.post(
     `https://api.chec.io/v1/carts/${cookies[2]?.value}`,
     {
@@ -105,7 +104,6 @@ test("사용자는 추가하기 버튼을 누른다.", async ({ page, request, b
   );
 
   const data = await fetchData.json();
-  console.log(data);
 
   // eslint-disable-next-line prefer-const
   const { line_items, id } = data;

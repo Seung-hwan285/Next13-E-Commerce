@@ -5,6 +5,12 @@
       "description": "Internationalization in NextJs 13 App router"
     },
 
+    "options": {
+      "name": "Name",
+      "updated": "Updated",
+      "price": "Price"
+    },
+
     "en_products": [
       {
         "id": "prod_VKXmwD4V0qwrgD",
