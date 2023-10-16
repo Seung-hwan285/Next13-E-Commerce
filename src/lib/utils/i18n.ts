@@ -191,12 +191,71 @@ export const getEN = async (id?: string) => {
   }
 };
 
-export const get18n = async (locale, id) => {
+export const getSearchKR = async (name: string) => {
+  const arr2 = [];
+  const { data: products } = await ProductAPI.getSearchProducts(name);
+  const { kr_products } = KR.page;
+
+  const filterData = products.map((d) => ({
+    id: d.id,
+    image: d.image,
+    price: d.price,
+  }));
+
+  kr_products.forEach((d, idx) => {
+    filterData.forEach(({ id, image, price }) => {
+      const enId = kr_products[idx].id;
+      const title = kr_products[idx].name;
+
+      if (id === enId) {
+        arr2.push({ id: id, name: title, image: image, price: price });
+      }
+    });
+  });
+
+  return arr2;
+};
+
+export const getSearchEN = async (name: string) => {
+  const arr2 = [];
+  const { data: products } = await ProductAPI.getSearchProducts(name);
+  const { en_products } = EN.page;
+
+  const filterData = products.map((d) => ({
+    id: d.id,
+    image: d.image,
+    price: d.price,
+  }));
+
+  en_products.forEach((d, idx) => {
+    filterData.forEach(({ id, image, price }) => {
+      const enId = en_products[idx].id;
+      const title = en_products[idx].name;
+
+      if (id === enId) {
+        arr2.push({ id: id, name: title, image: image, price: price });
+      }
+    });
+  });
+
+  return arr2;
+};
+
+export const get18n = async (lang, id?, name?) => {
   // id : prod_1
-  switch (locale) {
+  switch (lang) {
     case "ko":
-      return await getKR(id);
+      if (lang) {
+        return await getSearchKR(name);
+      } else {
+        return await getKR(id);
+      }
+
     case "en":
-      return await getEN(id);
+      if (lang) {
+        return await getSearchEN(name);
+      } else {
+        return await getEN(id);
+      }
   }
 };

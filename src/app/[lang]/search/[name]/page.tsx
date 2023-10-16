@@ -1,13 +1,19 @@
-import { ProductAPI } from '@/lib/product';
-import styles from '@/components/product/product.module.css';
-import { Product } from '@/lib/types/product';
-import Link from 'next/link';
-import React from 'react';
+import { ProductAPI } from "@/lib/product";
+import styles from "@/components/product/product.module.css";
+import { Product } from "@/lib/types/product";
+import Link from "next/link";
+import React from "react";
+import { get18n } from "@/lib/utils/i18n";
 
 async function Page({ params }: { params: { id: string } }) {
-  const { name } = params;
+  const { name, lang, id } = params;
 
-  const { data: products } = await ProductAPI.getSearchProducts(name);
+  console.log(name);
+  console.log(lang);
+  const products = await get18n(lang, id, name);
+
+  console.log(products);
+  // const { data: products } = await ProductAPI.getSearchProducts(name);
 
   return <Products products={products} />;
 }
