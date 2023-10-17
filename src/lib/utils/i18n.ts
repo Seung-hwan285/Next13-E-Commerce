@@ -1,6 +1,6 @@
 "use server";
 
-import KR from "/src/dictionaries/ko.json";
+import KR from "/src/dictionaries/kr.json";
 import EN from "/src/dictionaries/en.json";
 
 import { ProductAPI } from "@/lib/product";
@@ -193,6 +193,7 @@ export const getEN = async (id?: string) => {
 
 export const getSearchKR = async (name: string) => {
   const arr2 = [];
+
   const { data: products } = await ProductAPI.getSearchProducts(name);
   const { kr_products } = KR.page;
 
@@ -244,15 +245,15 @@ export const getSearchEN = async (name: string) => {
 export const get18n = async (lang, id?, name?) => {
   // id : prod_1
   switch (lang) {
-    case "ko":
-      if (lang) {
+    case "kr":
+      if (name) {
         return await getSearchKR(name);
       } else {
         return await getKR(id);
       }
 
     case "en":
-      if (lang) {
+      if (name) {
         return await getSearchEN(name);
       } else {
         return await getEN(id);

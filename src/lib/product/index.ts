@@ -140,8 +140,7 @@ export const ProductAPI = {
   },
 
   getSearchProducts: async (name: string | unknown) => {
-    if (name.length > 0) {
-      console.log(name);
+    if (name?.length > 0) {
       const url = `${baseUrl}/v1/products?query=${name}`;
 
       const options = createRequestOptions("GET");

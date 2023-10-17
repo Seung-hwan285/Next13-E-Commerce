@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { i18n } from "@/i18n.config";
+import Negotiator from "negotiator";
+import { match as matchLocale } from "@formatjs/intl-localematcher";
 
 function getLocale(request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {};
@@ -8,16 +10,21 @@ function getLocale(request: NextRequest): string | undefined {
 
   const { referer } = negotiatorHeaders;
 
-  const defaultUrl = referer.split(":")[2].split("/")[1];
+  const defaultUrl = referer?.split(":")[2].split("/")[1];
 
   const locales: string[] = i18n.locales;
+  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+
+  const locale = matchLocale(languages, locales, defaultUrl);
 
   switch (defaultUrl) {
     case "en":
       return locales[0];
-    case "ko":
+    case "kr":
       return locales[1];
   }
+
+  return locale;
 }
 
 export function middleware(request: NextRequest) {
@@ -30,6 +37,8 @@ export function middleware(request: NextRequest) {
 
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
+
+    console.log(locale);
 
     if (pathname.length > 1) {
       return NextResponse.redirect(
@@ -73,7 +82,5 @@ export const config = {
     "/((?!api|_next/static|_next/image|favicon.ico).*)",
     "/en/:path*",
     "/ko/:path*",
-    "/ko/(.*)",
-    "/en/(.*)",
   ],
 };
