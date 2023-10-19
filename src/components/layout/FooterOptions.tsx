@@ -40,6 +40,8 @@ function FooterOptions() {
     const segemtns = pathname.split("/");
 
     segemtns[1] = location;
+
+    console.log(location);
     return segemtns.join("/");
   };
 
@@ -49,7 +51,11 @@ function FooterOptions() {
         {CONFIG.map(({ icon, value, index }) => {
           return (
             <li key={index}>
-              <Link value={value} href={redirectPathName(value)}>
+              <Link
+                prefetch={false}
+                value={value}
+                href={redirectPathName(value)}
+              >
                 <Image src={icon} alt={"icon"} />
               </Link>
             </li>

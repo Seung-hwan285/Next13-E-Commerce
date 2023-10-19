@@ -72,7 +72,7 @@ function CartButton({ cartButton }: string) {
   return (
     <>
       <button
-        data-testid="cart"
+        data-testid="add-cart"
         className={styles.cartButton}
         onClick={handleClick}
       >

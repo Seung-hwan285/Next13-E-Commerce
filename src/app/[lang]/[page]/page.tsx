@@ -4,6 +4,7 @@ import ProductItems from "@/components/product/ProductItems";
 import ProductPagination from "@/components/product/ProductPagination";
 import ProductOptions from "@/components/product/ProductOptions";
 import { get18n } from "@/lib/utils/i18n";
+import Footer from "@/components/layout/Footer";
 
 export default async function Page({
   params,
@@ -35,9 +36,10 @@ export default async function Page({
 
   return (
     <>
-      <ProductItems lang={params.lang} items={result?.data} />
+      <ProductItems lang={lang} items={result?.data} />
       <ProductPagination lang={lang} pages={Math.ceil(total / per_page)} />
       <ProductOptions options={options} />
+      <Footer lang={lang} />
     </>
   );
 }

@@ -1,12 +1,12 @@
-'use client';
-import styles from './cart.module.css';
-import React, { useTransition } from 'react';
-import { experimental_useOptimistic as useOptimistic } from 'react';
-import upSVG from '/public/icons/free-icon-font-arrow-alt-square-down-7434694.svg';
-import downSVG from '/public/icons/free-icon-font-arrow-alt-square-up-7434723.svg';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { putLikeButton } from '@/components/cart/actions';
+"use client";
+import styles from "./cart.module.css";
+import React, { useTransition } from "react";
+import { experimental_useOptimistic as useOptimistic } from "react";
+import upSVG from "/public/icons/free-icon-font-arrow-alt-square-down-7434694.svg";
+import downSVG from "/public/icons/free-icon-font-arrow-alt-square-up-7434723.svg";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { putLikeButton } from "@/components/cart/actions";
 
 type DeleteProps = {
   cartId: string;
@@ -50,13 +50,13 @@ function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
       const response = await fetch(
         `/api/carts?cartId=${objData.cartId}&lineId=${objData.lineId}&quantity=${objData.quantity}`,
         {
-          method: 'PUT',
+          method: "PUT",
         }
       );
 
       const data = await response.json();
       if (data.error) {
-        alert('error');
+        alert("error");
         return;
       }
 
@@ -77,14 +77,14 @@ function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
       const response = await fetch(
         `/api/carts?cartId=${objData.cartId}&lineId=${objData.lineId}&quantity=${objData.quantity}`,
         {
-          method: 'PUT',
+          method: "PUT",
         }
       );
 
       const data = await response.json();
 
       if (data.error) {
-        alert('error');
+        alert("error");
         return;
       }
 
@@ -105,24 +105,26 @@ function CartcCountButton({ cartId, lineId, count, formatted }: DeleteProps) {
               </div>
             )}
 
-            <p className={styles.count}>{optimistickCount.count}</p>
+            <p data-testId="cart-count" className={styles.count}>
+              {optimistickCount.count}
+            </p>
 
             <div className={styles.temp}>
               <Image
                 onClick={() => handleMinusClick(1)}
-                alt={'image'}
+                alt={"image1"}
                 width={25}
                 height={30}
                 src={upSVG}
-                style={{ margin: '5px', cursor: 'pointer' }}
+                style={{ margin: "5px", cursor: "pointer" }}
               />
               <Image
                 onClick={() => handlePlusClick(1)}
-                alt={'image'}
+                alt={"image2"}
                 width={25}
                 height={30}
                 src={downSVG}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
               />
             </div>
           </div>

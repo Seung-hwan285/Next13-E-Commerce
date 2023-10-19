@@ -4,12 +4,14 @@ import Link from "next/link";
 import React from "react";
 import { get18n } from "@/lib/utils/i18n";
 
+export const revalidate = 3600;
+
 async function Page({ params }: { params: { id: string } }) {
   const { name, lang, id } = params;
 
   const products = await get18n(lang, id, name);
 
-  return <Products products={products} />;
+  return <Products lang={lang} products={products} />;
 }
 
 export default Page;

@@ -81,7 +81,10 @@ test("사용자는 추가하기 버튼을 누른다.", async ({ page, request, b
   await page.goto(`http://localhost:3000/en/product/${urlId}`);
 
   await page.waitForTimeout(1000);
-  await page.getByTestId("cart").filter({ hasText: "Add to cart" }).dblclick();
+  await page
+    .getByTestId("add-cart")
+    .filter({ hasText: "Add to cart" })
+    .dblclick();
 
   await page.waitForTimeout(1000);
 

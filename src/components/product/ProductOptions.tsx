@@ -16,7 +16,7 @@ function ProductOptions({ options }: ProductOptions) {
   return (
     <>
       <ProductSort options={options} />
-      <ProductColumn />;
+      <ProductColumn />
     </>
   );
 }

@@ -38,8 +38,6 @@ export function middleware(request: NextRequest) {
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
 
-    console.log(locale);
-
     if (pathname.length > 1) {
       return NextResponse.redirect(
         new URL(

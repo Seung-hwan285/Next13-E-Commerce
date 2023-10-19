@@ -60,9 +60,28 @@ test("사용자는 Home에서 다국어를 선택할 수 있다. (kr)", async ({
   await page.waitForTimeout(500);
 
   await expect(page).toHaveURL("http://localhost:3000/kr/1");
+
+  await test.step("사용자는 다국어를 선택하고 About에서 cat 링크를 선택한다.", async () => {
+    await page.getByRole("listitem").filter({ hasText: "Cat" }).dblclick();
+
+    await page.waitForTimeout(500);
+    await expect(page).toHaveURL("http://localhost:3000/kr/search/Cat");
+  });
+
+  await page.waitForTimeout(1000);
+
+  await test.step("사용자는 다국어를 선택하고 About에서 T-shirt 링크를 선택한다.", async () => {
+    await page.getByRole("listitem").filter({ hasText: "T-shirt" }).dblclick();
+
+    await page.waitForTimeout(1000);
+    await expect(page).toHaveURL("http://localhost:3000/kr/search/T-shirt");
+  });
 });
 
-test("사용자는 Home에서 다국어를 선택할 수 있다. (en)", async ({ page }) => {
+test("사용자는 Home에서 다국어를 선택할 수 있다. (en)", async ({
+  page,
+  request,
+}) => {
   await page.waitForTimeout(1500);
 
   await page.locator(".page_footerBottom__OpzjE ul li a").nth(1).dblclick();
@@ -70,4 +89,20 @@ test("사용자는 Home에서 다국어를 선택할 수 있다. (en)", async ({
   await page.waitForTimeout(500);
 
   await expect(page).toHaveURL("http://localhost:3000/en/1");
+
+  await test.step("사용자는 다국어를 선택하고 About에서 cat 링크를 선택한다.", async () => {
+    await page.getByRole("listitem").filter({ hasText: "Cat" }).dblclick();
+
+    await page.waitForTimeout(500);
+    await expect(page).toHaveURL("http://localhost:3000/en/search/Cat");
+  });
+
+  await page.waitForTimeout(3000);
+
+  await test.step("사용자는 다국어를 선택하고 About에서 T-shirt 링크를 선택한다.", async () => {
+    await page.getByRole("listitem").filter({ hasText: "T-shirt" }).dblclick();
+
+    await page.waitForTimeout(1000);
+    await expect(page).toHaveURL("http://localhost:3000/en/search/T-shirt");
+  });
 });
