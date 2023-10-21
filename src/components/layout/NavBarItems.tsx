@@ -111,14 +111,17 @@ function NavBarItems({ totalItems }: number) {
                 </li>
                 <li className={styles.list}>
                   {!session ? (
-                    <Link data-testid="login" href="/login">
+                    <Link data-testid="login-icon" href="/login">
                       <AssignmentIndIcon color="primary" />
                     </Link>
                   ) : (
-                    <PersonOffIcon
-                      color="primary"
-                      onClick={handleLogoutClick}
-                    />
+                    <Link data-testid="logout-icon" href="/login">
+                      <PersonOffIcon
+                        color="primary"
+                        onClick={handleLogoutClick}
+                      />
+                    </Link>
+
                     // <button onClick={handleLogoutClick}>Logout</button>
                   )}
                 </li>

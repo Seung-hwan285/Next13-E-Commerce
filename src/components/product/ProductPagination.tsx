@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import styles from '@/components/product/product.module.css';
-import { Locale } from '@/i18n.config';
+import React from "react";
+import Link from "next/link";
+import styles from "@/components/product/product.module.css";
+import { Locale } from "@/i18n.config";
 
 type Pagination = {
   lang: Locale;
@@ -12,6 +12,8 @@ type Pagination = {
 
 function ProductPagination({ lang, pages }: Pagination) {
   const pageItems = [...Array(pages).keys()];
+
+  console.log(pageItems);
 
   return (
     <>

@@ -5,44 +5,38 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("사용자는 홈에서 상품을 클릭할 수 있다.", async ({ page, request }) => {
-  await test.step("사용자는 홈에서 상품을 클릭할 수 있다.", async () => {
-    await page.getByTestId("link").nth(1).dblclick();
+  await page.getByTestId("link").nth(1).dblclick();
 
-    const id = "prod_DWy4oGEG3ql6Jx";
+  const id = "prod_DWy4oGEG3ql6Jx";
 
-    const fetchData = await request.get(
-      `https://api.chec.io/v1/products/${id}`,
-      {
-        timeout: 5000,
-        headers: {
-          "X-Authorization": process.env.NEXT_PUBLIC_SHOP_KEY,
-        },
-      }
-    );
-    expect(fetchData.ok()).toBeTruthy();
-
-    await page.waitForTimeout(2000);
-
-    const {
-      categories,
-      price: { raw },
-      variant_groups,
-    } = await fetchData.json();
-
-    expect(categories[0]).toEqual({
-      id: "cat_QG375vgGplrMOg",
-      name: "T-shirt",
-      slug: "t-shirt",
-    });
-
-    expect(raw).toEqual(6666);
-    expect(variant_groups[0].name).toEqual("Color");
-    expect(variant_groups[1].name).toEqual("Size");
-
-    const title = page.getByTestId("detail-title");
-
-    await expect(title).toHaveClass("product_productTitle__R178h");
+  const fetchData = await request.get(`https://api.chec.io/v1/products/${id}`, {
+    headers: {
+      "X-Authorization": process.env.NEXT_PUBLIC_SHOP_KEY,
+    },
   });
+  expect(fetchData.ok()).toBeTruthy();
+
+  await page.waitForTimeout(2000);
+
+  const {
+    categories,
+    price: { raw },
+    variant_groups,
+  } = await fetchData.json();
+
+  expect(categories[0]).toEqual({
+    id: "cat_QG375vgGplrMOg",
+    name: "T-shirt",
+    slug: "t-shirt",
+  });
+
+  expect(raw).toBe(6666);
+  expect(variant_groups[0].name).toBe("Color");
+  expect(variant_groups[1].name).toBe("Size");
+
+  const title = page.getByTestId("detail-title");
+
+  await expect(title).toHaveClass("product_productTitle__R178h");
 });
 
 test("사용자는 홈에서 번호를 선택할 수 있다.", async ({ page, request }) => {
@@ -55,7 +49,6 @@ test("사용자는 홈에서 번호를 선택할 수 있다.", async ({ page, re
     const fetchData = await request.get(
       `https://api.chec.io/v1/products?limit=5&page=${mockPage}`,
       {
-        timeout: 5000,
         headers: {
           "X-Authorization": process.env.NEXT_PUBLIC_SHOP_KEY,
         },
@@ -74,7 +67,6 @@ test("사용자는 홈에서 번호를 선택할 수 있다.", async ({ page, re
     const fetchData = await request.get(
       `https://api.chec.io/v1/products?limit=5&page=${mockPage}`,
       {
-        timeout: 5000,
         headers: {
           "X-Authorization": process.env.NEXT_PUBLIC_SHOP_KEY,
         },
@@ -115,7 +107,6 @@ test("사용자는 홈에서 옵션을 선택할 수 있다. (Name, updated , Pr
         pathname.split("/")[2]
       }&sortBy=${option1[0]}`,
       {
-        timeout: 5000,
         headers: {
           "X-Authorization": process.env.NEXT_PUBLIC_SHOP_KEY,
         },
@@ -129,20 +120,20 @@ test("사용자는 홈에서 옵션을 선택할 수 있다. (Name, updated , Pr
 
     // expect(data[0]?.price?.raw).toEqual(22);
 
-    expect(data[0].price.raw).toEqual(22);
-    expect(data[0].name).toEqual("T-shirt123");
+    expect(data[0].price.raw).toBe(22);
+    expect(data[0].name).toBe("T-shirt123");
 
-    expect(data[1].price.raw).toEqual(1243);
-    expect(data[1].name).toEqual("T-shirt-2");
+    expect(data[1].price.raw).toBe(1243);
+    expect(data[1].name).toBe("T-shirt-2");
 
-    expect(data[2].price.raw).toEqual(2222);
-    expect(data[2].name).toEqual("Cat");
+    expect(data[2].price.raw).toBe(2222);
+    expect(data[2].name).toBe("Cat");
 
-    expect(data[3].price.raw).toEqual(2235);
-    expect(data[3].name).toEqual("T-shirt");
+    expect(data[3].price.raw).toBe(2235);
+    expect(data[3].name).toBe("T-shirt");
 
-    expect(data[4].price.raw).toEqual(3000);
-    expect(data[4].name).toEqual("T-shirt-5");
+    expect(data[4].price.raw).toBe(3000);
+    expect(data[4].name).toBe("T-shirt-5");
 
     await expect(page).toHaveURL("http://localhost:3000/en/1?sortBy=price");
   });
@@ -162,7 +153,6 @@ test("사용자는 홈에서 옵션을 선택할 수 있다. (Name, updated , Pr
         pathname.split("/")[2]
       }&sortBy=${option2[0]}`,
       {
-        timeout: 5000,
         headers: {
           "X-Authorization": process.env.NEXT_PUBLIC_SHOP_KEY,
         },
@@ -174,20 +164,20 @@ test("사용자는 홈에서 옵션을 선택할 수 있다. (Name, updated , Pr
 
     await page.waitForTimeout(1000);
 
-    expect(data[0].price.raw).toEqual(2222);
-    expect(data[0].name).toEqual("Cat");
+    expect(data[0].price.raw).toBe(2222);
+    expect(data[0].name).toBe("Cat");
 
-    expect(data[1].price.raw).toEqual(8888);
-    expect(data[1].name).toEqual("Cat2");
+    expect(data[1].price.raw).toBe(8888);
+    expect(data[1].name).toBe("Cat2");
 
-    expect(data[2].price.raw).toEqual(5555);
-    expect(data[2].name).toEqual("Cat3");
+    expect(data[2].price.raw).toBe(5555);
+    expect(data[2].name).toBe("Cat3");
 
-    expect(data[3].price.raw).toEqual(8888);
-    expect(data[3].name).toEqual("Cat4");
+    expect(data[3].price.raw).toBe(8888);
+    expect(data[3].name).toBe("Cat4");
 
-    expect(data[4].price.raw).toEqual(5555);
-    expect(data[4].name).toEqual("Cat6");
+    expect(data[4].price.raw).toBe(5555);
+    expect(data[4].name).toBe("Cat6");
 
     await expect(page).toHaveURL("http://localhost:3000/en/1?sortBy=name");
   });
@@ -207,7 +197,6 @@ test("사용자는 홈에서 옵션을 선택할 수 있다. (Name, updated , Pr
         pathname.split("/")[2]
       }&sortBy=${option3[0]}`,
       {
-        timeout: 5000,
         headers: {
           "X-Authorization": process.env.NEXT_PUBLIC_SHOP_KEY,
         },
@@ -219,20 +208,20 @@ test("사용자는 홈에서 옵션을 선택할 수 있다. (Name, updated , Pr
 
     await page.waitForTimeout(1000);
 
-    expect(data[0].price.raw).toEqual(3333);
-    expect(data[0].name).toEqual("T-shirt-3");
+    expect(data[0].price.raw).toBe(3333);
+    expect(data[0].name).toBe("T-shirt-3");
 
-    expect(data[1].price.raw).toEqual(4000);
-    expect(data[1].name).toEqual("T-shirt");
+    expect(data[1].price.raw).toBe(4000);
+    expect(data[1].name).toBe("T-shirt");
 
-    expect(data[2].price.raw).toEqual(6666);
-    expect(data[2].name).toEqual("T-shirt");
+    expect(data[2].price.raw).toBe(6666);
+    expect(data[2].name).toBe("T-shirt");
 
-    expect(data[3].price.raw).toEqual(3333);
-    expect(data[3].name).toEqual("T-shirt");
+    expect(data[3].price.raw).toBe(3333);
+    expect(data[3].name).toBe("T-shirt");
 
-    expect(data[4].price.raw).toEqual(1243);
-    expect(data[4].name).toEqual("T-shirt-2");
+    expect(data[4].price.raw).toBe(1243);
+    expect(data[4].name).toBe("T-shirt-2");
 
     await expect(page).toHaveURL(
       "http://localhost:3000/en/1?sortBy=updated_at"

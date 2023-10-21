@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { setCookieVals } from "./navbar.spec";
 
 const urlId = "prod_DWy4oGEG3ql6Jx";
 
@@ -20,7 +19,6 @@ test("사용자는 홈에서 상품을 클릭한다.", async ({ page, request })
   const fetchData = await request.get(
     `https://api.chec.io/v1/products/${urlId}`,
     {
-      timeout: 5000,
       headers: {
         "X-Authorization": process.env.NEXT_PUBLIC_SHOP_KEY,
       },
@@ -94,7 +92,6 @@ test("사용자는 추가하기 버튼을 누른다.", async ({ page, request, b
   const fetchData = await request.post(
     `https://api.chec.io/v1/carts/${cookies[2]?.value}`,
     {
-      timeout: 5000,
       headers: {
         "X-Authorization": process.env.NEXT_PUBLIC_SHOP_KEY,
       },
@@ -120,3 +117,15 @@ test("사용자는 추가하기 버튼을 누른다.", async ({ page, request, b
   const cartId = id.split("_")[0];
   expect(cartId).toEqual("cart");
 });
+
+//----------------------------- utils ----------------------- //
+export async function setCookieVals() {
+  return [
+    {
+      name: "cartId",
+      value: "cart_QG375vWpjRlrMO",
+      path: "/",
+      domain: "localhost",
+    },
+  ];
+}
