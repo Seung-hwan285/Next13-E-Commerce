@@ -4,7 +4,7 @@ import { i18n } from "@/i18n.config";
 import Negotiator from "negotiator";
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 function getLocale(request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {};
