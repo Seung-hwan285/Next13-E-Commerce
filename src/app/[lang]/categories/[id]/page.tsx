@@ -1,9 +1,9 @@
-import React from 'react';
-import { ProductAPI } from '@/lib/product';
-import styles from './categories.module.css';
-import { Product, Props } from '@/lib/types/product';
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import React from "react";
+import { ProductAPI } from "@/lib/product";
+import styles from "./categories.module.css";
+import { Product, Props } from "@/lib/types/product";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: data.name,
-    description: data.description || '',
+    description: data.description || "",
   };
 }
 
@@ -43,11 +43,13 @@ function Categories({ products }: Product) {
                   {assets.map(({ url, id }) => {
                     return (
                       <li key={id}>
-                        <img
-                          className={styles.urlImage}
-                          src={url}
-                          alt="image"
-                        />
+                        <figure>
+                          <img
+                            className={styles.urlImage}
+                            src={url}
+                            alt="image"
+                          />
+                        </figure>
                       </li>
                     );
                   })}

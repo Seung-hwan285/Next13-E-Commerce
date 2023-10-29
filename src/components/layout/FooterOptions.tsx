@@ -1,25 +1,18 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { redirect, usePathname } from "next/navigation";
 import styles from "@/app/[lang]/page.module.css";
-import KR from "/public/icons/kr.svg";
-import US from "/public/icons/us.svg";
-import Link from "next/link";
+
 import Image from "next/image";
+
+import KR from "/public/kr.svg";
+import US from "/public/us.svg";
+import Link from "next/link";
+import { redirect, usePathname } from "next/navigation";
 
 function FooterOptions() {
   const pathname = usePathname();
-
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return <></>;
-  }
 
   const CONFIG = [
     {
@@ -34,14 +27,20 @@ function FooterOptions() {
     },
   ];
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <></>;
+  }
+
   const redirectPathName = (location: string) => {
     if (!pathname) redirect("/");
 
     const segemtns = pathname.split("/");
 
     segemtns[1] = location;
-
-    console.log(location);
     return segemtns.join("/");
   };
 
@@ -52,11 +51,11 @@ function FooterOptions() {
           return (
             <li key={index}>
               <Link
+                href={redirectPathName(value)}
                 prefetch={false}
                 value={value}
-                href={redirectPathName(value)}
               >
-                <Image src={icon} alt={"icon"} />
+                <Image src={icon} />
               </Link>
             </li>
           );

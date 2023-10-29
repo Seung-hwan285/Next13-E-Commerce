@@ -1,7 +1,9 @@
 .nav {
   display: flex;
-  border-bottom: 0.1rem solid gray;
-  height: 5rem;
+  /*dark mode */
+  border-bottom: 1px solid #DEE2E7;
+
+  height: 3.5rem;
 }
 
 .iconContainer{
@@ -14,9 +16,18 @@
 
 
 .searchWrapper{
-  margin: 0 auto;
   position: relative;
-  right: 3%;
+  width: 100%;
+  /*dark mode */
+
+  border-bottom: 1px solid #DEE2E7;
+  margin-top: 50px;
+}
+
+.searchWrapper img{
+  position: relative;
+  left: 3%;
+  bottom: 20px;
 }
 
 .imageWrapper {
@@ -51,8 +62,10 @@
 }
 
 .navbarWrapper {
-  display: flex;
-  align-items: center;
+  float: left;
+  position: absolute;
+  bottom: 60%;
+  right: 2%;
 }
 
 .navbarItem {

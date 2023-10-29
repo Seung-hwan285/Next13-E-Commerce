@@ -11,5 +11,9 @@ export default async function Home({
   // const { page } = await getDictionary(lang);
   // console.log(page.about);
 
-  return <></>;
+  return (
+    <>
+      <h1>Test@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</h1>
+    </>
+  );
 }

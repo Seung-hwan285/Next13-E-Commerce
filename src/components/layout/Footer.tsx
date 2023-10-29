@@ -12,13 +12,15 @@ async function Footer({ lang }: { lang: Locale }) {
   const { page } = await getDictionary(lang);
 
   return (
-    <footer>
+    <>
       <div className={styles.footerBox}>
         <div className={styles.container}>
           <div className={styles.iconContainer}>
             <div style={{ textAlign: "center" }}>
               <h1 className={styles.footerWrapper}>{page.footer.title}</h1>
-              <Image src={Icon} height={52} width={100} alt="shop" />
+              <figure>
+                <Image src={Icon} height={52} width={100} alt="shop" />
+              </figure>
             </div>
 
             <p>{page.footer.description}</p>
@@ -136,7 +138,7 @@ async function Footer({ lang }: { lang: Locale }) {
           <FooterOptions />
         </div>
       </div>
-    </footer>
+    </>
   );
 }
 export default Footer;

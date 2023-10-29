@@ -88,3 +88,18 @@
     height: 2rem;
     margin: 0 10px;
 }
+
+
+
+.mainTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainTitle img{
+    width: 50%;
+    height: 70%;
+    object-fit: cover;
+}
+

@@ -1,15 +1,23 @@
-'use client';
+"use client";
 
-import React, { startTransition, useEffect, useState } from 'react';
+import React, { startTransition, useEffect, useState } from "react";
 
-import styles from './search.module.css';
-import { productState, searchListState } from '@/lib/jotail/themState';
-import { useAtom, useSetAtom } from 'jotai';
-import { ProductAPI } from '@/lib/product';
-import { useThrottle } from '@uidotdev/usehooks';
+import styles from "./search.module.css";
+import { productState, searchListState } from "@/lib/jotail/themState";
+import { useAtom, useSetAtom } from "jotai";
+import { ProductAPI } from "@/lib/product";
+import { useThrottle } from "@uidotdev/usehooks";
+import { onTTFB, onCLS, onLCP, onFID } from "web-vitals";
 
 function SearchBar() {
-  const [name, setName] = useState('');
+  // Measure and log TTFB as soon as it's available.
+  onTTFB(console.log);
+
+  onLCP(console.log);
+  onFID(console.log);
+  onCLS(console.log);
+
+  const [name, setName] = useState("");
   const [, setProduct] = useAtom(productState);
 
   const throttledValue = useThrottle(name, 2000);
@@ -44,6 +52,7 @@ function SearchBar() {
           name="search"
           onChange={handleChange}
           value={name}
+          placeholder={"Search"}
         />
       </div>
     </>

@@ -12,7 +12,7 @@ function Layout({
 }) {
   return (
     <Suspense fallback={<Skeleton />}>
-      {children}
+      {/*{children}*/}
       <Footer lang={params.lang} />
     </Suspense>
   );

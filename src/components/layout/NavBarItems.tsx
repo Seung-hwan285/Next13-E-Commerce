@@ -19,6 +19,8 @@ import CollectionsIcon from "@mui/icons-material/Collections";
 import NavbarAuthIcon from "@/components/layout/NavbarAuthIcon";
 import PersonOffIcon from "@mui/icons-material/PersonOff";
 
+import { onTTFB, onCLS, onLCP, onFID } from "web-vitals";
+
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     position: "absolute",
@@ -93,6 +95,7 @@ function NavBarItems({ totalItems }: number) {
           <span></span>
           <span></span>
         </div>
+
         <div className={styles.iconContainer}>
           <Image src={Icon} height={100} width={120} alt="shop" />
         </div>
@@ -121,8 +124,6 @@ function NavBarItems({ totalItems }: number) {
                         onClick={handleLogoutClick}
                       />
                     </Link>
-
-                    // <button onClick={handleLogoutClick}>Logout</button>
                   )}
                 </li>
 

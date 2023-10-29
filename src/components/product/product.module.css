@@ -8,11 +8,7 @@
 }
 
 .resultList{
-  width: 300px;
-  margin-top: 70px;
-  margin-right: 120px;
-  position: relative;
-  z-index: 1;
+  width: 350px;
   color: black;
   background-color: #ffffff;
   display: flex;
@@ -22,6 +18,8 @@
   max-height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
+  position: absolute;
+  left: 40%;
 }
 
 .resultList a{
@@ -29,11 +27,18 @@
 }
 
 .resultList a:hover{
-  background-color: #a9a9a9;
-  cursor: pointer;
+  font-size: 15px;
+}
+
+
+.resultWrapper{
+  top : 50%;
+  left: 80%;
+  width: 100%;
 }
 
 .productContainer {
+
   border: 1px solid var(--page-br-detail);
   display: flex;
   gap: 20px 5%;

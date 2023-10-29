@@ -13,8 +13,6 @@ type Pagination = {
 function ProductPagination({ lang, pages }: Pagination) {
   const pageItems = [...Array(pages).keys()];
 
-  console.log(pageItems);
-
   return (
     <>
       <ul className={styles.paginationContainer}>

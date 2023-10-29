@@ -12,7 +12,7 @@ function Layout({
 }) {
   return (
     <Suspense>
-      {children}
+      {/*{children}*/}
       <Footer lang={params.lang} />
     </Suspense>
   );
