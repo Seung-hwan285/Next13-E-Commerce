@@ -4,8 +4,6 @@ import { i18n } from "@/i18n.config";
 import Negotiator from "negotiator";
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 
-// export const runtime = "edge";
-
 function getLocale(request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
@@ -19,12 +17,12 @@ function getLocale(request: NextRequest): string | undefined {
 
   const locale = matchLocale(languages, locales, defaultUrl);
 
-  // switch (defaultUrl) {
-  //   case "en":
-  //     return locales[0];
-  //   case "kr":
-  //     return locales[1];
-  // }
+  switch (defaultUrl) {
+    case "en":
+      return locales[0];
+    case "kr":
+      return locales[1];
+  }
 
   return locale;
 }
@@ -77,7 +75,11 @@ export const config = {
   // Skip all paths that should not be internationalized. This example skips
   // certain folders and all pathnames with a dot (e.g. favicon.ico)
 
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: [
+    "/((?!api|_next/static|favicon.ico).*)",
+    "/en/:path*",
+    "/ko/:path*",
+  ],
   // matcher: [
   //   "/((?!api|_next/static|_next/image|favicon.ico).*)",
   //   "/en/:path*",

@@ -1,6 +1,6 @@
-import { isRoutesError } from '@/lib/type-guards/isRoutesError';
-import { NextResponse } from 'next/server';
-import { ProductAPI } from '@/lib/product';
+import { isRoutesError } from "@/lib/type-guards/isRoutesError";
+import { NextResponse } from "next/server";
+import { ProductAPI } from "@/lib/product";
 function formatErrorMessage(err: Error): string {
   return JSON.stringify(err, Object.getOwnPropertyNames(err));
 }

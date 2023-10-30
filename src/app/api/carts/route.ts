@@ -1,7 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { isRoutesError } from '@/lib/type-guards/isRoutesError';
-import { CartAPI } from '@/lib/cart';
-
+import { NextRequest, NextResponse } from "next/server";
+import { isRoutesError } from "@/lib/type-guards/isRoutesError";
+import { CartAPI } from "@/lib/cart";
 function formatErrorMessage(err: Error): string {
   return JSON.stringify(err, Object.getOwnPropertyNames(err));
 }
@@ -32,12 +31,12 @@ export async function GET(): Promise<Response> {
 export async function DELETE(req: NextRequest): Promise<Response> {
   const { searchParams } = new URL(req.url);
 
-  const cartId = searchParams.get('cartId');
+  const cartId = searchParams.get("cartId");
 
-  const lineId = searchParams.get('lineId');
+  const lineId = searchParams.get("lineId");
 
   if (!cartId || !lineId) {
-    return NextResponse.json({ error: '에러입니다.' }, { status: 400 });
+    return NextResponse.json({ error: "에러입니다." }, { status: 400 });
   }
 
   try {
@@ -54,16 +53,16 @@ export async function DELETE(req: NextRequest): Promise<Response> {
 export async function PUT(req: NextRequest): Promise<Response> {
   const searchParms = req.url;
 
-  const queryString = searchParms.split('?');
+  const queryString = searchParms.split("?");
 
-  const subdomain = queryString[1].split('&');
+  const subdomain = queryString[1].split("&");
 
-  const parmsValue = subdomain.map((val) => val.split('=')[1]);
+  const parmsValue = subdomain.map((val) => val.split("=")[1]);
 
   const [cartId, lineId, quantity] = parmsValue;
 
   if (!cartId || !lineId) {
-    return NextResponse.json({ error: '에러입니다.' }, { status: 400 });
+    return NextResponse.json({ error: "에러입니다." }, { status: 400 });
   }
 
   try {

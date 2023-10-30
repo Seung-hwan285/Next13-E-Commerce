@@ -1,6 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { isRoutesError } from '@/lib/type-guards/isRoutesError';
-
+import { NextRequest, NextResponse } from "next/server";
+import { isRoutesError } from "@/lib/type-guards/isRoutesError";
 function formatErrorMessage(err: Error): string {
   // 모든 키 반환
   return JSON.stringify(err, Object.getOwnPropertyNames(err));
