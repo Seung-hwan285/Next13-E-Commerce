@@ -28,11 +28,7 @@ async function Products({ products }: Product[]) {
 
                 <div className={styles.imageWrapper}>
                   {image && (
-                    <img
-                      className={styles.image}
-                      src={image?.url}
-                      alt="image"
-                    />
+                    <img className={styles.image} src={image?.url} alt="" />
                   )}
                 </div>
                 <div className={styles.detailWrapper}>

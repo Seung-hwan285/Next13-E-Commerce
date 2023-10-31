@@ -36,7 +36,7 @@ async function ImageWithPlaceholder({ imgSrc }: Image) {
   return (
     <Image
       src={src}
-      alt={"main-title"}
+      alt="main-title"
       quality={30}
       sizes="100vw"
       placeholder="blur"

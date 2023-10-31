@@ -44,11 +44,7 @@ function Categories({ products }: Product) {
                     return (
                       <li key={id}>
                         <figure>
-                          <img
-                            className={styles.urlImage}
-                            src={url}
-                            alt="image"
-                          />
+                          <img className={styles.urlImage} src={url} alt="" />
                         </figure>
                       </li>
                     );

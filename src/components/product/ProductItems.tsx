@@ -48,8 +48,6 @@ const ProductItems = async ({ lang, items }: Product[]) => {
       <ul className={styles.productContainer}>
         {f18nData3.length &&
           f18nData3.map(({ id, name, image, price }: Product) => {
-            console.log(image.url);
-
             return (
               // eslint-disable-next-line react/jsx-key
               <article>

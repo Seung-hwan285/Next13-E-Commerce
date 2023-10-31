@@ -76,10 +76,11 @@ export const config = {
   // certain folders and all pathnames with a dot (e.g. favicon.ico)
 
   matcher: [
-    "/((?!api|_next/static|favicon.ico).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
     "/en/:slug(\\\\d{1,})",
-    "/ko/:slug(\\\\d{1,})",
+    "/kr/:slug(\\\\d{1,})",
   ],
+
   // matcher: [
   //   "/((?!api|_next/static|_next/image|favicon.ico).*)",
   //   "/en/:path*",

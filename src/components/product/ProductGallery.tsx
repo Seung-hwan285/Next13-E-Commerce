@@ -1,7 +1,7 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import styles from './product.module.css';
-import { Gallery, Image } from '@/lib/types/cart';
+"use client";
+import React, { useEffect, useState } from "react";
+import styles from "./product.module.css";
+import { Gallery, Image } from "@/lib/types/cart";
 
 function ProductGallery({
   id,
@@ -24,7 +24,7 @@ function ProductGallery({
     setChange(true);
   };
 
-  const [formatedPrice, setFormatedPrice] = useState('');
+  const [formatedPrice, setFormatedPrice] = useState("");
 
   const saleValue = discountItems[0]?.product_ids?.includes(id)
     ? discountItems[0].value
@@ -32,12 +32,12 @@ function ProductGallery({
 
   const saleProduct = price.raw - saleValue;
 
-  const temp = String(saleProduct).padStart(5, '$').split('');
+  const temp = String(saleProduct).padStart(5, "$").split("");
 
   const number = temp[2];
 
   const replacePrice = temp
-    .join('')
+    .join("")
     .replace(/(\d)(?=(?:\d{2})+(?!\d))/g, `,${number}`);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ function ProductGallery({
                         onClick={() => handleClick(idx)}
                         className={styles.relatedcartImage}
                         src={image.images as string}
-                        alt="image"
+                        alt
                       />
                     </li>
                   );
@@ -74,7 +74,7 @@ function ProductGallery({
             <img
               className={styles.Image}
               src={change ? (images[currentImage].images as string) : title}
-              alt="Product"
+              alt
             />
           </div>
         </div>

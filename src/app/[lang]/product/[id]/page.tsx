@@ -62,7 +62,7 @@ function ProductDetail({
   discountItems,
   productItems,
 }: any) {
-  // if (!relatedItems) notFound();
+  if (!relatedItems) notFound();
   if (!variantItems) notFound();
 
   const relatedImages = relatedItems?.related_products?.map(

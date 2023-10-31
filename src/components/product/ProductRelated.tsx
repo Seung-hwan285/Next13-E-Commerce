@@ -19,7 +19,7 @@ function ProductRelated({ productItems }: Product) {
               return (
                 <li key={id} className={styles.relatedProductLi}>
                   <figure>
-                    <img src={image?.url} />
+                    <img src={image?.url} alt />
                   </figure>
                   <div className={styles.relatedOptionWrapper}>
                     <h1>{name}</h1>

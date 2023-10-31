@@ -48,7 +48,7 @@ export default function CartDeleteButton({ cartId, lineId }: DeleteProps) {
           <Image
             className={styles.cartDeleteIcon}
             src={crossSVG}
-            alt={"delete-image"}
+            alt
             width={15}
             height={15}
           />
