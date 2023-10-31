@@ -12,12 +12,12 @@ const nextConfig = {
 
   images: {
     domains: ["lh3.googleusercontent.com", "cdn.chec.io"],
-    minimumCacheTTL: 60,
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    deviceSizes: [576, 640, 750, 1080, 1200, 1920],
-    formats: ["image/avif", "image/webp"],
+    // minimumCacheTTL: 60,
+    // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // deviceSizes: [576, 640, 750, 1080, 1200, 1920],
+    // formats: ["image/avif", "image/webp"],
   },
-  testEnvironment: "node",
+  // testEnvironment: "node",
 };
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

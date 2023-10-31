@@ -10,7 +10,7 @@ function getLocale(request: NextRequest): string | undefined {
 
   const { referer } = negotiatorHeaders;
 
-  const defaultUrl = referer?.split(":")[2].split("/")[1];
+  const defaultUrl = referer?.split(":")[2]?.split("/")[1];
 
   const locales: string[] = i18n.locales;
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
