@@ -72,18 +72,22 @@ export function middleware(request: NextRequest) {
 // });
 
 export const config = {
-  // Skip all paths that should not be internationalized. This example skips
-  // certain folders and all pathnames with a dot (e.g. favicon.ico)
-
-  matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
-    "/en/:slug(\\\\d{1,})",
-    "/kr/:slug(\\\\d{1,})",
-  ],
-
-  // matcher: [
-  //   "/((?!api|_next/static|_next/image|favicon.ico).*)",
-  //   "/en/:path*",
-  //   "/ko/:path*",
-  // ],
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };
+
+// export const config = {
+//   // Skip all paths that should not be internationalized. This example skips
+//   // certain folders and all pathnames with a dot (e.g. favicon.ico)
+//
+//   matcher: [
+//     "/((?!api|_next/static|_next/image|favicon.ico).*)",
+//     // "/en/:slug(\\\\d{1,})",
+//     // "/kr/:slug(\\\\d{1,})",
+//   ],
+//
+//   // matcher: [
+//   //   "/((?!api|_next/static|_next/image|favicon.ico).*)",
+//   //   "/en/:path*",
+//   //   "/ko/:path*",
+//   // ],
+// };
