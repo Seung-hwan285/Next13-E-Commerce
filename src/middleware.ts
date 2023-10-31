@@ -22,9 +22,9 @@ function getLocale(request: NextRequest): string | undefined {
       return locales[0];
     case "kr":
       return locales[1];
+    default:
+      return locale;
   }
-
-  return locale;
 }
 
 export function middleware(request: NextRequest) {
@@ -77,8 +77,8 @@ export const config = {
 
   matcher: [
     "/((?!api|_next/static|favicon.ico).*)",
-    "/en/:path*",
-    "/ko/:path*",
+    "/en/:slug(\\\\d{1,})",
+    "/ko/:slug(\\\\d{1,})",
   ],
   // matcher: [
   //   "/((?!api|_next/static|_next/image|favicon.ico).*)",
