@@ -14,7 +14,6 @@ type Wrapper = {
 function FooterLink({ src, value }: Wrapper) {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
-  onLCP(console.log);
 
   const redirectPathName = (location: string) => {
     if (!pathname) redirect("/");

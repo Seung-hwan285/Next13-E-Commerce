@@ -12,7 +12,13 @@ import Logo from "../../../public/brand_logo.svg";
 import Image from "next/image";
 
 export default async function Navbar() {
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
   const cookie = cookies().get("cartId")?.value;
+
+  await delay(1000);
+
   const carts = await CartAPI.getCartItems(cookie);
 
   return (

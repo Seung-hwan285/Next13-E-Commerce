@@ -7,16 +7,9 @@ import { productState, searchListState } from "@/lib/jotail/themState";
 import { useAtom, useSetAtom } from "jotai";
 import { ProductAPI } from "@/lib/product";
 import { useThrottle } from "@uidotdev/usehooks";
-import { onTTFB, onCLS, onLCP, onFID } from "web-vitals";
+// import { onTTFB, onCLS, onLCP, onFID } from "web-vitals";
 
 function SearchBar() {
-  // Measure and log TTFB as soon as it's available.
-  onTTFB(console.log);
-
-  onLCP(console.log);
-  onFID(console.log);
-  onCLS(console.log);
-
   const [name, setName] = useState("");
   const [, setProduct] = useAtom(productState);
 
