@@ -7,7 +7,6 @@ import { productState, searchListState } from "@/lib/jotail/themState";
 import { useAtom, useSetAtom } from "jotai";
 import { ProductAPI } from "@/lib/product";
 import { useThrottle } from "@uidotdev/usehooks";
-// import { onTTFB, onCLS, onLCP, onFID } from "web-vitals";
 
 function SearchBar() {
   const [name, setName] = useState("");
