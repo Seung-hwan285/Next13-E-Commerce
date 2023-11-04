@@ -17,7 +17,6 @@ const createRequestOptions = (method, body): optionType => {
       "X-Authorization": process.env.NEXT_PUBLIC_SHOP_KEY,
     },
     cache: "no-store",
-    timeout: 5000,
     body: undefined,
   };
 

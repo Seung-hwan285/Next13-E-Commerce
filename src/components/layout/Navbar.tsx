@@ -1,5 +1,3 @@
-"use server";
-
 import React from "react";
 import ThemeToggle from "@/components/layout/ThemeToggle";
 import styles from "./layout.module.css";
@@ -10,11 +8,9 @@ import { cookies } from "next/headers";
 import { CartAPI } from "@/lib/cart";
 import Logo from "../../../public/brand_logo.svg";
 import Image from "next/image";
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export default async function Navbar() {
   const cookie = cookies().get("cartId")?.value;
-
-  await delay(1000);
 
   const carts = await CartAPI.getCartItems(cookie);
 

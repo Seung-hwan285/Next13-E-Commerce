@@ -1,7 +1,7 @@
-'use client';
-import React, { useEffect } from 'react';
+"use client";
+import React, { useEffect } from "react";
 
-import { setCookieComponent } from '@/components/cart/setCookie';
+import { setCookieComponent } from "@/components/cart/actions/setCookie";
 
 export function Cookie() {
   useEffect(() => {
