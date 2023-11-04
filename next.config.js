@@ -1,13 +1,18 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  pageExtensions: ["ts", "tsx"],
+  pageExtensions: ["ts", "tsx", "svg"],
   experimental: {
     mdxRs: true,
     appDir: true,
     serverActions: true,
     serverActionsBodySizeLimit: "2mb",
   },
+
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".svg"],
+  },
+
   typescript: {
     ignoreBuildErrors: true,
   },
