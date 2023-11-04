@@ -22,9 +22,9 @@ function getLocale(request: NextRequest): string | undefined {
       return locales[0];
     case "kr":
       return locales[1];
-    default:
-      return locale;
   }
+
+  return locale;
 }
 
 export function middleware(request: NextRequest) {
