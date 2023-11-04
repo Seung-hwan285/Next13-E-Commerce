@@ -1,10 +1,5 @@
 import React from "react";
 import styles from "@/app/[lang]/page.module.css";
-
-import Image from "next/image";
-
-import Icon from "/public/home.svg";
-
 import ImageWithPlaceholder from "@/components/commons/ImageMetaData";
 
 function ProductLogo() {
