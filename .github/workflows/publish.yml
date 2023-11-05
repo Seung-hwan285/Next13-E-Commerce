@@ -18,5 +18,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 223891dbb212ab5001173db5bd957634
-
-
+          projectName: shop
+          #          directory: YOUR_BUILD_OUTPUT_DIRECTORY
+          # Optional: Enable this if you want to have GitHub Deployments triggered
+          branch: main
