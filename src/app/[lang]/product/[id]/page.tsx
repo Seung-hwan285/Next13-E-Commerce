@@ -1,5 +1,3 @@
-'use server';
-
 import React from 'react';
 import { ProductAPI } from '@/lib/product';
 import { RelatedImage } from '@/lib/types/cart';
