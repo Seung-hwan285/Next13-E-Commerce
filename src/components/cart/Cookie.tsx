@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect } from "react";
 
-import { setCookieComponent } from "@/components/cart/actions/setCookie";
+import { setCookie } from "@/components/cart/actions/setCookie";
 
 export function Cookie() {
   useEffect(() => {
-    setCookieComponent();
+    setCookie();
   }, []);
 
   return <></>;

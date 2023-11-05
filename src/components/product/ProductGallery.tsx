@@ -64,7 +64,7 @@ function ProductGallery({
                         onClick={() => handleClick(idx)}
                         className={styles.relatedcartImage}
                         src={image.images as string}
-                        alt
+                        alt="image"
                       />
                     </li>
                   );
@@ -74,7 +74,7 @@ function ProductGallery({
             <img
               className={styles.Image}
               src={change ? (images[currentImage].images as string) : title}
-              alt
+              alt="product"
             />
           </div>
         </div>

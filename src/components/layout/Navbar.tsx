@@ -12,8 +12,6 @@ import Image from "next/image";
 export default async function Navbar() {
   const cookie = cookies().get("cartId")?.value;
 
-  const carts = await CartAPI.getCartItems(cookie);
-
   return (
     <header>
       <div className={styles.searchWrapper}>
@@ -27,11 +25,7 @@ export default async function Navbar() {
       </div>
 
       <nav className={styles.nav}>
-        {!cookie ? (
-          <CollectionToggle />
-        ) : (
-          <CollectionToggle totalItems={carts?.total_items} />
-        )}
+        {!cookie ? <CollectionToggle /> : <CollectionToggle cookie={cookie} />}
       </nav>
     </header>
   );

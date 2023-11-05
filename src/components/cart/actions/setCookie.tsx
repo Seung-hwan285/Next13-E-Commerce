@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { CartAPI } from "@/lib/cart";
 
-export async function setCookieComponent() {
+export async function setCookie() {
   const cookieStore = cookies().get("cartId")?.value;
 
   if (!cookieStore) {

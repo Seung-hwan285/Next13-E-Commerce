@@ -109,7 +109,6 @@ Variant) {
             cols={3}
             rows={3}
             readOnly={true}
-            value={""}
             className={styles.productDescription}
           >
             {sliceDescription}
