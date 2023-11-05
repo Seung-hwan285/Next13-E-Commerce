@@ -7,7 +7,7 @@ import { ProductAPI } from "@/lib/product";
 
 // kr
 export const getKR = async (id?: string) => {
-  const { kr_products, options } = KR.page;
+  const { kr_products } = KR.page;
   const arr2 = [];
 
   try {
@@ -23,7 +23,7 @@ export const getKR = async (id?: string) => {
       kr_products.forEach((d) => {
         filterId.forEach((f_id) => {
           if (f_id === d.id) {
-            arr2.push({ id: d.id, name: d.name, options: options });
+            arr2.push({ id: d.id, name: d.name });
           }
         });
       });
@@ -47,6 +47,7 @@ export const getKR = async (id?: string) => {
         .filter((f) => prices.includes(f.price.raw))
         .sort((a, b) => a.price.raw - b.price.raw);
 
+      // 1. name , decription
       const relatedObj = {
         id: relatedItems.id,
         name: relatedItems.name,
@@ -68,6 +69,7 @@ export const getKR = async (id?: string) => {
 
       const arr2 = [];
 
+      // const temp = productItems.map(())
       kr_products.forEach((kr) => {
         findItems.forEach((p_id) => {
           if (kr.id === p_id.id) {
@@ -91,13 +93,24 @@ export const getKR = async (id?: string) => {
         arr2,
       };
     }
+
+    // const { data } = result;
   } catch (err) {
     console.error(err);
   }
 };
 
+// en
+
+// 1.name
+// 2.description
+// 3. size
+// 4. color => map
 export const getEN = async (id?: string) => {
-  const { en_products, options } = EN.page;
+  // const { page } = await getDictionary(lang); => 바꿔보기
+  const { en_products } = EN.page;
+
+  // id : prod_1
 
   try {
     if (!id) {
@@ -112,12 +125,12 @@ export const getEN = async (id?: string) => {
       const arr2 = [];
 
       en_products.forEach((d, idx) => {
-        filterId.forEach((f_id) => {
-          const id = en_products[idx].id;
-          const title = en_products[idx].name;
+        const id = en_products[idx].id;
+        const title = en_products[idx].name;
 
+        filterId.forEach((f_id) => {
           if (f_id === id) {
-            arr2.push({ id: id, name: title, options: options });
+            arr2.push({ id: id, name: title });
           }
         });
       });
@@ -191,72 +204,14 @@ export const getEN = async (id?: string) => {
   }
 };
 
-export const getSearchKR = async (name: string) => {
-  const arr2 = [];
-
-  const { data: products } = await ProductAPI.getSearchProducts(name);
-  const { kr_products } = KR.page;
-
-  const filterData = products.map((d) => ({
-    id: d.id,
-    image: d.image,
-    price: d.price,
-  }));
-
-  kr_products.forEach((d, idx) => {
-    filterData.forEach(({ id, image, price }) => {
-      const enId = kr_products[idx].id;
-      const title = kr_products[idx].name;
-
-      if (id === enId) {
-        arr2.push({ id: id, name: title, image: image, price: price });
-      }
-    });
-  });
-
-  return arr2;
-};
-
-export const getSearchEN = async (name: string) => {
-  const arr2 = [];
-  const { data: products } = await ProductAPI.getSearchProducts(name);
-  const { en_products } = EN.page;
-
-  const filterData = products.map((d) => ({
-    id: d.id,
-    image: d.image,
-    price: d.price,
-  }));
-
-  en_products.forEach((d, idx) => {
-    filterData.forEach(({ id, image, price }) => {
-      const enId = en_products[idx].id;
-      const title = en_products[idx].name;
-
-      if (id === enId) {
-        arr2.push({ id: id, name: title, image: image, price: price });
-      }
-    });
-  });
-
-  return arr2;
-};
-
-export const get18n = async (lang, id?, name?) => {
+export const get18n = async (locale, id) => {
   // id : prod_1
-  switch (lang) {
+  switch (locale) {
     case "kr":
-      if (name) {
-        return await getSearchKR(name);
-      } else {
-        return await getKR(id);
-      }
-
+      return await getKR(id);
     case "en":
-      if (name) {
-        return await getSearchEN(name);
-      } else {
-        return await getEN(id);
-      }
+      // id : prod_1
+
+      return await getEN(id);
   }
 };
