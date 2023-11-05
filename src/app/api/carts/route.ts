@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isRoutesError } from '@/lib/type-guards/isRoutesError';
 import { CartAPI } from '@/lib/cart';
-export const runtime = 'edge';
+
 function formatErrorMessage(err: Error): string {
   return JSON.stringify(err, Object.getOwnPropertyNames(err));
 }

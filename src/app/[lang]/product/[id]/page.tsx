@@ -12,6 +12,8 @@ import { DiscountAPI } from '@/lib/discount';
 import ProductRelated from '@/components/product/ProductRelated';
 import { get18n } from '@/lib/utils/i18n';
 
+export const runtime = 'edge';
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;
 

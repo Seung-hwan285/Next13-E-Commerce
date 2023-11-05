@@ -4,6 +4,8 @@ import ProductItems from '@/components/product/ProductItems';
 import ProductPagination from '@/components/product/ProductPagination';
 import ProductOptions from '@/components/product/ProductOptions';
 
+export const runtime = 'edge';
+
 export default async function Page({
   params,
   searchParams,

@@ -4,6 +4,8 @@ import React from 'react';
 import LoginForm from '@/components/login/LoginForm';
 import styled from '@emotion/styled';
 
+export const runtime = 'edge';
+
 async function LoginPage() {
   return (
     <LoginContainer>
