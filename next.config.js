@@ -8,22 +8,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-
-  images: {
-    domains: ['lh3.googleusercontent.com', 'cdn.chec.io'],
-  },
-};
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withNextIntl = require('next-intl/plugin')(
-  // This is the default (also the `src` folder is supported out of the box)
-  './i18n.ts'
-);
-
-module.exports = withNextIntl;
-module.exports = nextConfig;
-
-module.exports = {
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.node = {
@@ -35,4 +19,16 @@ module.exports = {
       return config;
     }
   },
+  images: {
+    domains: ['lh3.googleusercontent.com', 'cdn.chec.io'],
+  },
 };
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withNextIntl = require('next-intl/plugin')(
+  // This is the default (also the `src` folder is supported out of the box)
+  './i18n.ts'
+);
+
+// module.exports = withNextIntl;
+module.exports = nextConfig;
