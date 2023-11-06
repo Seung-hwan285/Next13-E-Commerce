@@ -9,6 +9,9 @@
     "lint": "next lint",
     "prepare": "husky install"
   },
+  "browser": {
+    "crypto": false
+  },
   "lint-staged": {
     "*.{ts,tsx}": "eslint --cache --fix"
   },
