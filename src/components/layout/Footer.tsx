@@ -1,4 +1,3 @@
-'use server';
 import React from 'react';
 import Link from 'next/link';
 import styles from '/src/app/[lang]/page.module.css';

@@ -1,5 +1,3 @@
-'use server';
-
 import React from 'react';
 import { ProductAPI } from '@/lib/product';
 import { RelatedImage } from '@/lib/types/cart';
@@ -11,6 +9,8 @@ import { Props } from '@/lib/types/product';
 import { DiscountAPI } from '@/lib/discount';
 import ProductRelated from '@/components/product/ProductRelated';
 import { get18n } from '@/lib/utils/i18n';
+
+export const runtime = 'edge';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;

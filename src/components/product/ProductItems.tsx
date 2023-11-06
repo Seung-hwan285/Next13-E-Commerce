@@ -1,5 +1,3 @@
-'use server';
-
 import { notFound } from 'next/navigation';
 import styles from '@/components/product/product.module.css';
 import Link from 'next/link';

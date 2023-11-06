@@ -1,5 +1,3 @@
-'use server';
-
 import React from 'react';
 import ThemeToggle from '@/components/layout/ThemeToggle';
 import styles from './layout.module.css';

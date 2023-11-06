@@ -8,7 +8,17 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.node = {
+        http: 'empty',
+        https: 'empty',
+        querystring: 'empty',
+      };
 
+      return config;
+    }
+  },
   images: {
     domains: ['lh3.googleusercontent.com', 'cdn.chec.io'],
   },
@@ -20,5 +30,5 @@ const withNextIntl = require('next-intl/plugin')(
   './i18n.ts'
 );
 
-module.exports = withNextIntl;
+// module.exports = withNextIntl;
 module.exports = nextConfig;

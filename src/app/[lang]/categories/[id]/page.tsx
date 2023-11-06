@@ -5,6 +5,8 @@ import { Product, Props } from '@/lib/types/product';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+export const runtime = 'edge';
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;
 

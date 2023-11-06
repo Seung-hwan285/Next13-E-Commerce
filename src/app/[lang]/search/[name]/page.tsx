@@ -4,6 +4,8 @@ import { Product } from '@/lib/types/product';
 import Link from 'next/link';
 import React from 'react';
 
+export const runtime = 'edge';
+
 async function Page({ params }: { params: { id: string } }) {
   const { name } = params;
 
