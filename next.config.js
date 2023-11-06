@@ -9,6 +9,16 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.node = {
+        http: 'empty',
+        https: 'empty',
+        querystring: 'empty',
+      };
+    }
+  },
+
   images: {
     domains: ['lh3.googleusercontent.com', 'cdn.chec.io'],
   },
