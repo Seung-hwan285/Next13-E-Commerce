@@ -9,16 +9,6 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.node = {
-        http: 'empty',
-        https: 'empty',
-        querystring: 'empty',
-      };
-    }
-  },
-
   images: {
     domains: ['lh3.googleusercontent.com', 'cdn.chec.io'],
   },
@@ -32,3 +22,17 @@ const withNextIntl = require('next-intl/plugin')(
 
 module.exports = withNextIntl;
 module.exports = nextConfig;
+
+module.exports = {
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.node = {
+        http: 'empty',
+        https: 'empty',
+        querystring: 'empty',
+      };
+
+      return config;
+    }
+  },
+};
