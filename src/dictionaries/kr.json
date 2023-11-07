@@ -4,6 +4,11 @@
       "title": "Welcome to NextJs i18n",
       "description": "Internationalization in NextJs 13 App router"
     },
+    "options": {
+      "name": "이름",
+      "updated": "업데이트순",
+      "price": "가격"
+    },
 
     "kr_products": [
       {

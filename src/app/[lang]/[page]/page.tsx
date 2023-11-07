@@ -1,19 +1,20 @@
-import { ProductAPI } from '@/lib/product';
-import React from 'react';
-import ProductItems from '@/components/product/ProductItems';
-import ProductPagination from '@/components/product/ProductPagination';
-import ProductOptions from '@/components/product/ProductOptions';
+import { ProductAPI } from "@/lib/product";
+import React, { Suspense } from "react";
+import { get18n } from "@/lib/utils/i18n";
+import Product from "@/app/[lang]/product/[id]/Product";
+import ProductLogo from "@/components/product/ProductLogo";
+import Skeleton from "@/components/commons/Skeleton";
 
-export default async function Page({
+async function Page({
   params,
   searchParams,
 }: {
   params: { page: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const { page, lang } = params;
+  const { page, lang, name } = params;
 
-  const p = page === 'globals.css' ? 1 : page;
+  const p = page === "globals.css" ? 1 : page;
 
   const { limit, sortBy } = searchParams;
 
@@ -24,12 +25,29 @@ export default async function Page({
   };
 
   const { result, total, per_page } = await ProductAPI.getNextPage(obj);
+  const data = await get18n(lang, name);
+
+  const options = data
+    .map((d) => ({
+      options: d.options,
+    }))
+    .slice(0, 1);
 
   return (
     <>
-      <ProductItems lang={params.lang} items={result?.data} />
-      <ProductPagination lang={lang} pages={Math.ceil(total / per_page)} />
-      <ProductOptions />
+      <Suspense fallback={<Skeleton name={name} lang={lang} />}>
+        <ProductLogo />
+
+        <Product
+          params={params}
+          lang={lang}
+          total={total}
+          per_page={per_page}
+          result={result}
+          options={options}
+        />
+      </Suspense>
     </>
   );
 }
+export default Page;

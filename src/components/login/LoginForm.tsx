@@ -1,13 +1,13 @@
-'use client';
-import React from 'react';
-import styled from '@emotion/styled';
-import { useForm } from 'react-hook-form';
-import { signIn } from 'next-auth/react';
-import GoogleIcon from '/public/icons/icons8-google.svg';
+"use client";
+import React from "react";
+import styled from "@emotion/styled";
+import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
+import GoogleIcon from "/public/icons/icons8-google.svg";
 
-import Image from 'next/image';
-import { themState } from '@/lib/jotail/themState';
-import { useAtom } from 'jotai';
+import Image from "next/image";
+import { themState } from "@/lib/jotail/themState";
+import { useAtom } from "jotai";
 
 function LoginForm() {
   const {
@@ -23,9 +23,9 @@ function LoginForm() {
   };
 
   const handleLoginClick = () => {
-    signIn('google', {
+    signIn("google", {
       // callbackUrl: `${process.env.NEXT_PUBLIC_HOST}`,
-      callbackUrl: 'https://shop-seung-hwan285.vercel.app/',
+      callbackUrl: "https://shop-seung-hwan285.vercel.app/",
     });
   };
 
@@ -34,7 +34,11 @@ function LoginForm() {
       <LoginFormBox activeThem={activeThem} onSubmit={handleSubmit(onSubmit)}>
         <LoginContainer>
           <ButtonWrapper>
-            <ButtonGoogle type="button" onClick={handleLoginClick}>
+            <ButtonGoogle
+              data-testid="login-icon"
+              type="button"
+              onClick={handleLoginClick}
+            >
               <Image src={GoogleIcon} height={32} width={22} alt="image" />
               Google Login
             </ButtonGoogle>
@@ -72,7 +76,7 @@ const LoginFormBox = styled.form`
   display: flex;
   align-items: center;
   margin-bottom: 9rem;
-  border: 1px solid ${(p) => (p.activeThem === 'light' ? 'black' : 'white')};
+  border: 1px solid ${(p) => (p.activeThem === "light" ? "black" : "white")};
   margin-right: 1rem;
   justify-content: center;
   border-radius: 5px;

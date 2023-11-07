@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from '@/components/product/product.module.css';
-import { Product } from '@/lib/types/product';
-import { Related } from '@/lib/types/cart';
+import React from "react";
+import styles from "@/components/product/product.module.css";
+import { Product } from "@/lib/types/product";
+import { Related } from "@/lib/types/cart";
 
 function ProductRelated({ productItems }: Product) {
   return (
@@ -18,8 +18,9 @@ function ProductRelated({ productItems }: Product) {
             }: Related) => {
               return (
                 <li key={id} className={styles.relatedProductLi}>
-                  <img src={image?.url} />
-
+                  <figure>
+                    <img src={image?.url} alt />
+                  </figure>
                   <div className={styles.relatedOptionWrapper}>
                     <h1>{name}</h1>
                     <h2>{formatted_with_symbol}</h2>

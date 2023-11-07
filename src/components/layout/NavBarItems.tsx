@@ -1,32 +1,33 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import Link from 'next/link';
-import { signOut, useSession } from 'next-auth/react';
-import styles from './layout.module.css';
-import { useAtom, useSetAtom } from 'jotai';
-import { productSSRState, showState } from '@/lib/jotail/themState';
-import { getCollection } from '@/components/collection/action';
-import ClientColletions from '@/components/collection/ClientColletions';
-import Image from 'next/image';
-import Icon from '../../../public/free-icon-font-cart-minus-9795335.svg';
-import { IconButton } from '@mui/material';
-import Badge from '@mui/material/Badge';
-import { styled } from '@mui/material/styles';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import HomeIcon from '@mui/icons-material/Home';
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-import CollectionsIcon from '@mui/icons-material/Collections';
-import NavbarAuthIcon from '@/components/layout/NavbarAuthIcon';
-import PersonOffIcon from '@mui/icons-material/PersonOff';
+import React, { startTransition, useEffect } from "react";
+import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
+import styles from "./layout.module.css";
+import { useAtom, useSetAtom } from "jotai";
+import { productSSRState, showState } from "@/lib/jotail/themState";
+import ClientColletions from "@/components/collection/ClientColletions";
+import Image from "next/image";
+import Icon from "../../../public/free-icon-font-cart-minus-9795335.svg";
+import { IconButton } from "@mui/material";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import HomeIcon from "@mui/icons-material/Home";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
+import CollectionsIcon from "@mui/icons-material/Collections";
+import NavbarAuthIcon from "@/components/layout/NavbarAuthIcon";
+import PersonOffIcon from "@mui/icons-material/PersonOff";
+
+import { onTTFB, onCLS, onLCP, onFID } from "web-vitals";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    position: 'absolute',
+  "& .MuiBadge-badge": {
+    position: "absolute",
     right: 32,
     top: 0,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 2px',
+    padding: "0 2px",
   },
 }));
 
@@ -39,21 +40,29 @@ function NavBarItems({ totalItems }: number) {
   const handleLogoutClick = () => {
     signOut({
       // callbackUrl: '/',
-      callbackUrl: 'https://shop-seung-hwan285.vercel.app/',
+      callbackUrl: "https://shop-seung-hwan285.vercel.app/",
     });
   };
 
-  // server action
-  async function handleClick() {
-    const res = await getCollection();
-    setData(res.data);
-  }
+  const handleClick = async () => {
+    // const res = await getCollection();
+
+    startTransition(async () => {
+      const fetchData = await fetch(`/api/collection`, {
+        method: "GET",
+      });
+
+      const res = await fetchData.json();
+
+      setData(res.data.data);
+    });
+  };
 
   const [show, setIsShow] = useAtom(showState);
   const wrapperRef = React.useRef<HTMLInputElement>(null as HTMLInputElement);
 
   const handleOutsideClick = (
-    e: DocumentEventMap['mousedown'] | React.MouseEvent
+    e: DocumentEventMap["mousedown"] | React.MouseEvent
   ) => {
     if (
       e.target instanceof HTMLElement &&
@@ -64,9 +73,9 @@ function NavBarItems({ totalItems }: number) {
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener("mousedown", handleOutsideClick);
     return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
 
@@ -77,11 +86,16 @@ function NavBarItems({ totalItems }: number) {
         className={`${show ? styles.open : styles.close}`}
         onMouseDown={handleOutsideClick}
       >
-        <div onClick={() => setIsShow(!show)} className={styles.closeToggle}>
+        <div
+          data-testid="directions"
+          onClick={() => setIsShow(!show)}
+          className={styles.closeToggle}
+        >
           <span></span>
           <span></span>
           <span></span>
         </div>
+
         <div className={styles.iconContainer}>
           <Image src={Icon} height={100} width={120} alt="shop" />
         </div>
@@ -94,25 +108,27 @@ function NavBarItems({ totalItems }: number) {
             <nav>
               <div className={styles.menu}>
                 <li className={styles.list}>
-                  <Link href="/">
+                  <Link data-testid="home" href="/">
                     <HomeIcon color="primary" />
                   </Link>
                 </li>
                 <li className={styles.list}>
                   {!session ? (
-                    <Link href="/login">
+                    <Link data-testid="login-icon" href="/login">
                       <AssignmentIndIcon color="primary" />
                     </Link>
                   ) : (
-                    <PersonOffIcon
-                      color="primary"
-                      onClick={handleLogoutClick}
-                    />
-                    // <button onClick={handleLogoutClick}>Logout</button>
+                    <Link data-testid="logout-icon" href="/login">
+                      <PersonOffIcon
+                        color="primary"
+                        onClick={handleLogoutClick}
+                      />
+                    </Link>
                   )}
                 </li>
+
                 <li className={styles.list}>
-                  <Link href="/cart">
+                  <Link data-testid="cart" href="/cart">
                     <IconButton color="primary" aria-label="cart">
                       {totalItems > 0 ? (
                         <StyledBadge
@@ -132,7 +148,7 @@ function NavBarItems({ totalItems }: number) {
 
                 <form action={handleClick}>
                   <li onClick={handleClick} className={styles.listCollection}>
-                    <CollectionsIcon color="primary" />
+                    <CollectionsIcon data-testid="collection" color="primary" />
 
                     <div className={styles.dropDown}>
                       <ClientColletions />

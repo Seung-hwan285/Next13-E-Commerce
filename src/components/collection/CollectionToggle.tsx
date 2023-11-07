@@ -1,27 +1,29 @@
-'use client';
-import React from 'react';
-import styles from './collection.module.css';
-import { useAtom } from 'jotai';
-import { showState } from '@/lib/jotail/themState';
-import NavBarItems from '@/components/layout/NavBarItems';
+import React from "react";
+import styles from "./collection.module.css";
+import NavBarItems from "@/components/layout/NavBarItems";
+import Link from "next/link";
+import { CartAPI } from "@/lib/cart";
+import NavbarButton from "@/components/layout/NavbarButton";
 
-type Toggle = {
-  totalItems?: number;
+type Cok = {
+  cookie: string;
 };
 
-function CollectionToggle({ totalItems }: Toggle) {
-  const [show, setIsShow] = useAtom(showState);
+async function CollectionToggle({ cookie }: Cok) {
+  const carts = await CartAPI.getCartItems(cookie);
 
   return (
     <>
-      <div className={styles.toogleBox}>
-        <div onClick={() => setIsShow(!show)} className={styles.toggle}>
-          <span></span>
-          <span></span>
-          <span></span>
+      <div style={{ position: "relative" }}>
+        <NavbarButton />
+
+        <div className={styles.categoryBox}>
+          <Link href={"/"}>All Product</Link>
+          <Link href={"/search/T-shirt"}>T-shirt</Link>
+          <Link href={"/search/Cat"}>Cat</Link>
         </div>
 
-        <NavBarItems totalItems={totalItems} />
+        <NavBarItems totalItems={carts?.totalItems} />
       </div>
     </>
   );

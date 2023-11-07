@@ -1,18 +1,31 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { redirect, usePathname } from 'next/navigation';
-import styles from '@/app/[lang]/page.module.css';
-import KR from '/public/icons/kr.svg';
-import US from '/public/icons/us.svg';
-import Link from 'next/link';
-import Image from 'next/image';
+import React, { useEffect, useState } from "react";
+import styles from "@/app/[lang]/page.module.css";
+
+import Image from "next/image";
+
+import KR from "/public/kr.svg";
+import US from "/public/us.svg";
+import Link from "next/link";
+import { redirect, usePathname } from "next/navigation";
 
 function FooterOptions() {
   const pathname = usePathname();
-
-  // Error Fix : hydration error
   const [mounted, setMounted] = useState(false);
+
+  const CONFIG = [
+    {
+      index: 1,
+      icon: KR,
+      value: "kr",
+    },
+    {
+      index: 2,
+      icon: US,
+      value: "en",
+    },
+  ];
 
   useEffect(() => {
     setMounted(true);
@@ -22,36 +35,27 @@ function FooterOptions() {
     return <></>;
   }
 
-  const CONFIG = [
-    {
-      index: 1,
-      icon: KR,
-      value: 'kr',
-    },
-    {
-      index: 2,
-      icon: US,
-      value: 'en',
-    },
-  ];
-
   const redirectPathName = (location: string) => {
-    if (!pathname) redirect('/');
+    if (!pathname) redirect("/");
 
-    const segemtns = pathname.split('/');
+    const segemtns = pathname.split("/");
 
     segemtns[1] = location;
-    return segemtns.join('/');
+    return segemtns.join("/");
   };
 
   return (
     <div className={styles.footerBottom}>
-      <ul style={{ width: '200px' }}>
+      <ul style={{ width: "200px" }}>
         {CONFIG.map(({ icon, value, index }) => {
           return (
             <li key={index}>
-              <Link value={value} href={redirectPathName(value)}>
-                <Image src={icon} alt={'icon'} />
+              <Link
+                href={redirectPathName(value)}
+                prefetch={false}
+                value={value}
+              >
+                <Image src={icon} />
               </Link>
             </li>
           );

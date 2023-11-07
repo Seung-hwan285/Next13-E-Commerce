@@ -5,10 +5,16 @@
       "description": "Internationalization in NextJs 13 App router"
     },
 
+    "options": {
+      "name": "Name",
+      "updated": "Updated",
+      "price": "Price"
+    },
+
     "en_products": [
       {
         "id": "prod_VKXmwD4V0qwrgD",
-        "name": "T-shirt1",
+        "name": "T-shirt",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",
@@ -16,7 +22,7 @@
       },
       {
         "id": "prod_DWy4oGEG3ql6Jx",
-        "name": "T-shirt1",
+        "name": "T-shirt",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",
@@ -24,7 +30,7 @@
       },
       {
         "id": "prod_9BAmwJnMvVweXd",
-        "name": "T-shirt1",
+        "name": "T-shirt",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",
@@ -32,7 +38,7 @@
       },
       {
         "id": "prod_p6dP5gM2gKwn7k",
-        "name": "T-shirt3",
+        "name": "T-shirt-3",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",
@@ -72,7 +78,7 @@
       },
       {
         "id": "prod_Kvg9l68Nvdo1bB",
-        "name": "T-shirt2",
+        "name": "T-shirt-2",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",
@@ -80,7 +86,7 @@
       },
       {
         "id": "prod_NqKE506ZOjwdgB",
-        "name": "T-shirt3",
+        "name": "T-shirt123",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",
@@ -112,7 +118,7 @@
       },
       {
         "id": "prod_0egY5eeydp53Qn",
-        "name": "Cat",
+        "name": "Cat2",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",
@@ -120,7 +126,7 @@
       },
       {
         "id": "prod_RqEv5xpBO15Zz4",
-        "name": "T-shirt3",
+        "name": "Cat3",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",
@@ -128,7 +134,7 @@
       },
       {
         "id": "prod_8XxzoBK6Mg5PQA",
-        "name": "T-shirt4",
+        "name": "Cat4",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",
@@ -136,7 +142,7 @@
       },
       {
         "id": "prod_LvJjoPKBrpwe0n",
-        "name": "T-shirt1",
+        "name": "T-shirt",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",
@@ -152,7 +158,7 @@
       },
       {
         "id": "prod_gnZO5kY0D6w7MN",
-        "name": "T-shirt6",
+        "name": "Cat6",
         "size": "Size",
         "color": "Color",
         "description": "test test test test test test test test test test test test",

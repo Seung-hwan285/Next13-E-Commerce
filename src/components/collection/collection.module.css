@@ -12,14 +12,22 @@
     bottom: 0;
 }
 
-.toogleBox{
+.categoryBox{
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    bottom: 25%;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .toggle{
     position: relative;
     margin-top: 25px;
-    transform: translateX(26px);
-    top: 3%;
+    margin-left: 30px;
+    transform: translateX(30px);
+    bottom: 15%;
+    left: 10%;
     width: 1.75rem;
     height: 1.5rem;
     display: flex;

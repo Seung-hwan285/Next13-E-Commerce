@@ -1,5 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { isRoutesError } from '@/lib/type-guards/isRoutesError';
+import { NextRequest, NextResponse } from "next/server";
+import { isRoutesError } from "@/lib/type-guards/isRoutesError";
+
+export const runtime = "edge";
 
 function formatErrorMessage(err: Error): string {
   // 모든 키 반환

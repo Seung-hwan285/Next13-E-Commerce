@@ -7,21 +7,20 @@
 
 .searchContainer{
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 50%;
-    transform: translate(-70%, -50%);
-
+    transform: translate(-50%, -50%);
 }
 
 .searchInput {
-    width: 300px;
+    width: 500px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 25px;
+    border-radius: 7px;
     background: #ffffff;
-    border: 1px solid black;
+    border: 2px solid #0D6EFD;
     color: black;
     outline: none;
 }

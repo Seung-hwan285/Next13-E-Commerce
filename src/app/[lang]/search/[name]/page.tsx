@@ -1,15 +1,17 @@
-import { ProductAPI } from '@/lib/product';
-import styles from '@/components/product/product.module.css';
-import { Product } from '@/lib/types/product';
-import Link from 'next/link';
-import React from 'react';
+import styles from "@/components/product/product.module.css";
+import { Product } from "@/lib/types/product";
+import Link from "next/link";
+import React from "react";
+import { get18n } from "@/lib/utils/i18n";
+
+export const revalidate = 3600;
 
 async function Page({ params }: { params: { id: string } }) {
-  const { name } = params;
+  const { name, lang, id } = params;
 
-  const { data: products } = await ProductAPI.getSearchProducts(name);
+  const products = await get18n(lang, id, name);
 
-  return <Products products={products} />;
+  return <Products lang={lang} products={products} />;
 }
 
 export default Page;
@@ -26,11 +28,7 @@ async function Products({ products }: Product[]) {
 
                 <div className={styles.imageWrapper}>
                   {image && (
-                    <img
-                      className={styles.image}
-                      src={image?.url}
-                      alt="image"
-                    />
+                    <img className={styles.image} src={image?.url} alt="" />
                   )}
                 </div>
                 <div className={styles.detailWrapper}>

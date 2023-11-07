@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import React, { startTransition, useEffect, useState } from 'react';
+import React, { startTransition, useEffect, useState } from "react";
 
-import styles from './search.module.css';
-import { productState, searchListState } from '@/lib/jotail/themState';
-import { useAtom, useSetAtom } from 'jotai';
-import { ProductAPI } from '@/lib/product';
-import { useThrottle } from '@uidotdev/usehooks';
+import styles from "./search.module.css";
+import { productState, searchListState } from "@/lib/jotail/themState";
+import { useAtom, useSetAtom } from "jotai";
+import { ProductAPI } from "@/lib/product";
+import { useThrottle } from "@uidotdev/usehooks";
 
 function SearchBar() {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [, setProduct] = useAtom(productState);
 
   const throttledValue = useThrottle(name, 2000);
@@ -21,13 +21,9 @@ function SearchBar() {
     setName(value);
     setIsShow(true);
     if (value.length > 0) {
-      startTransition(() => {
-        const fetch = async () => {
-          const { data } = await ProductAPI.getSearchProducts(value);
-          setProduct(data);
-        };
-
-        fetch();
+      startTransition(async () => {
+        const { data } = await ProductAPI.getSearchProducts(value);
+        setProduct(data);
       });
     }
   };
@@ -42,10 +38,13 @@ function SearchBar() {
     <>
       <div className={styles.searchContainer}>
         <input
+          data-testid="search-bar"
           className={styles.searchInput}
           type="text"
+          name="search"
           onChange={handleChange}
           value={name}
+          placeholder={"Search"}
         />
       </div>
     </>

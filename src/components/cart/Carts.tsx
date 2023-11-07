@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import styles from '@/components/cart/cart.module.css';
-import CartDeleteButton from '@/components/cart/CartDeleteButton';
-import CartcCountButton from '@/components/cart/CartcCountButton';
-import Link from 'next/link';
-import { getSessionStroage } from '@/lib/utils/session';
-import { useAtom } from 'jotai';
-import { sessionState } from '@/lib/jotail/themState';
-import { Cart, Item } from '@/lib/types/cart';
-import CartOptions from '@/components/cart/CartOptions';
+import React, { useEffect } from "react";
+import styles from "@/components/cart/cart.module.css";
+import CartDeleteButton from "@/components/cart/CartDeleteButton";
+import CartcCountButton from "@/components/cart/CartcCountButton";
+import Link from "next/link";
+import { getSessionStroage } from "@/lib/utils/session";
+import { useAtom } from "jotai";
+import { sessionState } from "@/lib/jotail/themState";
+import { Cart, Item } from "@/lib/types/cart";
+import CartOptions from "@/components/cart/CartOptions";
 
 function LineItemComponent({ item, cartId }: Item) {
   const [, setProductOptions] = useAtom(sessionState);
 
   useEffect(() => {
-    const options = getSessionStroage('product');
+    const options = getSessionStroage("product");
     setProductOptions(options);
   }, []);
 
@@ -60,7 +60,7 @@ function Carts({ carts }: Cart) {
   return (
     <>
       <div className={styles.cartBox}>
-        <h1>My Cart ({carts.total_items})</h1>
+        <h1 data-testId="total">My Cart ({carts.total_items})</h1>
 
         {carts && (
           <LineItemComponent
