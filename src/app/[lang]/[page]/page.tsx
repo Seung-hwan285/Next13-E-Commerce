@@ -5,8 +5,6 @@ import Product from "@/app/[lang]/product/[id]/Product";
 import ProductLogo from "@/components/product/ProductLogo";
 import Skeleton from "@/components/commons/Skeleton";
 
-export const runtime = "edge";
-
 async function Page({
   params,
   searchParams,

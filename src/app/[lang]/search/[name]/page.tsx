@@ -6,8 +6,6 @@ import { get18n } from "@/lib/utils/i18n";
 
 export const revalidate = 3600;
 
-export const runtime = "edge";
-
 async function Page({ params }: { params: { id: string } }) {
   const { name, lang, id } = params;
 
