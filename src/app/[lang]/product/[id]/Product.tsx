@@ -4,6 +4,8 @@ import ProductPagination from "@/components/product/ProductPagination";
 import ProductOptions from "@/components/product/ProductOptions";
 import Footer from "@/components/layout/Footer";
 
+export const runtime = "edge";
+
 async function ProductPage({
   options,
   total,

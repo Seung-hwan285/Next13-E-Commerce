@@ -1,9 +1,11 @@
-import NextAuth, { AuthOptions } from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
+import NextAuth, { AuthOptions } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+
+export const runtime = "edge";
 
 export const authOptions: unknown = {
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
   },
   providers: [
     GoogleProvider({
